@@ -1,2 +1,1 @@
-# ruangong
-this is a ruangong project
+# 这是一个软件工程课堂项目
