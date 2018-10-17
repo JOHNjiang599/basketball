@@ -5,10 +5,10 @@ Backup Time: 2018-10-14 20:50:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-DROP TABLE IF EXISTS `basketball`.`t_admin`;
-DROP TABLE IF EXISTS `basketball`.`t_match`;
-DROP TABLE IF EXISTS `basketball`.`t_member`;
-DROP TABLE IF EXISTS `basketball`.`t_team`;
+DROP TABLE IF EXISTS `basketball`.t_admin;
+DROP TABLE IF EXISTS `basketball`.t_match;
+DROP TABLE IF EXISTS `basketball`.t_member;
+DROP TABLE IF EXISTS `basketball`.t_team;
 CREATE TABLE `t_admin` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL COMMENT '管理员用户名',
@@ -41,22 +41,22 @@ CREATE TABLE `t_team` (
   UNIQUE KEY `teamLoginName` (`teamLoginName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 BEGIN;
-LOCK TABLES `basketball`.`t_admin` WRITE;
-DELETE FROM `basketball`.`t_admin`;
+LOCK TABLES `basketball`.t_admin WRITE;
+DELETE FROM `basketball`.t_admin;
 UNLOCK TABLES;
 COMMIT;
 BEGIN;
-LOCK TABLES `basketball`.`t_match` WRITE;
-DELETE FROM `basketball`.`t_match`;
+LOCK TABLES `basketball`.t_match WRITE;
+DELETE FROM `basketball`.t_match;
 UNLOCK TABLES;
 COMMIT;
 BEGIN;
-LOCK TABLES `basketball`.`t_member` WRITE;
-DELETE FROM `basketball`.`t_member`;
+LOCK TABLES `basketball`.t_member WRITE;
+DELETE FROM `basketball`.t_member;
 UNLOCK TABLES;
 COMMIT;
 BEGIN;
-LOCK TABLES `basketball`.`t_team` WRITE;
-DELETE FROM `basketball`.`t_team`;
+LOCK TABLES `basketball`.t_team WRITE;
+DELETE FROM `basketball`.t_team;
 UNLOCK TABLES;
 COMMIT;

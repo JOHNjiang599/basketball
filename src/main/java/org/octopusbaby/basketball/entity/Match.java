@@ -2,6 +2,8 @@ package org.octopusbaby.basketball.entity;
 
 public class Match {
 
+    private int id;
+
     private String MatchTime;
 
     private int EventType;
@@ -13,11 +15,20 @@ public class Match {
     public Match() {
     }
 
-    public Match(String matchTime, int eventType, int memberId, int teamId) {
+    public Match(int id, String matchTime, int eventType, int memberId, int teamId) {
+        this.id = id;
         MatchTime = matchTime;
         EventType = eventType;
         this.memberId = memberId;
         this.teamId = teamId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMatchTime() {
@@ -55,7 +66,8 @@ public class Match {
     @Override
     public String toString() {
         return "Match{" +
-                "MatchTime='" + MatchTime + '\'' +
+                "id=" + id +
+                ", MatchTime='" + MatchTime + '\'' +
                 ", EventType=" + EventType +
                 ", memberId=" + memberId +
                 ", teamId=" + teamId +

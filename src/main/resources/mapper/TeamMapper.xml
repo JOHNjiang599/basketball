@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.octopusbaby.basketball.dao.TeamDao">
+    <!-- 目的：为dao接口方法提供sql语句配置 -->
+
+    <!--查询所有球队信息-->
+    <select id="queryAllTeam" resultType="Team">
+        select teamId,teamName,teamLoginName,teamPassword
+        from t_team;
+    </select>
+
+    <!--查询指定球队信息-->
+    <select id="findById" resultType="Team" parameterType="int">
+        select teamId,teamName,teamLoginName,teamPassword
+        from t_team
+        where teamId=#{teamId};
+    </select>
+
+</mapper>

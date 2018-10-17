@@ -4,16 +4,16 @@ public class Admin {
 
     private int id;
 
-    private String username;//管理员用户名
+    private String user;//管理员用户名
 
     private String password;//管理员密码
 
     public Admin() {
     }
 
-    public Admin(int id, String username, String password) {
+    public Admin(int id, String user, String password) {
         this.id = id;
-        this.username = username;
+        this.user = user;
         this.password = password;
     }
 
@@ -25,12 +25,12 @@ public class Admin {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getPassword() {
@@ -45,7 +45,7 @@ public class Admin {
     public String toString() {
         return "Admin{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", user='" + user + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
