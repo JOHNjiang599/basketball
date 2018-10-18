@@ -2,6 +2,7 @@ package org.octopusbaby.basketball.dao;
 
 import org.junit.Test;
 import org.octopusbaby.basketball.BaseTest;
+import org.octopusbaby.basketball.entity.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class AdminDaoTest extends BaseTest {
@@ -10,12 +11,25 @@ public class AdminDaoTest extends BaseTest {
     private AdminDao adminDao;
 
     @Test
-    public void testAddAdmin() {
+    public void testInsertAdmin() {
         String user = "admin";
         String password = "123456";
-        boolean b = adminDao.addAdmin(user, password);
+        boolean b = adminDao.insertAdmin(user, password);
         if (b) {
-            System.out.println("\n\n 成功添加" + user + " " + password);
+            System.out.println("\n\n 成功添加" + user + " " + password + "\n");
         }
     }
+
+    @Test
+    public void testGetAllAdmin() {
+        Admin allAdmin = adminDao.getAllAdmin();
+        System.out.println("\n\n" + allAdmin + "\n");
+    }
+
+    @Test
+    public void testGetAdminByName() {
+        Admin admin = adminDao.getAdminByName("admin");
+        System.out.println("\n\n" + admin + "\n");
+    }
+
 }

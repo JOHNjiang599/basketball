@@ -11,15 +11,21 @@ public class MemberDaoTest extends BaseTest {
     private MemberDao memberDao;
 
     @Test
+    public void testInsertMember() {
+        boolean b = memberDao.insertMember(23,
+                "JohnDan", true, 1);
+    }
+
+    @Test
     public void testQueryAllMember() {
         Member member = memberDao.queryAllMember();
         System.out.println("\n\n" + member + "\n");
     }
 
     @Test
-    public void testQueryById() {
+    public void testQueryByMemberId() {
         int memberId = 1;
-        Member member = memberDao.queryById(memberId);
+        Member member = memberDao.queryByMemberId(memberId);
         System.out.println("\n\n" + member + "\n");
     }
 }

@@ -6,10 +6,21 @@
     <!-- 目的：为dao接口方法提供sql语句配置 -->
 
     <!--添加管理员-->
-    <insert id="addAdmin">
-        insert into t_admin (user, password)
-        values (#{user},#{password})
+    <insert id="insertAdmin">
+        insert into t_admin (userName, password)
+        values (#{userName},#{password});
     </insert>
 
+    <!--获取所有管理员信息-->
+    <select id="getAllAdmin" resultType="Admin">
+        select id,userName,password
+        from t_admin;
+    </select>
 
+    <!--通过管理员名称获取管理员-->
+    <select id="getAdminByName" resultType="Admin">
+         select id,userName,password
+        from t_admin
+        where userName=#{userName};
+    </select>
 </mapper>
