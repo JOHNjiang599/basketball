@@ -11,15 +11,25 @@ public class TeamDaoTest extends BaseTest {
     private TeamDao teamDao;
 
     @Test
+    public void testInsertTeam() {
+        boolean b = teamDao.insertTeam(1,
+                "章鱼bady", "octopusbaby",
+                "12345678");
+        if (b) {
+            System.out.println("\n\n" + "成功添加一条数据" + "\n");
+        }
+    }
+
+    @Test
     public void testQueryAllTeam() {
         Team team = teamDao.queryAllTeam();
         System.out.println("\n\n" + team + "\n");
     }
 
     @Test
-    public void testFindById() {
+    public void testQueryByTeamId() {
         int teamId = 2;
-        Team team = teamDao.findById(teamId);
+        Team team = teamDao.queryByTeamId(teamId);
         System.out.println("\n\n" + team + "\n");
     }
 }

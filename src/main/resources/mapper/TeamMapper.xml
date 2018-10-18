@@ -5,14 +5,20 @@
 <mapper namespace="org.octopusbaby.basketball.dao.TeamDao">
     <!-- 目的：为dao接口方法提供sql语句配置 -->
 
+    <!--添加球队-->
+    <insert id="insertTeam">
+        insert into t_team (teamId, teamName, teamLoginName, teamPassword)
+        values (#{teamId},#{teamName},#{teamLoginName},#{teamPassword});
+    </insert>
+
     <!--查询所有球队信息-->
     <select id="queryAllTeam" resultType="Team">
         select teamId,teamName,teamLoginName,teamPassword
         from t_team;
     </select>
 
-    <!--查询指定球队信息-->
-    <select id="findById" resultType="Team" parameterType="int">
+    <!--通过球队ID查询指定球队-->
+    <select id="queryByTeamId" resultType="Team">
         select teamId,teamName,teamLoginName,teamPassword
         from t_team
         where teamId=#{teamId};

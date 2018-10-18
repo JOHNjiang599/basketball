@@ -5,6 +5,12 @@
 <mapper namespace="org.octopusbaby.basketball.dao.MemberDao">
     <!-- 目的：为dao接口方法提供sql语句配置 -->
 
+    <!--添加球员-->
+    <insert id="insertMember">
+        insert into t_member (memberId, memberName, firstStart, teamId)
+        values (#{memberId},#{memberName},#{firstStart},#{teamId});
+    </insert>
+
     <!--查询所有球员信息-->
     <select id="queryAllMember" resultType="Member">
         select memberId,memberName,firstStart,teamId
@@ -12,7 +18,7 @@
     </select>
 
     <!--查询指定球员信息-->
-    <select id="queryById" resultType="Member" parameterType="int">
+    <select id="queryByMemberId" resultType="Member">
         select memberId,memberName,firstStart,teamId
         from t_member
         where memberId=#{memberId};

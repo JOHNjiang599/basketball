@@ -7,7 +7,28 @@
 
     <!--获取所有对战信息-->
     <select id="getAllInfo" resultType="Match">
-        select id,MatchTime,EventType,memberId,teamId
+        select id,match_time,event_type,memberId,teamId
         from t_match;
     </select>
+
+    <!--通过球员ID和球队ID查询某条记录记录-->
+    <select id="getAllInfo" resultType="Match">
+        select id,match_time,event_type,memberId,teamId
+        from t_match
+        where memberId=#{memberId} and teamId=#{teamId};
+    </select>
+
+    <!--添加一条对战记录-->
+    <insert id="insertMatch">
+        insert into t_match (match_time, event_type, memberId, teamId)
+        values (#{match_time},#{event_type},#{memberId},#{teamId});
+    </insert>
+
+    <!--通过时刻、事件类型和球员ID删除一条记录-->
+    <delete id="deleteMatch">
+        delete from t_match
+        where match_time=#{match_time}
+        and event_type=#{event_type}
+        and memberId=#{memberId};
+    </delete>
 </mapper>
