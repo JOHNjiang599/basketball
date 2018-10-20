@@ -7,8 +7,8 @@
 
     <!--添加管理员-->
     <insert id="insertAdmin">
-        insert into t_admin (userName, password)
-        values (#{userName},#{password});
+        insert into t_admin (userName, password,type)
+        values (#{userName},#{password},#{type});
     </insert>
 
     <!--获取所有管理员信息-->

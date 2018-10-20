@@ -9,14 +9,10 @@ public interface TeamDao {
      *
      * @param teamId
      * @param teamName
-     * @param teamLoginName
-     * @param teamPassword
      * @return boolean
      */
     boolean insertTeam(@Param("teamId") int teamId,
-                       @Param("teamName") String teamName,
-                       @Param("teamLoginName") String teamLoginName,
-                       @Param("teamPassword") String teamPassword);
+                       @Param("teamName") String teamName);
 
     /**
      * 查询所有球队

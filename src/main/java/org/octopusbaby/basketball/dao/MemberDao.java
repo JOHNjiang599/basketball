@@ -11,13 +11,11 @@ public interface MemberDao {
      * @param memberId
      * @param memberName
      * @param firstStart
-     * @param teamId
      * @return boolean
      */
     boolean insertMember(@Param("memberId") int memberId,
                          @Param("memberName") String memberName,
-                         @Param("firstStart") boolean firstStart,
-                         @Param("teamId") int teamId);
+                         @Param("firstStart") boolean firstStart);
 
     /**
      * 查询所有球员
