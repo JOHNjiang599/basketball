@@ -11,7 +11,8 @@ public interface AdminDao {
      * @return boolean
      */
     boolean insertAdmin(@Param("userName") String userName,
-                        @Param("password") String password);
+                        @Param("password") String password,
+                        @Param("type") int type);
 
     /**
      * 获取所有管理员信息

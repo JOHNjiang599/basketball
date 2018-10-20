@@ -14,7 +14,8 @@ public class AdminDaoTest extends BaseTest {
     public void testInsertAdmin() {
         String user = "admin";
         String password = "123456";
-        boolean b = adminDao.insertAdmin(user, password);
+        int type = 1;
+        boolean b = adminDao.insertAdmin(user, password, type);
         if (b) {
             System.out.println("\n\n 成功添加" + user + " " + password + "\n");
         }

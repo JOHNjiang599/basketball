@@ -12,9 +12,7 @@ public class TeamDaoTest extends BaseTest {
 
     @Test
     public void testInsertTeam() {
-        boolean b = teamDao.insertTeam(1,
-                "章鱼bady", "octopusbaby",
-                "12345678");
+        boolean b = teamDao.insertTeam(1, "章鱼bady");
         if (b) {
             System.out.println("\n\n" + "成功添加一条数据" + "\n");
         }

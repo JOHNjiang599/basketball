@@ -7,19 +7,19 @@
 
     <!--添加球队-->
     <insert id="insertTeam">
-        insert into t_team (teamId, teamName, teamLoginName, teamPassword)
-        values (#{teamId},#{teamName},#{teamLoginName},#{teamPassword});
+        insert into t_team (teamId, teamName)
+        values (#{teamId},#{teamName});
     </insert>
 
     <!--查询所有球队信息-->
     <select id="queryAllTeam" resultType="Team">
-        select teamId,teamName,teamLoginName,teamPassword
+        select teamId,teamName
         from t_team;
     </select>
 
     <!--通过球队ID查询指定球队-->
     <select id="queryByTeamId" resultType="Team">
-        select teamId,teamName,teamLoginName,teamPassword
+        select teamId,teamName
         from t_team
         where teamId=#{teamId};
     </select>
