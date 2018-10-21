@@ -35,8 +35,6 @@ public interface MatchDao {
                         @Param("memberId") int memberId,
                         @Param("teamId") int teamId);
 
-    boolean updateMatchInfo();
-
     /**
      * 通过时刻、事件类型和球员ID删除一条记录
      *

@@ -9,15 +9,13 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
-public class Match implements Serializable {
+public class User implements Serializable {
 
     private int id;
 
-    private String MatchTime;
+    private String userName;//用户名
 
-    private int EventType;
+    private String password;//用户密码
 
-    private int memberId;
-
-    private int teamId;
+    private String userType;
 }

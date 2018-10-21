@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>首页</title>
 </head>
 <body>
-<form class="login">
-    用户名:<br>
-    <input type="text" name="username"><br>
-    密码：<br>
-    <input type="password" name="password">
-    <br><br>
-    <input type="submit" value="提交">
-</form>
+<div>
+    <a href="${pageContext.request.contextPath}/basketball/showLogin">用户登录</a>
+    <br/><br/>
+    <a href="${pageContext.request.contextPath}/basketball/showRegUser">用户注册</a>
+</div>
 </body>
 </html>

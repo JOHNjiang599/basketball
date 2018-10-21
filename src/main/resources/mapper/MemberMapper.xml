@@ -7,19 +7,19 @@
 
     <!--添加球员-->
     <insert id="insertMember">
-        insert into t_member (memberId, memberName, firstStart, teamId)
-        values (#{memberId},#{memberName},#{firstStart},#{teamId});
+        insert into t_member (memberId, memberName, firstStart)
+        values (#{memberId},#{memberName},#{firstStart});
     </insert>
 
     <!--查询所有球员信息-->
     <select id="queryAllMember" resultType="Member">
-        select memberId,memberName,firstStart,teamId
+        select memberId,memberName,firstStart
         from t_member;
     </select>
 
     <!--查询指定球员信息-->
     <select id="queryByMemberId" resultType="Member">
-        select memberId,memberName,firstStart,teamId
+        select memberId,memberName,firstStart
         from t_member
         where memberId=#{memberId};
     </select>
