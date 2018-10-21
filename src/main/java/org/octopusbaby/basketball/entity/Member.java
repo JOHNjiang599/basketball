@@ -2,12 +2,14 @@ package org.octopusbaby.basketball.entity;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-public class Member {
+public class Member implements Serializable {
 
     private int memberId;//球员编号，即球衣号
 

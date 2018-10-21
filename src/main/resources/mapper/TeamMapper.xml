@@ -5,6 +5,7 @@
 <mapper namespace="org.octopusbaby.basketball.dao.TeamDao">
     <!-- 目的：为dao接口方法提供sql语句配置 -->
 
+
     <!--添加球队-->
     <insert id="insertTeam">
         insert into t_team (teamId, teamName)

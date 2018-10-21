@@ -12,7 +12,7 @@
     </select>
 
     <!--通过球员ID和球队ID查询某条记录记录-->
-    <select id="getAllInfo" resultType="Match">
+    <select id="getByMIdAndTId" resultType="Match">
         select id,match_time,event_type,memberId,teamId
         from t_match
         where memberId=#{memberId} and teamId=#{teamId};
