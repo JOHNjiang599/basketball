@@ -6,26 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af4c5b96-5d70-4287-a3a5-78ebe9ff8c3b" name="Default Changelist" comment="更新实体类的写法，采用Lombok注解">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/test/index_test.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/test/regUser_test.jsp" afterDir="false" />
+    <list default="true" id="af4c5b96-5d70-4287-a3a5-78ebe9ff8c3b" name="Default Changelist" comment="删除.idea文件夹，以便于协作提交">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/octopusbaby/basketball/controller/basController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/octopusbaby/basketball/controller/basController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring/spring-controller.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-controller.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/test.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/test.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/image/test.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/images/test.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/index_js.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/index_js.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/addMatchMember.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/test/index_test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/regUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/test/showLogin_test.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/showLogin.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teaminfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/teamInfo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/welcome.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -95,8 +78,8 @@
           <entry key="js" value="4" />
           <entry key="jsp" value="30" />
           <entry key="kt" value="1" />
-          <entry key="logitec" value="4" />
-          <entry key="md" value="2" />
+          <entry key="logitec" value="5" />
+          <entry key="md" value="3" />
           <entry key="properties" value="7" />
           <entry key="sql" value="5" />
           <entry key="t_account" value="5" />
@@ -115,8 +98,8 @@
           <entry key="JSP" value="30" />
           <entry key="JavaScript" value="4" />
           <entry key="Kotlin" value="1" />
-          <entry key="Markdown" value="2" />
-          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="Markdown" value="3" />
+          <entry key="PLAIN_TEXT" value="5" />
           <entry key="Properties" value="7" />
           <entry key="SQL" value="5" />
           <entry key="XML" value="96" />
@@ -130,10 +113,10 @@
           <entry key="html" value="21" />
           <entry key="java" value="3188" />
           <entry key="jsp" value="621" />
-          <entry key="md" value="22" />
+          <entry key="md" value="36" />
           <entry key="properties" value="13" />
           <entry key="sql" value="8" />
-          <entry key="txt" value="125" />
+          <entry key="txt" value="170" />
           <entry key="xml" value="510" />
         </counts>
       </usages-collector>
@@ -142,8 +125,8 @@
           <entry key="HTML" value="21" />
           <entry key="JAVA" value="3188" />
           <entry key="JSP" value="621" />
-          <entry key="Markdown" value="22" />
-          <entry key="PLAIN_TEXT" value="150" />
+          <entry key="Markdown" value="36" />
+          <entry key="PLAIN_TEXT" value="195" />
           <entry key="Properties" value="13" />
           <entry key="SQL" value="20" />
           <entry key="Scratch" value="5" />
@@ -154,7 +137,9 @@
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.vcs.git.usages">
         <counts>
+          <entry key="git.branch.compare" value="1" />
           <entry key="git.branch.delete.remote" value="1" />
+          <entry key="git.branch.merge" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.run.usages" />
@@ -234,7 +219,6 @@
         <option value="$PROJECT_DIR$/src/main/java/org/octopusbaby/basketball/dao/TeamDao.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/octopusbaby/basketball/dao/TeamDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/octopusbaby/basketball/dao/MemberDao.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/test/java/org/octopusbaby/basketball/dao/MemberDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/octopusbaby/basketball/entity/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/octopusbaby/basketball/entity/UserTset.java" />
@@ -273,12 +257,13 @@
         <option value="$PROJECT_DIR$/src/main/webapp/index.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.html" />
-        <option value="$PROJECT_DIR$/src/main/java/org/octopusbaby/basketball/controller/basController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/test/index_test.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/test/index_test.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/test/regUser_test.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/test/showLogin_test.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/org/octopusbaby/basketball/controller/basController.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -414,7 +399,7 @@
     <property name="LombokPluginIS_VAL_Enabled" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540215041585" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540215886260" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -624,7 +609,7 @@
       <workItem from="1540125811954" duration="740000" />
       <workItem from="1540202214367" duration="151000" />
       <workItem from="1540206071178" duration="194000" />
-      <workItem from="1540212182028" duration="3082000" />
+      <workItem from="1540212182028" duration="3689000" />
     </task>
     <task id="LOCAL-00001" summary="更新项目结构">
       <created>1539790437522</created>
@@ -661,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1540049084110</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="更新静态资源的目录结构，以便于成功访问">
+      <created>1540215348540</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1540215348540</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -697,10 +689,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40485000" />
+    <option name="totallyTimeSpent" value="41092000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="UI Designer" order="1" />
@@ -750,7 +743,8 @@
     <MESSAGE value="update something" />
     <MESSAGE value="更新四个Dao文件，四个Mapper文件，四个DaoTest文件" />
     <MESSAGE value="更新实体类的写法，采用Lombok注解" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新实体类的写法，采用Lombok注解" />
+    <MESSAGE value="更新静态资源的目录结构，以便于成功访问" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新静态资源的目录结构，以便于成功访问" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -968,21 +962,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/logitec">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/history.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1028,6 +1007,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
           <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/logitec">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="84">
+            <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
