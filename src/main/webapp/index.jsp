@@ -16,7 +16,7 @@
         </label>管理员<br><br>
         用户名:<br>
         <label>
-            <input type="text" name="username">
+            <input type="text" name="userName">
         </label><br>
         密码：<br>
         <label>
