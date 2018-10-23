@@ -13,7 +13,7 @@ public class MemberDaoTest extends BaseTest {
     @Test
     public void testInsertMember() {
         boolean b = memberDao.insertMember(23,
-                "JohnDan", true);
+                "JohnDan", "是");
     }
 
     @Test

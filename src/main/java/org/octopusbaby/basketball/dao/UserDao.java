@@ -18,16 +18,32 @@ public interface UserDao {
 
     /**
      * 获取所有用户信息
-     *
      * @return User
      */
     List<User> getAllUser();
 
     /**
      * 通过用户名称获取用户
-     *
      * @param userName
      * @return User
      */
     User getUserByName(@Param("userName") String userName);
+
+    /**
+     * 根据用户名删除用户
+     *
+     * @param userName
+     * @return
+     */
+    boolean delByName(@Param("userName") String userName);
+
+    /**
+     * 根据用户名更改用户密码
+     *
+     * @param userName
+     * @param password
+     * @return
+     */
+    boolean modifyPwd(@Param("userName") String userName,
+                      @Param("password") String password);
 }

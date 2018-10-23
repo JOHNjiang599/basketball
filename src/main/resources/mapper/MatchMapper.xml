@@ -25,10 +25,17 @@
     </insert>
 
     <!--通过时刻、事件类型和球员ID删除一条记录-->
-    <delete id="deleteMatch">
+    <delete id="delMatch">
         delete from t_match
         where match_time=#{match_time}
         and event_type=#{event_type}
         and memberId=#{memberId};
     </delete>
+
+    <!--通过球员ID修改他的一条记录-->
+    <update id="modifyOneMatch">
+        update t_match
+        set match_time=#{match_time} and event_type=#{event_type};
+        where memberId=#{memberId};
+    </update>
 </mapper>

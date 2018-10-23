@@ -19,7 +19,7 @@ public class UserDaoTest extends BaseTest {
         String type = "球队";
         boolean b = userDao.insertUser(user, password, type);
         if (b) {
-            System.out.println("\n\n 成功添加:" + user + " " + password + "\n");
+            System.out.println("\n\n 成功添加:" + user + " " + password);
         }
     }
 
@@ -27,15 +27,14 @@ public class UserDaoTest extends BaseTest {
     public void testGetAllUser() {
         List<User> allUser = userDao.getAllUser();
         for (User user : allUser) {
-            System.out.println("\n" + user);
+            System.out.println(user);
         }
-        System.out.println("\n");
     }
 
     @Test
     public void testGetUserByName() {
         User user = userDao.getUserByName("user");
-        System.out.println("\n\n" + user + "\n");
+        System.out.println("\n\n" + user);
     }
 
 }

@@ -4,7 +4,6 @@
 
 <mapper namespace="org.octopusbaby.basketball.dao.UserDao">
     <!-- 目的：为dao接口方法提供sql语句配置 -->
-
     <!--添加用户-->
     <insert id="insertUser">
         insert into t_account (userName, password,userType)
@@ -23,4 +22,17 @@
         from t_account
         where userName=#{userName};
     </select>
+
+    <!--根据用户名删除用户-->
+    <delete id="delByName">
+        delete from t_account
+        where userName=#{userName};
+    </delete>
+
+    <!--根据用户名更改用户密码-->
+    <update id="modifyPwd">
+        update t_account
+        set password=#{password}
+        where userName=#{userName};
+    </update>
 </mapper>

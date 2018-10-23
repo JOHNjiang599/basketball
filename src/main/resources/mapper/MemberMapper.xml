@@ -24,4 +24,17 @@
         where memberId=#{memberId};
     </select>
 
+    <!--通过球员ID删除球员-->
+    <delete id="delByMemberId">
+        delete from t_member
+        where memberId=#{memberId};
+    </delete>
+
+    <!--通过球员ID更改球员信息-->
+    <update id="modifyByMemberId">
+        update t_member
+        set memberName = #{memberName} and firstStart=#{firstStart}
+        where memberId=#{memberId};
+    </update>
+
 </mapper>

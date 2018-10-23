@@ -32,12 +32,6 @@
         <version>4.12</version>
       <scope>test</scope>
     </dependency>
-      <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-      <dependency>
-          <groupId>org.projectlombok</groupId>
-          <artifactId>lombok</artifactId>
-          <version>1.18.2</version>
-      </dependency>
       <!--mysql-->
     <dependency>
       <groupId>mysql</groupId>
@@ -84,13 +78,6 @@
           <artifactId>logback-classic</artifactId>
           <version>1.2.2</version>
       </dependency>
-      <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
-      <dependency>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-log4j12</artifactId>
-          <version>1.7.25</version>
-          <scope>test</scope>
-      </dependency>
       <!-- JSON -->
       <dependency>
           <groupId>com.fasterxml.jackson.core</groupId>
@@ -112,27 +99,27 @@
 
   <build>
     <finalName>basketball</finalName>
-      <!--若不配置，可能会发送打包不全-->
-      <resources>
-          <resource>
-              <!--需要打包的目录-->
-              <directory>src/main/java</directory>
-              <!--目录中的文件类型-->
-              <includes>
-                  <include>**/*.xml</include>
-                  <include>**/*.properties</include>
-              </includes>
-          </resource>
-          <resource>
-              <!--需要打包的目录-->
-              <directory>src/main/resources</directory>
-              <!--目录中的文件类型-->
-              <includes>
-                  <include>**/*.xml</include>
-                  <include>**/*.properties</include>
-              </includes>
-          </resource>
-      </resources>
+      <!-- &lt;!&ndash;若不配置，可能会发送打包不全&ndash;&gt;
+       <resources>
+           <resource>
+               &lt;!&ndash;需要打包的目录&ndash;&gt;
+               <directory>src/main/java</directory>
+               &lt;!&ndash;目录中的文件类型&ndash;&gt;
+               <includes>
+                   <include>**/*.xml</include>
+                   <include>**/*.properties</include>
+               </includes>
+           </resource>
+           <resource>
+               &lt;!&ndash;需要打包的目录&ndash;&gt;
+               <directory>src/main/resources</directory>
+               &lt;!&ndash;目录中的文件类型&ndash;&gt;
+               <includes>
+                   <include>**/*.xml</include>
+                   <include>**/*.properties</include>
+               </includes>
+           </resource>
+       </resources>-->
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

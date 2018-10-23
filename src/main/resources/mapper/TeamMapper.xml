@@ -25,4 +25,16 @@
         where teamId=#{teamId};
     </select>
 
+    <!--通过球队ID删除一个球队信息-->
+    <delete id="delByTeamId">
+        delete from t_team
+        where teamId=#{teamId};
+    </delete>
+
+    <!--通过球队ID修改球队名-->
+    <update id="modifyByTeamId">
+        update t_team
+        set teamName = #{teamName} 
+        where teamId=#{teamId};
+    </update>
 </mapper>
