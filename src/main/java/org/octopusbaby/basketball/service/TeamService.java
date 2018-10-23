@@ -14,8 +14,7 @@ public interface TeamService {
      * @param teamName
      * @return boolean
      */
-    boolean addTeam(@Param("teamId") int teamId,
-                    @Param("teamName") String teamName);
+    boolean addTeam(int teamId, String teamName);
 
     /**
      * 查询所有球队
@@ -28,9 +27,9 @@ public interface TeamService {
      * 通过球队ID查询指定球队
      *
      * @param teamId
-     * @return Team
+     * @return TeamDTO
      */
-    Team gainByTeamId(@Param("teamId") int teamId);
+    Team gainByTeamId(int teamId);
 
     /**
      * 通过球队ID删除
@@ -38,7 +37,7 @@ public interface TeamService {
      * @param teamId
      * @return
      */
-    boolean deleteByTeamId(@Param("teamId") int teamId);
+    boolean deleteByTeamId(int teamId);
 
     /**
      * 通过球队ID修改球队名
@@ -46,6 +45,5 @@ public interface TeamService {
      * @param teamId
      * @return
      */
-    boolean modifyByTeamId(@Param("teamId") int teamId,
-                           @Param("teamName") String teamName);
+    boolean modifyByTeamId(int teamId, String teamName);
 }

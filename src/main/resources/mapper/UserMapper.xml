@@ -4,6 +4,23 @@
 
 <mapper namespace="org.octopusbaby.basketball.dao.UserDao">
     <!-- 目的：为dao接口方法提供sql语句配置 -->
+    <!--对应数据库字段-->
+    <resultMap type="User" id="UserResult">
+        <result property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="password"/>
+        <result property="userType" column="userType"/>
+    </resultMap>
+
+    <!--检验用户-->
+    <select id="checkUser" parameterType="User" resultMap="UserResult">
+        select id,userName,password,userType
+        from t_account
+        where userName=#{userName}
+        and password=#{password}
+        and userType=#{userType} limit 1;
+    </select>
+
     <!--添加用户-->
     <insert id="insertUser">
         insert into t_account (userName, password,userType)

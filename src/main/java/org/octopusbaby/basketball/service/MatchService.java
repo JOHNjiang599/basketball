@@ -21,8 +21,7 @@ public interface MatchService {
      * @param teamId
      * @return Match
      */
-    Match gainByMIdAndTId(@Param("memberId") int memberId,
-                          @Param("teamId") int teamId);
+    Match gainByMIdAndTId(int memberId, int teamId);
 
     /**
      * 添加一条对战记录
@@ -33,10 +32,7 @@ public interface MatchService {
      * @param teamId
      * @return boolean
      */
-    boolean addMatch(@Param("match_time") String matchTime,
-                     @Param("event_type") int eventType,
-                     @Param("memberId") int memberId,
-                     @Param("teamId") int teamId);
+    boolean addMatch(String matchTime, int eventType, int memberId, int teamId);
 
     /**
      * 通过时刻、事件类型和球员ID删除一条记录
@@ -46,9 +42,7 @@ public interface MatchService {
      * @param memberId
      * @return
      */
-    boolean deleteMatch(@Param("match_time") String matchTime,
-                        @Param("event_type") int eventType,
-                        @Param("memberId") int memberId);
+    boolean deleteMatch(String matchTime, int eventType, int memberId);
 
     /**
      * 通过球员ID修改他的一条记录
@@ -58,7 +52,5 @@ public interface MatchService {
      * @param memberId
      * @return
      */
-    boolean modifyOneMatch(@Param("match_time") String matchTime,
-                           @Param("event_type") int eventType,
-                           @Param("memberId") int memberId);
+    boolean modifyOneMatch(String matchTime, int eventType, int memberId);
 }

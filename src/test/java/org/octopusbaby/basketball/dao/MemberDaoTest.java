@@ -5,6 +5,8 @@ import org.octopusbaby.basketball.BaseTest;
 import org.octopusbaby.basketball.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 public class MemberDaoTest extends BaseTest {
 
     @Autowired
@@ -18,8 +20,10 @@ public class MemberDaoTest extends BaseTest {
 
     @Test
     public void testQueryAllMember() {
-        Member member = memberDao.queryAllMember();
-        System.out.println("\n\n" + member + "\n");
+        List<Member> members = memberDao.queryAllMember();
+        for (Member member : members) {
+            System.out.println("\n\n" + member + "\n");
+        }
     }
 
     @Test

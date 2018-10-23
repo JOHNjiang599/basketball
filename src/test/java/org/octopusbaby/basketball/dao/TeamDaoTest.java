@@ -5,6 +5,8 @@ import org.octopusbaby.basketball.BaseTest;
 import org.octopusbaby.basketball.entity.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 public class TeamDaoTest extends BaseTest {
 
     @Autowired
@@ -20,8 +22,10 @@ public class TeamDaoTest extends BaseTest {
 
     @Test
     public void testQueryAllTeam() {
-        Team team = teamDao.queryAllTeam();
-        System.out.println("\n\n" + team + "\n");
+        List<Team> teams = teamDao.queryAllTeam();
+        for (Team team : teams) {
+            System.out.println("\n\n" + team + "\n");
+        }
     }
 
     @Test

@@ -2,7 +2,6 @@ package org.octopusbaby.basketball;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
@@ -11,6 +10,5 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 // junit读取spring配置文件
 @ContextConfiguration({"classpath:spring/spring-dao.xml", "classpath:spring/spring-service.xml"})
-public class BaseTest extends AbstractJUnit4SpringContextTests {
-
+public class BaseTest {
 }

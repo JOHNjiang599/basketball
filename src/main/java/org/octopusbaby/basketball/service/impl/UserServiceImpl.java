@@ -19,8 +19,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser(String userName, String password, String userType) {
-        userDao.insertUser(userName, password, userType);
+    public User validateUser(User user) {
+        return userDao.checkUser(user);
+    }
+
+    @Override
+    public boolean addUser(String userName, String password, String userType) {
+        return userDao.insertUser(userName, password, userType);
     }
 
     @Override

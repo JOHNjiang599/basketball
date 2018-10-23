@@ -1,9 +1,9 @@
-package org.octopusbaby.basketball.entity;
+package org.octopusbaby.basketball.dto;
 
 import java.io.Serializable;
 
 
-public class User implements Serializable {
+public class UserDTO implements Serializable {
 
     private int id;
 
@@ -13,10 +13,10 @@ public class User implements Serializable {
 
     private String userType;
 
-    public User() {
+    public UserDTO() {
     }
 
-    public User(int id, String userName, String password, String userType) {
+    public UserDTO(int id, String userName, String password, String userType) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -53,15 +53,5 @@ public class User implements Serializable {
 
     public void setUserType(String userType) {
         this.userType = userType;
-    }
-
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", userType='" + userType + '\'' +
-                '}';
     }
 }

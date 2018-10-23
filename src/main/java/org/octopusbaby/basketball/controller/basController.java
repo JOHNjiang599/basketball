@@ -1,5 +1,6 @@
 package org.octopusbaby.basketball.controller;
 
+import org.octopusbaby.basketball.dto.UserDTO;
 import org.octopusbaby.basketball.entity.User;
 import org.octopusbaby.basketball.service.UserService;
 import org.slf4j.Logger;
@@ -11,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Objects;
 
 
 @Controller
-@RequestMapping(value = "user")
+@RequestMapping("user")
 public class basController {
 
     private final UserService userService;
@@ -28,32 +31,51 @@ public class basController {
     /**
      * 用户注册
      *
-     * @param userName
-     * @param password
-     * @param userType
      * @return
      */
-    @RequestMapping(value = "addUser", method = RequestMethod.POST)
-    public String addUser(@RequestParam("userName") String userName,
-                          @RequestParam("password") String password,
-                          @RequestParam("userType") String userType) {
-        System.out.println("\n\n用户名：" + userName + " 密码" + password + " 用户类型：" + userType + "\n");
-        List<User> users = userService.gainAllUser();
-        String uri = null;
-        for (User u : users) {
-            if ("team".equals(userType)) {//只能球队注册
-                if ((u.getUserName()).equals(userName)) {//用户名已存在
-                    return "regError";
-                }
-            } else {
-                boolean b = userService.addUser(userName, password, userType);
-                if (b) {
-                    System.out.println("\n\n注册成功\n");
-                }
-                uri = "index";
-            }
+    @RequestMapping("addUser")
+    public String addUser(User user, HttpServletRequest request) {
+        /*String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+        String repassword = request.getParameter("repassword");
+        String userType = request.getParameter("userType");*/
+
+        System.out.println("\n\n用户名：" + user.getUserName()
+                + " 密码：" + user.getPassword()
+                + " 用户类型：" + user.getUserType() + "\n");
+
+        User resultUser = userService.validateUser(user);
+        if (resultUser != null) {
+            System.out.println(resultUser.toString());
+            request.setAttribute("user", user);
+            request.setAttribute("errorMsg", "请认真核对账号、密码！");
+            return "regError";
         }
-        return uri;
+        return "index";
+       /*
+        String uri = null;
+        if(repassword.equals(password)){
+            for (User u : users) {
+                System.out.println("\n"+u);
+                if ("team" == userType){
+                    System.out.println("\n只能球队注册");
+                    return "index";
+                }
+                if (Objects.equals(u.getUserName(), userName)){
+                    System.out.println("\n用户名已存在");
+                    return "index";
+                }
+            }
+            boolean b = userService.addUser(userName, password, userType);
+            if (b) {
+                uri = "index";
+                System.out.println("\n注册成功");
+            }
+        }else {
+            System.out.println("\n输入密码错误");
+            return "index";
+        }
+        return uri;*/
     }
 
     /**
@@ -63,7 +85,7 @@ public class basController {
      * @param userType
      * @return
      */
-    @RequestMapping(value = "validateUser", method = RequestMethod.POST)
+    @RequestMapping(value = "validateUser")
     public String validateUser(@RequestParam("userName") String userName,
                                @RequestParam("password") String password,
                                @RequestParam("userType") String userType) {
@@ -90,6 +112,6 @@ public class basController {
                 }
             }
         }
-        return "index";//验证失败，回到登录页面
+        return "redirect:index";//验证失败，回到登录页面
     }
 }

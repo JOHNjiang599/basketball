@@ -6,6 +6,15 @@ import org.octopusbaby.basketball.entity.User;
 import java.util.List;
 
 public interface UserDao {
+
+    /**
+     * 添加用户
+     *
+     * @param user
+     * @return
+     */
+    User checkUser(User user);
+
     /**
      * 添加用户
      * @param userName
@@ -18,14 +27,14 @@ public interface UserDao {
 
     /**
      * 获取所有用户信息
-     * @return User
+     * @return UserDTO
      */
     List<User> getAllUser();
 
     /**
      * 通过用户名称获取用户
      * @param userName
-     * @return User
+     * @return UserDTO
      */
     User getUserByName(@Param("userName") String userName);
 

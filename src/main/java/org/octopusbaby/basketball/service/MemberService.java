@@ -15,9 +15,7 @@ public interface MemberService {
      * @param firstStart
      * @return boolean
      */
-    boolean addMember(@Param("memberId") int memberId,
-                      @Param("memberName") String memberName,
-                      @Param("firstStart") String firstStart);
+    boolean addMember(int memberId, String memberName, String firstStart);
 
     /**
      * 查询所有球员
@@ -32,7 +30,7 @@ public interface MemberService {
      * @param memberId
      * @return Member
      */
-    Member gainByMemberId(@Param("memberId") int memberId);
+    Member gainByMemberId(int memberId);
 
     /**
      * 通过球员ID删除球员
@@ -40,7 +38,7 @@ public interface MemberService {
      * @param memberId
      * @return
      */
-    boolean deleteByMemberId(@Param("memberId") int memberId);
+    boolean deleteByMemberId(int memberId);
 
     /**
      * 通过球员ID更改球员信息
@@ -50,8 +48,6 @@ public interface MemberService {
      * @param firstStart
      * @return
      */
-    boolean modifyByMemberId(@Param("memberId") int memberId,
-                             @Param("memberName") String memberName,
-                             @Param("firstStart") String firstStart);
+    boolean modifyByMemberId(int memberId, String memberName, String firstStart);
 
 }

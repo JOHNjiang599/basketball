@@ -24,7 +24,7 @@ public interface TeamDao {
     /**
      * 通过球队ID查询指定球队
      * @param teamId
-     * @return Team
+     * @return TeamDTO
      */
     Team queryByTeamId(@Param("teamId") int teamId);
 

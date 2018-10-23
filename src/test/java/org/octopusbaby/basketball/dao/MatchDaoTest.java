@@ -5,6 +5,8 @@ import org.octopusbaby.basketball.BaseTest;
 import org.octopusbaby.basketball.entity.Match;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 public class MatchDaoTest extends BaseTest {
 
     @Autowired
@@ -12,8 +14,10 @@ public class MatchDaoTest extends BaseTest {
 
     @Test
     public void testGetAllInfo() {
-        Match allInfo = matchDao.getAllInfo();
-        System.out.println("\n\n" + allInfo + "\n");
+        List<Match> allInfo = matchDao.getAllInfo();
+        for (Match match : allInfo) {
+            System.out.println("\n\n" + match + "\n");
+        }
     }
 
     @Test
@@ -32,6 +36,6 @@ public class MatchDaoTest extends BaseTest {
 
     @Test
     public void testDeleteMatch() {
-        matchDao.deleteMatch("12:40", 2, 23);
+        matchDao.delMatch("12:40", 2, 23);
     }
 }

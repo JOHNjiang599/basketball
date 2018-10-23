@@ -11,7 +11,7 @@
     <title>regError</title>
 </head>
 <body>
-只能球队注册,或者用户名已存在
-<a href="${pageContext.request.contextPath}/user/addUser">注册页面</a>
+只能球队注册or用户名已存在or密码错误
+${errorMsg}
 </body>
 </html>

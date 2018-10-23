@@ -16,7 +16,7 @@ public class UserDaoTest extends BaseTest {
     public void testInsertUser() {
         String user = "admin";
         String password = "123";
-        String type = "球队";
+        String type = "team";
         boolean b = userDao.insertUser(user, password, type);
         if (b) {
             System.out.println("\n\n 成功添加:" + user + " " + password);
@@ -33,7 +33,7 @@ public class UserDaoTest extends BaseTest {
 
     @Test
     public void testGetUserByName() {
-        User user = userDao.getUserByName("user");
+        User user = userDao.getUserByName("admin");
         System.out.println("\n\n" + user);
     }
 

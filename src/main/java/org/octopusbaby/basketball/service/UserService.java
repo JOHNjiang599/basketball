@@ -8,15 +8,21 @@ import java.util.List;
 public interface UserService {
 
     /**
+     * 验证用户
+     *
+     * @param user
+     * @return
+     */
+    User validateUser(User user);
+
+    /**
      * 用户注册
      * @param userName
      * @param password
      * @param userType
      * @return
      */
-    boolean addUser(@Param("userName") String userName,
-                    @Param("password") String password,
-                    @Param("userType") String userType);
+    boolean addUser(String userName, String password, String userType);
 
     /**
      * 获取所有用户
@@ -28,9 +34,9 @@ public interface UserService {
      * 通过用户名称获取用户
      *
      * @param userName
-     * @return User
+     * @return UserDTO
      */
-    User gainUserByName(@Param("userName") String userName);
+    User gainUserByName(String userName);
 
     /**
      * 根据用户名删除用户
@@ -38,7 +44,7 @@ public interface UserService {
      * @param userName
      * @return
      */
-    boolean deleteByName(@Param("userName") String userName);
+    boolean deleteByName(String userName);
 
     /**
      * 根据用户名更改用户密码
@@ -47,6 +53,5 @@ public interface UserService {
      * @param password
      * @return
      */
-    boolean modifyPassword(@Param("userName") String userName,
-                           @Param("password") String password);
+    boolean modifyPassword(String userName, String password);
 }
