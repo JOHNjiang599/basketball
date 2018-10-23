@@ -1,6 +1,7 @@
 package org.octopusbaby.basketball.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 
 public class User implements Serializable {

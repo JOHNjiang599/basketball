@@ -16,17 +16,18 @@
         (1)自动注册DefaultAnootationHandlerMapping,AnotationMethodHandlerAdapter
         (2)提供一些列：数据绑定，数字和日期的format @NumberFormat, @DateTimeFormat, xml,json默认读写支持
     -->
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
 
     <!-- 2.静态资源默认servlet配置
         (1)加入对静态资源的处理：js,gif,png
         (2)允许使用"/"做整体映射
      -->
 
-    <!--此方法是交给servlet容器进行映射，但似乎无效-->
+    <!--静态资源映射-->
+    <!--方法一-->
     <mvc:default-servlet-handler/>
 
-    <!--静态资源映射-->
+    <!--方法二-->
     <!--<mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>
     <mvc:resources location="/images/" mapping="/images/**"/>-->

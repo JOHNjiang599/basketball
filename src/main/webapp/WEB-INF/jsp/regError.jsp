@@ -11,7 +11,7 @@
     <title>regError</title>
 </head>
 <body>
-只能球队注册or用户名已存在or密码错误
+<%--只能球队注册or用户名已存在or密码错误--%>
 ${errorMsg}
 </body>
 </html>

@@ -7,7 +7,7 @@
     <!--对应数据库字段-->
     <resultMap type="User" id="UserResult">
         <result property="id" column="id"/>
-        <result property="userName" column="user_name"/>
+        <result property="userName" column="userName"/>
         <result property="password" column="password"/>
         <result property="userType" column="userType"/>
     </resultMap>
