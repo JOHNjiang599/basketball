@@ -87,31 +87,3 @@ public class basController {
         return mv;
     }
 }
-
-/*List<User> users = userService.gainAllUser();
-        int usersLen = users.size();
-        if (Objects.equals(repassword, password)) {
-            for (int i=0;i<usersLen;i++) {
-                System.out.println("\n" + users.get(i));
-                if ((Objects.equals(users.get(i).getUserName(), userName))||
-                        (("team".equals(userType)) && (users.get(i).getUserType()).equals(userType))) {
-                    System.out.println("\n只能球队注册");
-                    System.out.println("\n用户名已存在");
-                    mv.addObject("errorMsg","只能球队注册或用户名已存在");
-                    mv.setViewName("regError");
-                    return mv;
-                }
-            }
-            if (userService.addUser(userName, password, userType)) {
-                System.out.println("\n注册成功");
-                mv.addObject("index","注册成功");
-                mv.setViewName("index");
-            }
-        } else {
-            System.out.println("\n输入密码错误");
-            mv.addObject("errorMsg","输入密码错误");
-            mv.setViewName("regError");
-            return mv;
-        }
-        return mv;
-    }*/
