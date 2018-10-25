@@ -1,4 +1,4 @@
-package org.octopusbaby.basketball.dao;
+package org.octopusbaby.basketball.service;
 
 import org.junit.Test;
 import org.octopusbaby.basketball.BaseTest;
@@ -7,38 +7,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class MemberDaoTest extends BaseTest {
+public class MemberServiceTest extends BaseTest {
 
     @Autowired
-    private MemberDao memberDao;
+    private MemberService memberService;
 
     @Test
-    public void testInsertMember() {
+    public void testAddMember() {
         int memberId = 23;
         String memberName = "john";
         String firstStart = "是";
-        boolean b = memberDao.insertMember(memberId, memberName, firstStart);
+        boolean b = memberService.addMember(memberId, memberName, firstStart);
     }
 
     @Test
-    public void testQueryAllMember() {
-        List<Member> members = memberDao.queryAllMember();
+    public void testGainAllMember() {
+        List<Member> members = memberService.gainAllMember();
         for (Member member : members) {
             System.out.println("\n" + member);
         }
     }
 
     @Test
-    public void testQueryByMemberId() {
+    public void testGainByMemberId() {
         int memberId = 1;
-        Member member = memberDao.queryByMemberId(memberId);
+        Member member = memberService.gainByMemberId(memberId);
         System.out.println("\n" + member);
     }
 
     @Test
-    public void testDelByMemberId() {
+    public void testDeleteByMemberId() {
         int memberId = 1;
-        boolean b = memberDao.delByMemberId(memberId);
+        boolean b = memberService.deleteByMemberId(memberId);
     }
 
     @Test
@@ -46,6 +46,6 @@ public class MemberDaoTest extends BaseTest {
         int memberId = 1;
         String memberName = "john";
         String firstStart = "是";
-        boolean b = memberDao.modifyByMemberId(memberId, memberName, firstStart);
+        boolean b = memberService.modifyByMemberId(memberId, memberName, firstStart);
     }
 }

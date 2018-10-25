@@ -1,6 +1,5 @@
 package org.octopusbaby.basketball.service;
 
-import org.apache.ibatis.annotations.Param;
 import org.octopusbaby.basketball.entity.Member;
 
 import java.util.List;

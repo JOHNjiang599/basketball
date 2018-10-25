@@ -1,4 +1,4 @@
-package org.octopusbaby.basketball.dao;
+package org.octopusbaby.basketball.service;
 
 import org.junit.Test;
 import org.octopusbaby.basketball.BaseTest;
@@ -7,46 +7,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class TeamDaoTest extends BaseTest {
+public class TeamServiceTest extends BaseTest {
 
     @Autowired
-    private TeamDao teamDao;
+    private TeamService teamService;
 
     @Test
-    public void testInsertTeam() {
+    public void testAddTeam() {
         int teamId = 1;
         String teamName = "baby";
-        boolean b = teamDao.insertTeam(teamId, teamName);
+        boolean b = teamService.addTeam(teamId, teamName);
         if (b) {
             System.out.println("\n" + "成功添加一条数据");
         }
     }
 
     @Test
-    public void testQueryAllTeam() {
-        List<Team> teams = teamDao.queryAllTeam();
+    public void testGainAllTeam() {
+        List<Team> teams = teamService.gainAllTeam();
         for (Team team : teams) {
             System.out.println("\n" + team);
         }
     }
 
     @Test
-    public void testQueryByTeamId() {
+    public void testGainByTeamId() {
         int teamId = 2;
-        Team team = teamDao.queryByTeamId(teamId);
+        Team team = teamService.gainByTeamId(teamId);
         System.out.println("\n" + team);
     }
 
     @Test
-    public void testDelByTeamId() {
+    public void testDeleteByTeamId() {
         int teamId = 1;
-        boolean b = teamDao.delByTeamId(teamId);
+        boolean b = teamService.deleteByTeamId(teamId);
     }
 
     @Test
     public void testModifyByTeamId() {
         int teamId = 1;
         String teamName = "baby";
-        boolean b = teamDao.modifyByTeamId(teamId, teamName);
+        boolean b = teamService.modifyByTeamId(teamId, teamName);
     }
 }

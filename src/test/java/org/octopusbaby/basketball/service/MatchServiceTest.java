@@ -1,4 +1,4 @@
-package org.octopusbaby.basketball.dao;
+package org.octopusbaby.basketball.service;
 
 import org.junit.Test;
 import org.octopusbaby.basketball.BaseTest;
@@ -7,45 +7,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class MatchDaoTest extends BaseTest {
+public class MatchServiceTest extends BaseTest {
 
     @Autowired
-    private MatchDao matchDao;
+    private MatchService matchService;
 
     @Test
-    public void testGetAllInfo() {
-        List<Match> allInfo = matchDao.getAllInfo();
-        for (Match match : allInfo) {
-            System.out.println("\n\n" + match + "\n");
+    public void testGainAllInfo() {
+        List<Match> matches = matchService.gainAllInfo();
+        for (Match match : matches) {
+            System.out.println("\n" + match);
         }
     }
 
     @Test
-    public void testGetByMIdAndTId() {
+    public void testGainByMIdAndTId() {
         int memberId = 23;
         int teamId = 1;
-        Match match = matchDao.getByMIdAndTId(memberId, teamId);
-        System.out.println("\n\n" + match + "\n");
+        Match match = matchService.gainByMIdAndTId(memberId, teamId);
+        System.out.println("\n" + match);
     }
 
     @Test
-    public void testInsertMatch() {
+    public void testAddMatch() {
         String matchTime = "12:40";
         int eventType = 2;
         int memberId = 23;
         int teamId = 1;
-        boolean b = matchDao.insertMatch(matchTime, eventType, memberId, teamId);
+        boolean b = matchService.addMatch(matchTime, eventType, memberId, teamId);
         if (b) {
             System.out.println("\n\n" + "成功添加一条对站记录" + "\n");
         }
     }
 
+
     @Test
-    public void testDelMatch() {
+    public void testDeleteMatch() {
         String matchTime = "12:40";
         int eventType = 2;
         int memberId = 23;
-        boolean b = matchDao.delMatch(matchTime, eventType, memberId);
+        boolean b = matchService.deleteMatch(matchTime, eventType, memberId);
     }
 
     @Test
@@ -53,6 +54,6 @@ public class MatchDaoTest extends BaseTest {
         String matchTime = "12:40";
         int eventType = 0;
         int memberId = 0;
-        boolean b = matchDao.modifyOneMatch(matchTime, eventType, memberId);
+        boolean b = matchService.modifyOneMatch(matchTime, eventType, memberId);
     }
 }

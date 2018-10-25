@@ -1,6 +1,5 @@
 package org.octopusbaby.basketball.service;
 
-import org.apache.ibatis.annotations.Param;
 import org.octopusbaby.basketball.entity.User;
 
 import java.util.List;
@@ -53,5 +52,5 @@ public interface UserService {
      * @param password
      * @return
      */
-    boolean modifyPassword(String userName, String password);
+    boolean modifyPwdByName(String userName, String password);
 }

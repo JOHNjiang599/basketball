@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +23,6 @@ public class basController {
     public basController(UserService userService) {
         this.userService = userService;
     }
-
     /**
      * 验证登录
      */
@@ -35,6 +33,8 @@ public class basController {
                 " 密码：" + password + " 用户类型：" + userType + "\n");
         List<User> users = userService.gainAllUser();
         ModelAndView mv = new ModelAndView();
+
+
         for (User user : users) {
             if ((user.getUserType()).equals(userType) && "admin".equals(userType)) {
                 if ((user.getUserName()).equals(userName) && (user.getPassword()).equals(password)) {

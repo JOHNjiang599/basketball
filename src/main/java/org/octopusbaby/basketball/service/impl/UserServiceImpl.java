@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean modifyPassword(String userName, String password) {
-        return userDao.modifyPwd(userName, password);
+    public boolean modifyPwdByName(String userName, String password) {
+        return userDao.modifyPwdByName(userName, password);
     }
 }

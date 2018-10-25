@@ -1,4 +1,4 @@
-package org.octopusbaby.basketball.dao;
+package org.octopusbaby.basketball.service;
 
 import org.junit.Test;
 import org.octopusbaby.basketball.BaseTest;
@@ -7,56 +7,56 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class UserDaoTest extends BaseTest {
+public class UserServiceTest extends BaseTest {
 
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
 
     @Test
-    public void testCheckUser() {
+    public void testValidateUser() {
         User userCheck = new User();
         userCheck.setUserName("");
         userCheck.setPassword("");
         userCheck.setUserType("");
-        User user = userDao.checkUser(userCheck);
+        User user = userService.validateUser(userCheck);
         System.out.println(user);
     }
 
     @Test
-    public void testInsertUser() {
+    public void testAddUser() {
         String user = "";
         String password = "";
         String type = "";
-        boolean b = userDao.insertUser(user, password, type);
+        boolean b = userService.addUser(user, password, type);
         if (b) {
             System.out.println("\n成功添加:" + user + " " + password);
         }
     }
 
     @Test
-    public void testGetAllUser() {
-        List<User> allUser = userDao.getAllUser();
+    public void testGainAllUser() {
+        List<User> allUser = userService.gainAllUser();
         for (User user : allUser) {
-            System.out.println(user);
+            System.out.println("\n" + user);
         }
     }
 
     @Test
-    public void testGetUserByName() {
-        User user = userDao.getUserByName("admin");
+    public void testGainUserByName() {
+        User user = userService.gainUserByName("admin");
         System.out.println("\n" + user);
     }
 
     @Test
-    public void testDelByName() {
+    public void testDeleteByName() {
         String userName = "";
-        boolean b = userDao.delByName(userName);
+        boolean b = userService.deleteByName(userName);
     }
 
     @Test
     public void testModifyPwdByName() {
         String user = "";
         String password = "";
-        boolean b = userDao.modifyPwdByName(user, password);
+        boolean b = userService.modifyPwdByName(user, password);
     }
 }

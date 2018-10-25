@@ -53,6 +53,6 @@ public interface UserDao {
      * @param password
      * @return
      */
-    boolean modifyPwd(@Param("userName") String userName,
-                      @Param("password") String password);
+    boolean modifyPwdByName(@Param("userName") String userName,
+                            @Param("password") String password);
 }

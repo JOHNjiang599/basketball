@@ -47,7 +47,7 @@
     </delete>
 
     <!--根据用户名更改用户密码-->
-    <update id="modifyPwd">
+    <update id="modifyPwdByName">
         update t_account
         set password=#{password}
         where userName=#{userName};
