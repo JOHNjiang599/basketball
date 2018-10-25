@@ -1,0 +1,14 @@
+html {
+    /*font-size: 32px;*/
+}
+
+body {
+    margin: auto;
+    align-content: center;
+    width: 10rem;
+}
+
+#login {
+    text-align: center;
+    font-size: 1rem;
+}
