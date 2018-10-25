@@ -95,11 +95,11 @@
           <version>3.1.0</version>
           <scope>provided</scope>
       </dependency>
-      <!--<dependency>
+      <dependency>
           <groupId>javax.servlet.jsp</groupId>
           <artifactId>jsp-api</artifactId>
           <version>2.2</version>
-      </dependency>-->
+      </dependency>
       <!--JSTL标签库-->
       <dependency>
           <groupId>javax.servlet</groupId>
@@ -121,27 +121,27 @@
 
   <build>
     <finalName>basketball</finalName>
-      <!-- &lt;!&ndash;若不配置，可能会发送打包不全&ndash;&gt;
+      <!--若不配置，可能会发送打包不全-->
        <resources>
            <resource>
-               &lt;!&ndash;需要打包的目录&ndash;&gt;
+               <!--需要打包的目录-->
                <directory>src/main/java</directory>
-               &lt;!&ndash;目录中的文件类型&ndash;&gt;
+               <!--目录中的文件类型-->
                <includes>
                    <include>**/*.xml</include>
                    <include>**/*.properties</include>
                </includes>
            </resource>
            <resource>
-               &lt;!&ndash;需要打包的目录&ndash;&gt;
+               <!--需要打包的目录-->
                <directory>src/main/resources</directory>
-               &lt;!&ndash;目录中的文件类型&ndash;&gt;
+               <!--目录中的文件类型-->
                <includes>
                    <include>**/*.xml</include>
                    <include>**/*.properties</include>
                </includes>
            </resource>
-       </resources>-->
+       </resources>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

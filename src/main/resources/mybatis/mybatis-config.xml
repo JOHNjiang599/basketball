@@ -14,11 +14,11 @@
         <!-- 开启驼峰命名转换:Table{create_time} -> Entity{createTime} -->
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
-
-    <!--<typeAliases>
+    <!--实体类别名-->
+    <typeAliases>
         <typeAlias type="org.octopusbaby.basketball.entity.User" alias="User"/>
         <typeAlias type="org.octopusbaby.basketball.entity.Team" alias="Team"/>
         <typeAlias type="org.octopusbaby.basketball.entity.Member" alias="Member"/>
         <typeAlias type="org.octopusbaby.basketball.entity.Match" alias="Match"/>
-    </typeAliases>-->
+    </typeAliases>
 </configuration>

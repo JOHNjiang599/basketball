@@ -10,23 +10,20 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-    <!-- 配置SpringMVC -->
-    <!-- 1.开启SpringMVC注解模式 -->
-    <!-- 简化配置：
+    <!--配置SpringMVC-->
+    <!--1.开启SpringMVC注解模式-->
+    <!--简化配置：
         (1)自动注册DefaultAnootationHandlerMapping,AnotationMethodHandlerAdapter
         (2)提供一些列：数据绑定，数字和日期的format @NumberFormat, @DateTimeFormat, xml,json默认读写支持
     -->
     <mvc:annotation-driven/>
 
-    <!-- 2.静态资源默认servlet配置
+    <!--2.静态资源默认servlet配置
         (1)加入对静态资源的处理：js,gif,png
         (2)允许使用"/"做整体映射
      -->
-
-    <!--静态资源映射-->
     <!--方法一-->
     <mvc:default-servlet-handler/>
-
     <!--方法二-->
     <!--<mvc:resources location="/css/" mapping="/css/**"/>
     <mvc:resources location="/js/" mapping="/js/**"/>
@@ -37,14 +34,13 @@
     <mvc:resources location="/WEB-INF/bootstrap/" mapping="/bootstrap/**"/>
     <mvc:resources location="/WEB-INF/build/" mapping="/build/**"/>
     -->
-
-    <!-- 3.配置jsp 显示ViewResolver -->
+    <!--3.配置jsp 显示ViewResolver-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
 
-    <!-- 4.扫描web相关的bean -->
+    <!--4.扫描web相关的bean-->
     <context:component-scan base-package="org.octopusbaby.basketball.controller" />
 </beans>
