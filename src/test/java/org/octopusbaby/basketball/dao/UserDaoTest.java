@@ -37,7 +37,7 @@ public class UserDaoTest extends BaseTest {
     public void testGetAllUser() {
         List<User> allUser = userDao.getAllUser();
         for (User user : allUser) {
-            System.out.println(user);
+            System.out.println("\n" + user);
         }
     }
 

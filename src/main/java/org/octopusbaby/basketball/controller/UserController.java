@@ -15,18 +15,18 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping("user")
-public class basController {
+public class UserController {
 
     private final UserService userService;
 
     @Autowired
-    public basController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
     /**
      * 验证登录
      */
-    @RequestMapping(value = "/validateUser", method = RequestMethod.POST)
+    @RequestMapping(value = "validateUser", method = RequestMethod.POST)
     public ModelAndView validateUser(String userName, String password, String userType,
                                      HttpSession session) {
         System.out.println("\n用户名：" + userName +
@@ -58,9 +58,9 @@ public class basController {
     /**
      * 用户注册
      */
-    @RequestMapping("addUser")
-    public ModelAndView addUser(String userName, String password,
-                                String repassword, String userType) {
+    @RequestMapping(value = "addUser", method = RequestMethod.POST)
+    public ModelAndView addUser(String userName, String password, String repassword) {
+        String userType = "team";
         System.out.println("\n\n用户名：" + userName + " 密码：" + password
                 + "重复密码" + repassword + " 用户类型：" + userType + "\n");
         ModelAndView mv = new ModelAndView();
@@ -73,14 +73,13 @@ public class basController {
             if (valUser == null) {
                 if (userService.addUser(userName, password, userType)) {
                     System.out.println("\n注册成功");
-                    mv.addObject("index", "注册成功");
-                    mv.setViewName("index");
+                    mv.addObject("successMsg", "register success");
+                    //mv.setViewName("index");
                 }
             } else {
-                System.out.println("\n只能球队注册");
                 System.out.println("\n用户名已存在");
-                mv.addObject("errorMsg", "只能球队注册或用户名已存在");
-                mv.setViewName("regError");
+                mv.addObject("errorMsg", "用户名已存在!");
+                //mv.setViewName("regError");
                 return mv;
             }
         }
