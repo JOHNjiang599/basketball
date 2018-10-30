@@ -6,50 +6,50 @@
     <!-- 目的：为dao接口方法提供sql语句配置 -->
     <!--对应数据库字段-->
     <resultMap type="User" id="UserResult">
-        <result property="id" column="id"/>
-        <result property="userName" column="userName"/>
+        <result property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
         <result property="password" column="password"/>
-        <result property="userType" column="userType"/>
+        <result property="userType" column="user_type"/>
     </resultMap>
 
     <!--检验用户-->
     <select id="checkUser" parameterType="User" resultMap="UserResult">
-        select id,userName,password,userType
+        select user_id,user_name,password,user_type
         from t_account
-        where userName=#{userName}
+        where user_name=#{userName}
         and password=#{password}
-        and userType=#{userType} limit 1;
+        and user_type=#{userType} limit 1;
     </select>
 
     <!--添加用户-->
     <insert id="insertUser">
-        insert into t_account (userName, password,userType)
+        insert into t_account (user_name, password,user_type)
         values (#{userName},#{password},#{userType});
     </insert>
 
     <!--获取所有用户信息-->
     <select id="getAllUser" resultType="User">
-        select id,userName,password,userType
+        select user_id,user_name,password,user_type
         from t_account;
     </select>
 
     <!--通过用户名称获取用户-->
     <select id="getUserByName" resultType="User">
-        select id,userName,password,userType
+        select user_id,user_name,password,user_type
         from t_account
-        where userName=#{userName};
+        where user_name=#{userName};
     </select>
 
     <!--根据用户名删除用户-->
     <delete id="delByName">
         delete from t_account
-        where userName=#{userName};
+        where user_name=#{userName};
     </delete>
 
     <!--根据用户名更改用户密码-->
     <update id="modifyPwdByName">
         update t_account
         set password=#{password}
-        where userName=#{userName};
+        where user_name=#{userName};
     </update>
 </mapper>

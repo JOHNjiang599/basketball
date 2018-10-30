@@ -29,8 +29,8 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public boolean addMatch(String matchTime, int eventType, int memberId, int teamId) {
-        return matchDao.insertMatch(matchTime, eventType, memberId, teamId);
+    public boolean addMatch(int matchSection, String matchTime, int eventType, int memberId, int teamId) {
+        return matchDao.insertMatch(matchSection, matchTime, eventType, memberId, teamId);
     }
 
     @Override

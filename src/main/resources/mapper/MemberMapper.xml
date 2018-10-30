@@ -5,36 +5,43 @@
 <mapper namespace="org.octopusbaby.basketball.dao.MemberDao">
     <!-- 目的：为dao接口方法提供sql语句配置 -->
 
+    <!--对应数据库字段-->
+    <resultMap type="Member" id="MemberResult">
+        <result property="memberId" column="member_id"/>
+        <result property="memberName" column="member_name"/>
+        <result property="memberFirstStart" column="member_first_start"/>
+    </resultMap>
+
     <!--添加球员-->
     <insert id="insertMember">
-        insert into t_member (memberId, memberName, firstStart)
-        values (#{memberId},#{memberName},#{firstStart});
+        insert into t_member (member_id, member_name, member_first_start)
+        values (#{memberId},#{memberName},#{memberFirstStart});
     </insert>
 
     <!--查询所有球员信息-->
     <select id="queryAllMember" resultType="Member">
-        select memberId,memberName,firstStart
+        select member_id,member_name,member_first_start
         from t_member;
     </select>
 
     <!--查询指定球员信息-->
     <select id="queryByMemberId" resultType="Member">
-        select memberId,memberName,firstStart
+        select member_id,member_name,member_first_start
         from t_member
-        where memberId=#{memberId};
+        where member_id=#{memberId};
     </select>
 
     <!--通过球员ID删除球员-->
     <delete id="delByMemberId">
         delete from t_member
-        where memberId=#{memberId};
+        where member_id=#{memberId};
     </delete>
 
     <!--通过球员ID更改球员信息-->
     <update id="modifyByMemberId">
         update t_member
-        set memberName = #{memberName} and firstStart=#{firstStart}
-        where memberId=#{memberId};
+        set member_name = #{memberName} and member_first_start=#{memberFirstStart}
+        where member_id=#{memberId};
     </update>
 
 </mapper>

@@ -31,7 +31,7 @@ public interface MatchService {
      * @param teamId
      * @return boolean
      */
-    boolean addMatch(String matchTime, int eventType, int memberId, int teamId);
+    boolean addMatch(int matchSection, String matchTime, int eventType, int memberId, int teamId);
 
     /**
      * 通过时刻、事件类型和球员ID删除一条记录

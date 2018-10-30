@@ -2,26 +2,26 @@ package org.octopusbaby.basketball.entity;
 
 import java.io.Serializable;
 
-
 public class Team implements Serializable {
 
-    private int teamId;//球队编号
+    private Integer teamId;
 
-    private String teamName;//球队名称
+    private String teamName;
 
-    public Team() {
-    }
-
-    public Team(int teamId, String teamName) {
+    public Team(Integer teamId, String teamName) {
         this.teamId = teamId;
         this.teamName = teamName;
     }
 
-    public int getTeamId() {
+    public Team() {
+        super();
+    }
+
+    public Integer getTeamId() {
         return teamId;
     }
 
-    public void setTeamId(int teamId) {
+    public void setTeamId(Integer teamId) {
         this.teamId = teamId;
     }
 
@@ -30,12 +30,12 @@ public class Team implements Serializable {
     }
 
     public void setTeamName(String teamName) {
-        this.teamName = teamName;
+        this.teamName = teamName == null ? null : teamName.trim();
     }
 
     @Override
     public String toString() {
-        return "TeamDTO{" +
+        return "Team{" +
                 "teamId=" + teamId +
                 ", teamName='" + teamName + '\'' +
                 '}';

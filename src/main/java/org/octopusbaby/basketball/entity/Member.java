@@ -2,29 +2,28 @@ package org.octopusbaby.basketball.entity;
 
 import java.io.Serializable;
 
-
 public class Member implements Serializable {
+    private Integer memberId;
 
-    private int memberId;//球员编号，即球衣号
+    private String memberName;
 
-    private String memberName;//球员名称
+    private Integer memberFirstStart;
 
-    private String firstStart;//是否首发
-
-    public Member() {
-    }
-
-    public Member(int memberId, String memberName, String firstStart) {
+    public Member(Integer memberId, String memberName, Integer memberFirstStart) {
         this.memberId = memberId;
         this.memberName = memberName;
-        this.firstStart = firstStart;
+        this.memberFirstStart = memberFirstStart;
     }
 
-    public int getMemberId() {
+    public Member() {
+        super();
+    }
+
+    public Integer getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(int memberId) {
+    public void setMemberId(Integer memberId) {
         this.memberId = memberId;
     }
 
@@ -33,15 +32,15 @@ public class Member implements Serializable {
     }
 
     public void setMemberName(String memberName) {
-        this.memberName = memberName;
+        this.memberName = memberName == null ? null : memberName.trim();
     }
 
-    public String isFirstStart() {
-        return firstStart;
+    public Integer getMemberFirstStart() {
+        return memberFirstStart;
     }
 
-    public void setFirstStart(String firstStart) {
-        this.firstStart = firstStart;
+    public void setMemberFirstStart(Integer memberFirstStart) {
+        this.memberFirstStart = memberFirstStart;
     }
 
     @Override
@@ -49,7 +48,7 @@ public class Member implements Serializable {
         return "Member{" +
                 "memberId=" + memberId +
                 ", memberName='" + memberName + '\'' +
-                ", firstStart=" + firstStart +
+                ", memberFirstStart=" + memberFirstStart +
                 '}';
     }
 }

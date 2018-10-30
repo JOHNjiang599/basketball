@@ -1,5 +1,6 @@
 package org.octopusbaby.basketball.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.octopusbaby.basketball.entity.User;
 import org.octopusbaby.basketball.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,19 +34,24 @@ public class UserController {
                 " 密码：" + password + " 用户类型：" + userType + "\n");
         List<User> users = userService.gainAllUser();
         ModelAndView mv = new ModelAndView();
-
-
+        JSONObject jsonObject = new JSONObject();
         for (User user : users) {
             if ((user.getUserType()).equals(userType) && "admin".equals(userType)) {
                 if ((user.getUserName()).equals(userName) && (user.getPassword()).equals(password)) {
-                    session.setAttribute("admin", user);
+                    jsonObject.put("admin-login-success", user);
+                    System.out.println(jsonObject);
+                    mv.addObject("admin", jsonObject);
+                    session.setAttribute("admin", jsonObject);
                     mv.setViewName("admin");
                     return mv;
                 }
             }
             if ((user.getUserType()).equals(userType) && "team".equals(userType)) {
                 if ((user.getUserName()).equals(userName) && (user.getPassword()).equals(password)) {
-                    session.setAttribute("user", user);
+                    jsonObject.put("user-login-success", user);
+                    System.out.println(jsonObject);
+                    mv.addObject("user", jsonObject);
+                    session.setAttribute("user", jsonObject);
                     mv.setViewName("user");
                     return mv;
                 }
@@ -59,12 +65,14 @@ public class UserController {
      * 用户注册
      */
     @RequestMapping(value = "addUser", method = RequestMethod.POST)
-    public ModelAndView addUser(String userName, String password, String repassword) {
+    public ModelAndView addUser(String userName, String password,
+                                String repassword, HttpSession session) {
         String userType = "team";
         System.out.println("\n\n用户名：" + userName + " 密码：" + password
                 + "重复密码" + repassword + " 用户类型：" + userType + "\n");
         ModelAndView mv = new ModelAndView();
         if (Objects.equals(repassword, password)) {
+            JSONObject jsonObject = new JSONObject();
             User userCheck = new User();
             userCheck.setUserName(userName);
             userCheck.setPassword(password);
@@ -73,12 +81,15 @@ public class UserController {
             if (valUser == null) {
                 if (userService.addUser(userName, password, userType)) {
                     System.out.println("\n注册成功");
-                    mv.addObject("successMsg", "register success");
+                    jsonObject.put("reg-user-info", userCheck);
+                    mv.addObject("user", jsonObject);
+                    session.setAttribute("user", jsonObject);
                     //mv.setViewName("index");
                 }
             } else {
                 System.out.println("\n用户名已存在");
-                mv.addObject("errorMsg", "用户名已存在!");
+                jsonObject.put("errorMsg", "用户名已存在!");
+                mv.addObject("errorMsg", jsonObject);
                 //mv.setViewName("regError");
                 return mv;
             }

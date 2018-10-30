@@ -13,10 +13,11 @@
     <title>管理员</title>
 </head>
 <body>
-
-
-<button class="his" onclick="window.location.href='history.html'">历史记录</button>
-
+<!--修改一下，要把这一部分改成表单请求。把这一部分内容改成表单和发请求的。-->
+<input type="button" formaction="TeamIn" value="历史记录">
+<button class="his" onclick="window.location.href='history_test.html'">历史记录</button>
+<br/>
+${admin}
 <br><br><br>
 <button class="vs">对战选择</button>
 

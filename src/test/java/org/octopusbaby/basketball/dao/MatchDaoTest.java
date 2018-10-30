@@ -30,11 +30,12 @@ public class MatchDaoTest extends BaseTest {
 
     @Test
     public void testInsertMatch() {
+        int matchSection = 1;
         String matchTime = "12:40";
         int eventType = 2;
         int memberId = 23;
         int teamId = 1;
-        boolean b = matchDao.insertMatch(matchTime, eventType, memberId, teamId);
+        boolean b = matchDao.insertMatch(matchSection, matchTime, eventType, memberId, teamId);
         if (b) {
             System.out.println("\n\n" + "成功添加一条对站记录" + "\n");
         }

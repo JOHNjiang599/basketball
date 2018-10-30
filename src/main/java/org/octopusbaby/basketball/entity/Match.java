@@ -2,76 +2,76 @@ package org.octopusbaby.basketball.entity;
 
 import java.io.Serializable;
 
-
 public class Match implements Serializable {
 
-    private int id;
+    private Integer matchSection;
 
-    private String MatchTime;
+    private String matchTime;
 
-    private int EventType;
+    private Integer eventType;
 
-    private int memberId;
+    private Integer memberId;
 
-    private int teamId;
+    private Integer teamId;
 
-    public Match() {
-    }
-
-    public Match(int id, String matchTime, int eventType, int memberId, int teamId) {
-        this.id = id;
-        MatchTime = matchTime;
-        EventType = eventType;
+    public Match(Integer matchSection, String matchTime, Integer eventType, Integer memberId, Integer teamId) {
+        this.matchSection = matchSection;
+        this.matchTime = matchTime;
+        this.eventType = eventType;
         this.memberId = memberId;
         this.teamId = teamId;
     }
 
-    public int getId() {
-        return id;
+    public Match() {
+        super();
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Integer getMatchSection() {
+        return matchSection;
+    }
+
+    public void setMatchSection(Integer matchSection) {
+        this.matchSection = matchSection;
     }
 
     public String getMatchTime() {
-        return MatchTime;
+        return matchTime;
     }
 
     public void setMatchTime(String matchTime) {
-        MatchTime = matchTime;
+        this.matchTime = matchTime == null ? null : matchTime.trim();
     }
 
-    public int getEventType() {
-        return EventType;
+    public Integer getEventType() {
+        return eventType;
     }
 
-    public void setEventType(int eventType) {
-        EventType = eventType;
+    public void setEventType(Integer eventType) {
+        this.eventType = eventType;
     }
 
-    public int getMemberId() {
+    public Integer getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(int memberId) {
+    public void setMemberId(Integer memberId) {
         this.memberId = memberId;
     }
 
-    public int getTeamId() {
+    public Integer getTeamId() {
         return teamId;
     }
 
-    public void setTeamId(int teamId) {
+    public void setTeamId(Integer teamId) {
         this.teamId = teamId;
     }
 
     @Override
     public String toString() {
         return "Match{" +
-                "id=" + id +
-                ", MatchTime='" + MatchTime + '\'' +
-                ", EventType=" + EventType +
+                "matchSection=" + matchSection +
+                ", matchTime='" + matchTime + '\'' +
+                ", eventType=" + eventType +
                 ", memberId=" + memberId +
                 ", teamId=" + teamId +
                 '}';

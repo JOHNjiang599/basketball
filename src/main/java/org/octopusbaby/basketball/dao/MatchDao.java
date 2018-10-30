@@ -29,8 +29,9 @@ public interface MatchDao {
      * @param teamId
      * @return boolean
      */
-    boolean insertMatch(@Param("match_time") String matchTime,
-                        @Param("event_type") int eventType,
+    boolean insertMatch(@Param("matchSection") int matchSection,
+                        @Param("matchTime") String matchTime,
+                        @Param("eventType") int eventType,
                         @Param("memberId") int memberId,
                         @Param("teamId") int teamId);
 
