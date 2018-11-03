@@ -2,9 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!--配置命名空间-->
 <mapper namespace="org.octopusbaby.basketball.dao.MatchDao">
-    <!-- 目的：为dao接口方法提供sql语句配置 -->
-
     <!--对应数据库字段-->
     <resultMap type="Match" id="MatchResult">
         <result property="matchSection" column="match_section"/>
@@ -20,11 +19,18 @@
         from t_match;
     </select>
 
-    <!--通过球员ID和球队ID查询某条记录记录-->
+    <!--通过球员ID和球队ID查询某条记录-->
     <select id="getByMIdAndTId" resultType="Match">
         select match_id,match_section,match_time,event_type,member_id,team_id
         from t_match
         where member_id=#{memberId} and team_id=#{teamId};
+    </select>
+
+    <!--通过球员ID和球队ID查询某条记录-->
+    <select id="getByTeamId" resultType="Match">
+        select match_id,match_section,match_time,event_type,member_id,team_id
+        from t_match
+        where team_id=#{teamId};
     </select>
 
     <!--添加一条对战记录-->

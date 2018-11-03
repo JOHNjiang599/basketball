@@ -7,6 +7,23 @@ import java.util.List;
 public interface MemberService {
 
     /**
+     * 更改球员为不是首发状态
+     *
+     * @param isFirst
+     * @return
+     */
+    boolean toNotIsFirst(int memberId, int teamId, int isFirst);
+
+    /**
+     * 更改球员为是首发状态
+     *
+     * @param isFirst
+     * @return
+     */
+    boolean toIsFirst(int memberId, int teamId, int isFirst);
+
+
+    /**
      * 添加球员
      *
      * @param memberId
@@ -14,7 +31,7 @@ public interface MemberService {
      * @param firstStart
      * @return boolean
      */
-    boolean addMember(int memberId, String memberName, String firstStart);
+    boolean addMember(int memberId, String memberName, int firstStart,int teamId);
 
     /**
      * 查询所有球员
@@ -32,12 +49,20 @@ public interface MemberService {
     Member gainByMemberId(int memberId);
 
     /**
+     * 通过球员ID和球队ID查询指定球员信息
+     *
+     * @param memberId
+     * @return Member
+     */
+    Member gainByMIdAndTid(int memberId, int teamId);
+
+    /**
      * 通过球员ID删除球员
      *
      * @param memberId
      * @return
      */
-    boolean deleteByMemberId(int memberId);
+    boolean deleteByMemberId(int memberId,int teamId);
 
     /**
      * 通过球员ID更改球员信息
@@ -47,6 +72,6 @@ public interface MemberService {
      * @param firstStart
      * @return
      */
-    boolean modifyByMemberId(int memberId, String memberName, String firstStart);
+    boolean modifyByMemberId(int memberId, String memberName, int firstStart);
 
 }

@@ -3,15 +3,15 @@ package org.octopusbaby.basketball.entity;
 import java.io.Serializable;
 
 public class Match implements Serializable {
-
+    //比赛节
     private Integer matchSection;
-
+    //比赛时刻
     private String matchTime;
-
+    //事件类型 犯规0 加分1、2、3
     private Integer eventType;
-
+    //球员ID
     private Integer memberId;
-
+    //球队ID
     private Integer teamId;
 
     public Match(Integer matchSection, String matchTime, Integer eventType, Integer memberId, Integer teamId) {

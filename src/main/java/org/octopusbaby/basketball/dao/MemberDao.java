@@ -8,6 +8,26 @@ import java.util.List;
 public interface MemberDao {
 
     /**
+     * 更改球员为不是首发状态
+     *
+     * @param isFirst
+     * @return
+     */
+    boolean toNotIsFirst(@Param("memberId") int memberId,
+                         @Param("teamId") int teamId,
+                         @Param("isFirst") int isFirst);
+
+    /**
+     * 更改球员为是首发状态
+     *
+     * @param isFirst
+     * @return
+     */
+    boolean toIsFirst(@Param("memberId") int memberId,
+                      @Param("teamId") int teamId,
+                      @Param("isFirst") int isFirst);
+
+    /**
      * 添加球员
      * @param memberId
      * @param memberName
@@ -16,7 +36,8 @@ public interface MemberDao {
      */
     boolean insertMember(@Param("memberId") int memberId,
                          @Param("memberName") String memberName,
-                         @Param("firstStart") String firstStart);
+                         @Param("firstStart") int firstStart,
+                         @Param("teamId")int teamId);
 
     /**
      * 查询所有球员
@@ -32,12 +53,22 @@ public interface MemberDao {
     Member queryByMemberId(@Param("memberId") int memberId);
 
     /**
+     * 通过球员ID和球队ID查询指定球员信息
+     *
+     * @param memberId
+     * @return Member
+     */
+    Member queryByMIdAndTid(@Param("memberId") int memberId,
+                            @Param("teamId")int teamId);
+
+    /**
      * 通过球员ID删除球员
      *
      * @param memberId
      * @return
      */
-    boolean delByMemberId(@Param("memberId") int memberId);
+    boolean delByMemberId(@Param("memberId") int memberId,
+                          @Param("teamId") int teamId);
 
     /**
      * 通过球员ID更改球员信息
@@ -49,6 +80,6 @@ public interface MemberDao {
      */
     boolean modifyByMemberId(@Param("memberId") int memberId,
                              @Param("memberName") String memberName,
-                             @Param("firstStart") String firstStart);
+                             @Param("firstStart") int firstStart);
 
 }

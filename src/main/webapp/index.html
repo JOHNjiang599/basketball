@@ -7,7 +7,7 @@
 </head>
 <body onload="show()">
 <div id="login">
-    <form class="login" method="post" action="/user/validateUser">
+    <form class="login" method="post" action="/user/login">
         <label>
             <input type="radio" name="userType" value="team" checked>
         </label>球队用户
@@ -28,7 +28,7 @@
     <button class="regist" onclick="Regist()">注册账户(球队专用）</button>
 </div>
 <div class="register" id="logup">
-    <form method="post" action="/user/addUser">
+    <form method="post" action="/user/register">
         用户名：<br>
         <input type="text" name="userName">
         <br>

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!--配置命名空间-->
 <mapper namespace="org.octopusbaby.basketball.dao.UserDao">
-    <!-- 目的：为dao接口方法提供sql语句配置 -->
     <!--对应数据库字段-->
     <resultMap type="User" id="UserResult">
         <result property="userId" column="user_id"/>

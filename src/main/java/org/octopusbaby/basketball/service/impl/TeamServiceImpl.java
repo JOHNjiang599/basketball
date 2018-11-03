@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 函数说明请看接口
+ */
 @Service
 public class TeamServiceImpl implements TeamService {
 
@@ -16,6 +19,11 @@ public class TeamServiceImpl implements TeamService {
     @Autowired
     public TeamServiceImpl(TeamDao teamDao) {
         this.teamDao = teamDao;
+    }
+
+    @Override
+    public List<Team> teamWithMember() {
+        return teamDao.teamWithMember();
     }
 
     @Override
@@ -31,6 +39,11 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public Team gainByTeamId(int teamId) {
         return teamDao.queryByTeamId(teamId);
+    }
+
+    @Override
+    public Team queryByTeamName(String teamName) {
+        return teamDao.queryByTeamName(teamName);
     }
 
     @Override

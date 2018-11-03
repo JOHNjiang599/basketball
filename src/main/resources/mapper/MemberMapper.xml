@@ -2,39 +2,66 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!--配置命名空间-->
 <mapper namespace="org.octopusbaby.basketball.dao.MemberDao">
-    <!-- 目的：为dao接口方法提供sql语句配置 -->
-
     <!--对应数据库字段-->
-    <resultMap type="Member" id="MemberResult">
-        <result property="memberId" column="member_id"/>
-        <result property="memberName" column="member_name"/>
-        <result property="memberFirstStart" column="member_first_start"/>
+    <resultMap id="MemberResult" type="Member">
+        <id column="member_id" property="memberId" jdbcType="INTEGER"/>
+        <result column="member_name" property="memberName"/>
+        <result column="member_first_start" property="memberFirstStart"/>
+        <result column="team_id" property="teamId"/>
     </resultMap>
+
+    <!--更改球员为不是首发状态-->
+    <update id="toNotIsFirst">
+        update t_member
+        set member_first_start=#{isFirst}
+        where member_id=#{memberId}
+        and team_id=#{teamId}
+        and member_first_start=1;
+    </update>
+
+    <!--更改球员为是首发状态-->
+    <update id="toIsFirst">
+        update t_member
+        set member_first_start=#{isFirst}
+        where member_id=#{memberId}
+        and team_id=#{teamId}
+        and member_first_start=0;
+    </update>
 
     <!--添加球员-->
     <insert id="insertMember">
-        insert into t_member (member_id, member_name, member_first_start)
-        values (#{memberId},#{memberName},#{memberFirstStart});
+        insert into t_member (member_id, member_name, member_first_start,team_id)
+        values (#{memberId},#{memberName},#{memberFirstStart},#{teamId});
     </insert>
 
     <!--查询所有球员信息-->
     <select id="queryAllMember" resultType="Member">
-        select member_id,member_name,member_first_start
+        select member_id,member_name,member_first_start,team_id
         from t_member;
     </select>
 
-    <!--查询指定球员信息-->
+    <!--通过球员ID查询指定球员信息-->
     <select id="queryByMemberId" resultType="Member">
-        select member_id,member_name,member_first_start
+        select member_id,member_name,member_first_start,team_id
         from t_member
         where member_id=#{memberId};
+    </select>
+
+    <!--通过球员ID和球队ID查询指定球员信息-->
+    <select id="queryByMIdAndTid" resultType="Member">
+        select member_id,member_name,member_first_start,team_id
+        from t_member
+        where member_id=#{memberId}
+        and team_id=#{teamId};
     </select>
 
     <!--通过球员ID删除球员-->
     <delete id="delByMemberId">
         delete from t_member
-        where member_id=#{memberId};
+        where member_id=#{memberId}
+        and team_id=#{teamId};
     </delete>
 
     <!--通过球员ID更改球员信息-->

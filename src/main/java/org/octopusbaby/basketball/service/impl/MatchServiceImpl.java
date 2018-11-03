@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 函数说明请看接口
+ */
 @Service
 public class MatchServiceImpl implements MatchService {
 
@@ -24,8 +27,13 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public Match gainByMIdAndTId(int memberId, int teamId) {
+    public List<Match> gainByMIdAndTId(int memberId, int teamId) {
         return matchDao.getByMIdAndTId(memberId, teamId);
+    }
+
+    @Override
+    public List<Match> gainByTeamId(int teamId) {
+        return matchDao.getByTeamId(teamId);
     }
 
     @Override

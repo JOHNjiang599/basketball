@@ -7,6 +7,12 @@ import java.util.List;
 public interface TeamService {
 
     /**
+     * 查询球队关联其球队球员
+     *
+     * @return
+     */
+    List<Team> teamWithMember();
+    /**
      * 添加球队
      *
      * @param teamId
@@ -29,6 +35,14 @@ public interface TeamService {
      * @return TeamDTO
      */
     Team gainByTeamId(int teamId);
+
+    /**
+     * 通过球队名字查询指定球队
+     *
+     * @param teamName
+     * @return TeamDTO
+     */
+    Team queryByTeamName(String teamName);
 
     /**
      * 通过球队ID删除

@@ -13,5 +13,11 @@
 
         <!-- 开启驼峰命名转换:Table{create_time} -> Entity{createTime} -->
         <setting name="mapUnderscoreToCamelCase" value="true" />
+
+        <!-- 打开延迟加载的开关，默认为false -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+
+        <!-- 开启二级缓存，默认为true -->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 </configuration>

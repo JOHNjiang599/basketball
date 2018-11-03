@@ -19,7 +19,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <!--版本管理-->
+    <!--依赖包的版本管理-->
     <junit.version>4.12</junit.version>
     <spring.version>4.3.18.RELEASE</spring.version>
     <mybatis.version>3.4.1</mybatis.version>
@@ -46,19 +46,19 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>${mysql.driver.version}</version>
     </dependency>
-    <!-- 数据库连接池 -->
+    <!--数据库连接池-->
     <dependency>
       <groupId>com.mchange</groupId>
       <artifactId>c3p0</artifactId>
       <version>${c3p0.version}</version>
     </dependency>
-    <!-- MyBatis -->
+    <!--MyBatis-->
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
       <version>${mybatis.version}</version>
     </dependency>
-    <!-- mybatis/spring整合包 -->
+    <!--mybatis/spring整合包-->
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis-spring</artifactId>
@@ -80,13 +80,13 @@
       <artifactId>spring-test</artifactId>
       <version>${spring.version}</version>
     </dependency>
-    <!-- 实现slf4j接口并整合 -->
+    <!--实现slf4j接口并整合-->
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>${logback.version}</version>
     </dependency>
-    <!-- JSON -->
+    <!--JSON-->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
@@ -142,6 +142,7 @@
 
   <build>
     <finalName>basketball</finalName>
+    <!--添加打包目录及文件-->
        <resources>
            <resource>
                <!--需要打包的目录-->

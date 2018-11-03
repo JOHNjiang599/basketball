@@ -3,13 +3,13 @@ package org.octopusbaby.basketball.entity;
 import java.io.Serializable;
 
 public class User implements Serializable {
-
+    //用户ID
     private Integer userId;
-
+    //用户名称
     private String userName;
-
+    //用户密码
     private String password;
-
+    //用户类型 team OR admin
     private String userType;
 
     public User(Integer userId, String userName, String password, String userType) {

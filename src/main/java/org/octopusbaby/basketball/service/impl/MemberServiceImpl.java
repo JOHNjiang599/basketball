@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * 函数说明请看接口
+ */
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -19,8 +22,18 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public boolean addMember(int memberId, String memberName, String firstStart) {
-        return memberDao.insertMember(memberId, memberName, firstStart);
+    public boolean toNotIsFirst(int memberId, int teamId, int isFirst) {
+        return memberDao.toNotIsFirst(memberId, teamId, isFirst);
+    }
+
+    @Override
+    public boolean toIsFirst(int memberId, int teamId, int isFirst) {
+        return memberDao.toIsFirst(memberId, teamId, isFirst);
+    }
+
+    @Override
+    public boolean addMember(int memberId, String memberName, int firstStart, int teamId) {
+        return memberDao.insertMember(memberId, memberName, firstStart, teamId);
     }
 
     @Override
@@ -34,12 +47,17 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public boolean deleteByMemberId(int memberId) {
-        return memberDao.delByMemberId(memberId);
+    public Member gainByMIdAndTid(int memberId, int teamId) {
+        return memberDao.queryByMIdAndTid(memberId, teamId);
     }
 
     @Override
-    public boolean modifyByMemberId(int memberId, String memberName, String firstStart) {
+    public boolean deleteByMemberId(int memberId, int teamId) {
+        return memberDao.delByMemberId(memberId, teamId);
+    }
+
+    @Override
+    public boolean modifyByMemberId(int memberId, String memberName, int firstStart) {
         return memberDao.modifyByMemberId(memberId, memberName, firstStart);
     }
 }

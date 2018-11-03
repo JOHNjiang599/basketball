@@ -14,13 +14,21 @@ public interface MatchService {
     List<Match> gainAllInfo();
 
     /**
-     * 通过球员ID和球队ID查询某条记录记录
+     * 通过球员ID和球队ID查询某条记录
      *
      * @param memberId
      * @param teamId
      * @return Match
      */
-    Match gainByMIdAndTId(int memberId, int teamId);
+    List<Match> gainByMIdAndTId(int memberId, int teamId);
+
+    /**
+     * 通过球队ID查询某条记录
+     *
+     * @param teamId
+     * @return Match
+     */
+    List<Match> gainByTeamId(int teamId);
 
     /**
      * 添加一条对战记录

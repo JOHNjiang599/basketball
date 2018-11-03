@@ -12,6 +12,10 @@ public class MatchDaoTest extends BaseTest {
     @Autowired
     private MatchDao matchDao;
 
+    /**
+     * 数据访问层测试
+     * 获取所有比赛信息
+     */
     @Test
     public void testGetAllInfo() {
         List<Match> allInfo = matchDao.getAllInfo();
@@ -20,14 +24,24 @@ public class MatchDaoTest extends BaseTest {
         }
     }
 
+    /**
+     * 数据访问层测试
+     * 通过球员ID和球队ID获取所有比赛信息
+     */
     @Test
     public void testGetByMIdAndTId() {
         int memberId = 23;
         int teamId = 1;
-        Match match = matchDao.getByMIdAndTId(memberId, teamId);
-        System.out.println("\n\n" + match + "\n");
+        List<Match> matches = matchDao.getByMIdAndTId(memberId, teamId);
+        for (Match match : matches) {
+            System.out.println("\n\n" + match + "\n");
+        }
     }
 
+    /**
+     * 数据访问层测试
+     * 插入一条记录
+     */
     @Test
     public void testInsertMatch() {
         int matchSection = 1;
@@ -41,6 +55,10 @@ public class MatchDaoTest extends BaseTest {
         }
     }
 
+    /**
+     * 数据访问层测试
+     * 删除一条记录
+     */
     @Test
     public void testDelMatch() {
         String matchTime = "12:40";
@@ -49,6 +67,10 @@ public class MatchDaoTest extends BaseTest {
         boolean b = matchDao.delMatch(matchTime, eventType, memberId);
     }
 
+    /**
+     * 数据访问层测试
+     * 修改一条记录
+     */
     @Test
     public void testModifyOneMatch() {
         String matchTime = "12:40";

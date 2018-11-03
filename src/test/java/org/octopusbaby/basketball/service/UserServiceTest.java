@@ -12,6 +12,10 @@ public class UserServiceTest extends BaseTest {
     @Autowired
     private UserService userService;
 
+    /**
+     * 业务层测试
+     * 验证用户合法性
+     */
     @Test
     public void testValidateUser() {
         User userCheck = new User();
@@ -22,6 +26,10 @@ public class UserServiceTest extends BaseTest {
         System.out.println(user);
     }
 
+    /**
+     * 业务层测试
+     * 添加一条用户信息
+     */
     @Test
     public void testAddUser() {
         String user = "";
@@ -33,6 +41,10 @@ public class UserServiceTest extends BaseTest {
         }
     }
 
+    /**
+     * 业务层测试
+     * 获取所有用户信息
+     */
     @Test
     public void testGainAllUser() {
         List<User> allUser = userService.gainAllUser();
@@ -41,18 +53,30 @@ public class UserServiceTest extends BaseTest {
         }
     }
 
+    /**
+     * 业务层测试
+     * 通过用户名称获取用户信息
+     */
     @Test
     public void testGainUserByName() {
         User user = userService.gainUserByName("admin");
         System.out.println("\n" + user);
     }
 
+    /**
+     * 业务层测试
+     * 通过用户名称删除用户信息
+     */
     @Test
     public void testDeleteByName() {
         String userName = "";
         boolean b = userService.deleteByName(userName);
     }
 
+    /**
+     * 业务层测试
+     * 通过用户名称修改用户密码
+     */
     @Test
     public void testModifyPwdByName() {
         String user = "";

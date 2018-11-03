@@ -5,6 +5,7 @@ import org.octopusbaby.basketball.entity.Match;
 
 import java.util.List;
 
+
 public interface MatchDao {
     /**
      * 获取所有对战信息
@@ -13,13 +14,21 @@ public interface MatchDao {
     List<Match> getAllInfo();
 
     /**
-     * 通过球员ID和球队ID查询某条记录记录
+     * 通过球员ID和球队ID查询某条记录
      * @param memberId
      * @param teamId
      * @return Match
      */
-    Match getByMIdAndTId(@Param("memberId") int memberId,
-                         @Param("teamId") int teamId);
+    List<Match> getByMIdAndTId(@Param("memberId") int memberId,
+                               @Param("teamId") int teamId);
+
+    /**
+     * 通过球队ID查询记录
+     *
+     * @param teamId
+     * @return Match
+     */
+    List<Match> getByTeamId(@Param("teamId") int teamId);
 
     /**
      * 添加一条对战记录
