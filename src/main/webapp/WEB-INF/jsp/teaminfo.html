@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>球队信息</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="../../js/TI.js"></script>
+
 </head>
-<body>
-<form action="URL" class="  ">
+<body onload="TeamI()">
+<div id="tit"><span>队伍信息</span></div>
 
+<div id="TeamName">队伍名称</div>
 
-</form>
+<div>队伍成员
+    <table id="TeamNumber" border="1">
+        <tr>
+            <td>是否首发</td>
+            <td>球衣号</td>
+            <td>球员姓名</td>
+            <td>操作</td>
+        </tr>
+    </table>
+</div>
+
+<div id="plus"><img src="" id="pic" onclick="FUN">增加成员</div>
+<p id="demo"></p>
+
 
 </body>
 </html>
