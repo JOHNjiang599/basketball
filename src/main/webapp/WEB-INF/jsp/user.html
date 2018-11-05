@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>球队用户</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
+                                     user-scalable=no">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="../../js/user-ajax.js"></script>
 </head>
 <body>
-<!--球队用户洁面-->
-<!--这里也需要修改成请求-->
-<input id="TI-U" formaction="URL" type="button" value="球队信息">
+<!--球队用户界面-->
+<div id="Name"><span id="Name-span">欢迎你：</span></div>
+<button id="TI-U" onclick="">球队信息</button>
 <br>
 <!--<button class="a" onclick="window.location.href='teaminfo.html'">球队信息</button>-->
-<input id="his-U" formaction="URL" type="button" value="对战历史">
+<button id="his-U" onclick="">对战历史</button>
 <br>
 <!--<button class="b" onclick="window.location.href='history.html'">对站历史</button>-->
-
 </body>
 </html>

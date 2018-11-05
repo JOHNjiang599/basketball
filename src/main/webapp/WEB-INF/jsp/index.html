@@ -6,22 +6,24 @@
     <title>阿布斯特朗回旋加速阿姆斯特朗篮球对战平台</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
                                      user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="../../css/index_css.css">
-    <script type="text/javascript" src="../../js/index_js.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../../js/index_js.js"></script>
+    <!--<script type="text/javascript" src="../../js/index_ajax.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="../../css/index_css.css">
 
 </head>
 <body onload="show()">
 
 <!--登陆页面，登陆和注册时在一起的，登陆时隐藏注册，注册时隐藏登陆-->
+<!--全部改变，不再用form进行提交，而改用ajax进行交互-->
 <div id="login">
     <form class="login" action="URL" onsubmit="return GoLogin()">
         <label>
             <input type="radio" name="identification" value="user" checked>
-        </label>球队用户
+        </label>球队
         <label>
             <input type="radio" name="identification" value="admin">
-        </label>管理员<br><br>
+        </label>裁判<br><br>
     用户名:<br>
         <label>
             <input id="username" type="text" name="username">

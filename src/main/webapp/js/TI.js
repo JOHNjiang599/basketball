@@ -8,13 +8,15 @@ function TeamI() {
         success: function (result) {
             var m = "";//用于后续的append
             var mm = "";
+            var mmm = "";
             result = JSON.parse(result);
             $.each(result.teams, function (i, n) {   //这里开始进行加
                 /* console.log(n);//令控制台显示json，用来测试*/
                 // m="<li>"+"姓名："+n["username"]+"密码："+n["password"]+"</li>";
                 m = "<span>" + n["teamName"] + "<img src='' id='pls'>" + "</span>";
-                console.log(m);
+                mmm = "<span>" + n["teamName"] + "</span>";
                 $("#TeamName").append(m);
+                $("#Name").append(mmm);
                 $.each(n.memberList, function (index, comment) {
                     mm = "<tr>" + "<td>" + comment["memberFirstStart"] + "</td>" +
                         "<td>" + comment["memberId"] + "</td>" +
