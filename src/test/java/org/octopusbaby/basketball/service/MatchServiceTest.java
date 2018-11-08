@@ -19,6 +19,8 @@ public class MatchServiceTest extends BaseTest {
     @Autowired
     private TeamService teamService;
 
+    // TODO: 2018/11/4 增加同时获取首发和替补的方法
+
     /**
      * 业务层测试
      * 通过两队ID获取两队的对战历史记录

@@ -21,9 +21,9 @@ public interface UserDao {
      * @param password
      * @return boolean
      */
-    boolean insertUser(@Param("userName") String userName,
-                       @Param("password") String password,
-                       @Param("userType") String userType);
+    int insertUser(@Param("userName") String userName,
+                   @Param("password") String password,
+                   @Param("userType") String userType);
 
     /**
      * 获取所有用户信息
@@ -44,7 +44,7 @@ public interface UserDao {
      * @param userName
      * @return
      */
-    boolean delByName(@Param("userName") String userName);
+    int delByName(@Param("userName") String userName);
 
     /**
      * 根据用户名更改用户密码
@@ -53,6 +53,6 @@ public interface UserDao {
      * @param password
      * @return
      */
-    boolean modifyPwdByName(@Param("userName") String userName,
-                            @Param("password") String password);
+    int modifyPwdByName(@Param("userName") String userName,
+                        @Param("password") String password);
 }

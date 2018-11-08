@@ -23,17 +23,77 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public boolean toNotIsFirst(int memberId, int teamId, int isFirst) {
-        return memberDao.toNotIsFirst(memberId, teamId, isFirst);
+        if (memberId > 0) {
+            if (teamId > 0) {
+                if (isFirst == 1 || isFirst == 0) {
+                    try {
+                        int count = memberDao.toNotIsFirst(memberId, teamId, isFirst);
+                        if (count > 0) {
+                            return true;
+                        } else {
+                            throw new RuntimeException("修改首发状态失败");
+                        }
+                    } catch (Exception e) {
+                        throw new RuntimeException("修改首发状态失败" + e.getMessage());
+                    }
+                } else {
+                    throw new RuntimeException("首发状态值只能为0或1");
+                }
+            } else {
+                throw new RuntimeException("球队编号不能为负数");
+            }
+        } else {
+            throw new RuntimeException("球衣号不能为负数");
+        }
     }
 
     @Override
     public boolean toIsFirst(int memberId, int teamId, int isFirst) {
-        return memberDao.toIsFirst(memberId, teamId, isFirst);
+        if (memberId > 0) {
+            if (teamId > 0) {
+                if (isFirst == 1 || isFirst == 0) {
+                    try {
+                        int count = memberDao.toIsFirst(memberId, teamId, isFirst);
+                        if (count > 0) {
+                            return true;
+                        } else {
+                            throw new RuntimeException("修改首发状态失败");
+                        }
+                    } catch (Exception e) {
+                        throw new RuntimeException("修改首发状态失败" + e.getMessage());
+                    }
+                } else {
+                    throw new RuntimeException("首发状态值只能为0或1");
+                }
+            } else {
+                throw new RuntimeException("球队编号不能为负数");
+            }
+        } else {
+            throw new RuntimeException("球衣号不能为负数");
+        }
     }
 
     @Override
     public boolean addMember(int memberId, String memberName, int firstStart, int teamId) {
-        return memberDao.insertMember(memberId, memberName, firstStart, teamId);
+        if (memberId > 0) {
+            if (memberName != null && !"".equals(memberName)) {
+                try {
+                    int addCount = memberDao.insertMember(memberId, memberName, firstStart, teamId);
+                    if (addCount > 0) {
+                        return true;
+                    } else {
+                        throw new RuntimeException("添加球员失败");
+                    }
+                } catch (Exception e) {
+                    throw new RuntimeException("添加球员失败" + e.getMessage());
+                }
+            } else {
+                throw new RuntimeException("球员名不能为空");
+            }
+        } else {
+            throw new RuntimeException("球衣号不能为负数");
+        }
+
     }
 
     @Override
@@ -47,17 +107,48 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public List<Member> gainByTeamId(int teamId) {
+        return memberDao.queryByTeamId(teamId);
+    }
+
+    @Override
     public Member gainByMIdAndTid(int memberId, int teamId) {
         return memberDao.queryByMIdAndTid(memberId, teamId);
     }
 
     @Override
     public boolean deleteByMemberId(int memberId, int teamId) {
-        return memberDao.delByMemberId(memberId, teamId);
+        if (memberId > 0) {
+            if (teamId > 0) {
+                int delCount = memberDao.delByMemberId(memberId, teamId);
+                if (delCount > 0) {
+                    return true;
+                } else {
+                    throw new RuntimeException("删除失败");
+                }
+            } else {
+                throw new RuntimeException("球队编号不能为负数");
+            }
+        } else {
+            throw new RuntimeException("球衣号不能为负数");
+        }
     }
 
     @Override
     public boolean modifyByMemberId(int memberId, String memberName, int firstStart) {
-        return memberDao.modifyByMemberId(memberId, memberName, firstStart);
+        if (memberId > 0) {
+            if (memberName != null && !"".equals(memberName)) {
+                int modCount = memberDao.modifyByMemberId(memberId, memberName, firstStart);
+                if (modCount > 0) {
+                    return true;
+                } else {
+                    throw new RuntimeException("修改失败");
+                }
+            } else {
+                throw new RuntimeException("球员名不能为空");
+            }
+        } else {
+            throw new RuntimeException("球衣号大于0");
+        }
     }
 }

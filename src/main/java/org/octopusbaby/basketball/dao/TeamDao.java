@@ -18,8 +18,8 @@ public interface TeamDao {
      * @param teamName
      * @return boolean
      */
-    boolean insertTeam(@Param("teamId") int teamId,
-                       @Param("teamName") String teamName);
+    int insertTeam(@Param("teamId") int teamId,
+                   @Param("teamName") String teamName);
 
     /**
      * 查询所有球队
@@ -48,7 +48,7 @@ public interface TeamDao {
      * @param teamId
      * @return
      */
-    boolean delByTeamId(@Param("teamId") int teamId);
+    int delByTeamId(@Param("teamId") int teamId);
 
     /**
      * 通过球队ID修改球队名
@@ -56,6 +56,6 @@ public interface TeamDao {
      * @param teamId
      * @return
      */
-    boolean modifyByTeamId(@Param("teamId") int teamId,
-                           @Param("teamName") String teamName);
+    int modifyByTeamId(@Param("teamId") int teamId,
+                       @Param("teamName") String teamName);
 }

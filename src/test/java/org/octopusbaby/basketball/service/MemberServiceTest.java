@@ -5,12 +5,27 @@ import org.octopusbaby.basketball.BaseTest;
 import org.octopusbaby.basketball.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MemberServiceTest extends BaseTest {
 
     @Autowired
     private MemberService memberService;
+
+    /**
+     * 业务层测试
+     * 获取某队所有队员
+     */
+    @Test
+    public void getFirstAndNoFirst() {
+        Integer teamId = 1;
+        Map<String, Object> modelMap = new HashMap<>();
+        List<Member> members = memberService.gainByTeamId(teamId);
+        modelMap.put("members", members);
+        System.out.println(modelMap);
+    }
 
     /**
      * 业务层测试
@@ -82,6 +97,19 @@ public class MemberServiceTest extends BaseTest {
         int memberId = 1;
         Member member = memberService.gainByMemberId(memberId);
         System.out.println("\n" + member);
+    }
+
+    /**
+     * 业务层测试
+     * 通过球队ID查询该队的球员信息
+     */
+    @Test
+    public void testGainByTeamId() {
+        int teamId = 1;
+        List<Member> memberList = memberService.gainByTeamId(teamId);
+        for (Member member : memberList) {
+            System.out.println("\n" + member);
+        }
     }
 
     /**

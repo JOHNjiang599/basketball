@@ -49,6 +49,13 @@ public interface MemberService {
     Member gainByMemberId(int memberId);
 
     /**
+     * 通过球队ID查询该队的球员信息
+     *
+     * @return Member
+     */
+    List<Member> gainByTeamId(int teamId);
+
+    /**
      * 通过球员ID和球队ID查询指定球员信息
      *
      * @param memberId

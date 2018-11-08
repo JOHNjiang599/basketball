@@ -13,6 +13,12 @@
         <result property="teamId" column="user_type"/>
     </resultMap>
 
+    <!--插入记录-->
+    <insert id="insert" parameterType="Match">
+        insert into t_match (match_section,match_time, event_type, member_id, team_id)
+        values (#{matchSection},#{matchTime},#{eventType},#{memberId},#{teamId});
+    </insert>
+
     <!--获取所有对战信息-->
     <select id="getAllInfo" resultType="Match">
         select match_id,match_section,match_time,event_type,member_id,team_id

@@ -86,6 +86,19 @@ public class MemberDaoTest extends BaseTest {
 
     /**
      * 数据访问层测试
+     * 通过球队ID获取球员信息
+     */
+    @Test
+    public void testQueryByTeamId() {
+        int teamId = 1;
+        List<Member> memberList = memberDao.queryByTeamId(teamId);
+        for (Member member : memberList) {
+            System.out.println("\n" + member);
+        }
+    }
+
+    /**
+     * 数据访问层测试
      * 通过球员ID删除球员信息
      */
     @Test

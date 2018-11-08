@@ -57,6 +57,13 @@
         and team_id=#{teamId};
     </select>
 
+    <!--通过球队ID查询该队的球员信息-->
+    <select id="queryByTeamId" resultType="Member">
+        select member_id,member_name,member_first_start,team_id
+        from t_member
+        where team_id=#{teamId};
+    </select>
+
     <!--通过球员ID删除球员-->
     <delete id="delByMemberId">
         delete from t_member

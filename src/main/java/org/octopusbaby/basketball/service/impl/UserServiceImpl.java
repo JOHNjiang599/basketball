@@ -28,7 +28,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean addUser(String userName, String password, String userType) {
-        return userDao.insertUser(userName, password, userType);
+        if (userName != null && !"".equals(userName)) {
+            if (password != null && !"".equals(password)) {
+                try {
+                    int addCount = userDao.insertUser(userName, password, userType);
+                    if (addCount > 0) {
+                        return true;//添加成功
+                    } else {
+                        throw new RuntimeException("添加用户失败");
+                    }
+                } catch (Exception e) {
+                    throw new RuntimeException("添加用户失败" + e.getMessage());
+                }
+            } else {
+                throw new RuntimeException("密码不能为空");
+            }
+        } else {
+            throw new RuntimeException("用户名不能为空");
+        }
     }
 
     @Override
@@ -43,11 +60,41 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean deleteByName(String userName) {
-        return userDao.delByName(userName);
+        if (userName != null && !"".equals(userName)) {
+            try {
+                int delCount = userDao.delByName(userName);
+                if (delCount > 0) {
+                    return true;
+                } else {
+                    throw new RuntimeException("删除用户失败");
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("删除用户失败" + e.getMessage());
+            }
+        } else {
+            throw new RuntimeException("用户名不能为空");
+        }
     }
 
     @Override
     public boolean modifyPwdByName(String userName, String password) {
-        return userDao.modifyPwdByName(userName, password);
+        if (userName != null && !"".equals(userName)) {
+            if (password != null && !"".equals(password)) {
+                try {
+                    int modCount = userDao.modifyPwdByName(userName, password);
+                    if (modCount > 0) {
+                        return true;
+                    } else {
+                        throw new RuntimeException("修改用户信息失败");
+                    }
+                } catch (Exception e) {
+                    throw new RuntimeException("修改用户信息失败" + e.getMessage());
+                }
+            } else {
+                throw new RuntimeException("密码不能为空");
+            }
+        } else {
+            throw new RuntimeException("用户名不能为空");
+        }
     }
 }

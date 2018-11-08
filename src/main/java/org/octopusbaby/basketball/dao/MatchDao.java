@@ -7,6 +7,15 @@ import java.util.List;
 
 
 public interface MatchDao {
+
+    /**
+     * 插入记录
+     *
+     * @param match
+     * @return
+     */
+    int insert(Match match);
+
     /**
      * 获取所有对战信息
      * @return AllMatch
@@ -38,7 +47,7 @@ public interface MatchDao {
      * @param teamId
      * @return boolean
      */
-    boolean insertMatch(@Param("matchSection") int matchSection,
+    int insertMatch(@Param("matchSection") int matchSection,
                         @Param("matchTime") String matchTime,
                         @Param("eventType") int eventType,
                         @Param("memberId") int memberId,
@@ -51,7 +60,7 @@ public interface MatchDao {
      * @param memberId
      * @return
      */
-    boolean delMatch(@Param("match_time") String matchTime,
+    int delMatch(@Param("match_time") String matchTime,
                      @Param("event_type") int eventType,
                      @Param("memberId") int memberId);
 
@@ -63,7 +72,7 @@ public interface MatchDao {
      * @param memberId
      * @return
      */
-    boolean modifyOneMatch(@Param("match_time") String matchTime,
+    int modifyOneMatch(@Param("match_time") String matchTime,
                            @Param("event_type") int eventType,
                            @Param("memberId") int memberId);
 }

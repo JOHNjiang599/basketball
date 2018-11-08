@@ -7,6 +7,14 @@ import java.util.List;
 public interface MatchService {
 
     /**
+     * 插入一条记录
+     *
+     * @param match
+     * @return
+     */
+    boolean addOneMatch(Match match);
+
+    /**
      * 获取所有对战信息
      *
      * @return AllMatch

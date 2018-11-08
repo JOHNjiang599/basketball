@@ -3,6 +3,7 @@ package org.octopusbaby.basketball.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.octopusbaby.basketball.dto.HistoryResult;
+import org.octopusbaby.basketball.dto.TeamAndMember;
 import org.octopusbaby.basketball.entity.Match;
 import org.octopusbaby.basketball.entity.Team;
 import org.octopusbaby.basketball.service.MatchService;
@@ -10,12 +11,15 @@ import org.octopusbaby.basketball.service.MemberService;
 import org.octopusbaby.basketball.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 处理球队登录之后的请求
@@ -39,18 +43,31 @@ public class TeamController {
 
     /**
      * 添加球队队伍
-     *
-     * @param teamId
-     * @param teamName
-     * @param memberId
-     * @param memberName
-     * @param isFirst
+     * @param teamAndMember
      * @return
      */
-    @RequestMapping("addOneTeam")
+    @ResponseBody
+    @RequestMapping(value = "/addateam")
+    public Map<String, Object> addTeamAndMember(@RequestBody TeamAndMember teamAndMember) {
+
+        Map<String, Object> modelMap = new HashMap<>();
+        //添加队伍
+        boolean addTeamStatus = teamService.addTeam(
+                teamAndMember.getTeamId(), teamAndMember.getTeamName());
+        boolean addMemberStatus = memberService.addMember(
+                teamAndMember.getMemberId(), teamAndMember.getMemberName(),
+                teamAndMember.getIsFirst(), teamAndMember.getTeamId());
+        //设置返回状态
+        if (addTeamStatus && addMemberStatus) {
+            modelMap.put("success", true);
+        }
+        return modelMap;
+    }
+    /*@RequestMapping("addOneTeam")
     public ModelAndView addTeamAndMember(int teamId, String teamName,
                                          int memberId, String memberName,
                                          int isFirst) {
+        // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
         HttpSession session = null;
         ModelAndView mv = new ModelAndView();
         //添加队伍并返回状态
@@ -65,7 +82,9 @@ public class TeamController {
             mv.setViewName("");
         }
         return mv;
-    }
+    }*/
+
+
 
     /**
      * 通过两个队的ID来获取两队之间的比赛记录
@@ -77,6 +96,7 @@ public class TeamController {
     @ResponseBody
     @RequestMapping("getHistory")
     public String getHistoryById(int firstTeamId, int secTeamId) {
+        // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
         //通过球队ID获取比赛记录
         List<Match> firstMatches = matchService.gainByTeamId(firstTeamId);
         List<Match> secMatches = matchService.gainByTeamId(secTeamId);
@@ -124,6 +144,7 @@ public class TeamController {
     @ResponseBody
     @RequestMapping("getHistory")
     public String getHistoryByName(String firstTeamName, String secTeamName) {
+        // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
         //通过球队名称获取球队信息
         Team firstTeam = teamService.queryByTeamName(firstTeamName);
         Team secTeam = teamService.queryByTeamName(secTeamName);

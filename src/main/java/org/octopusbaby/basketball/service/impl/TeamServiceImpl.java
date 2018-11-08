@@ -28,7 +28,20 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public boolean addTeam(int teamId, String teamName) {
-        return teamDao.insertTeam(teamId, teamName);
+        if (teamName != null && !"".equals(teamName)) {
+            try {
+                int insertTeam = teamDao.insertTeam(teamId, teamName);
+                if (insertTeam > 0) {
+                    return true;
+                } else {
+                    throw new RuntimeException("添加球队信息失败!");
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("添加球队信息失败" + e.getMessage());
+            }
+        } else {
+            throw new RuntimeException("球队信息不能为空");
+        }
     }
 
     @Override
@@ -48,11 +61,38 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public boolean deleteByTeamId(int teamId) {
-        return teamDao.delByTeamId(teamId);
+        if (teamId > 0) {
+            try {
+                int delCount = teamDao.delByTeamId(teamId);
+                if (delCount > 0) {
+                    return true;
+                } else {
+                    throw new RuntimeException("删除失败!");
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("删除失败" + e.getMessage());
+            }
+        } else {
+            throw new RuntimeException("球队编号要大于0");
+        }
+
     }
 
     @Override
     public boolean modifyByTeamId(int teamId, String teamName) {
-        return teamDao.modifyByTeamId(teamId, teamName);
+        if (teamName != null && !"".equals(teamName)) {
+            try {
+                int modCount = teamDao.modifyByTeamId(teamId, teamName);
+                if (modCount > 0) {
+                    return true;
+                } else {
+                    throw new RuntimeException("修改失败");
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("修改失败" + e.getMessage());
+            }
+        } else {
+            throw new RuntimeException("球队名不能为空");
+        }
     }
 }

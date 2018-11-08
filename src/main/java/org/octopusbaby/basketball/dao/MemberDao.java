@@ -13,9 +13,9 @@ public interface MemberDao {
      * @param isFirst
      * @return
      */
-    boolean toNotIsFirst(@Param("memberId") int memberId,
-                         @Param("teamId") int teamId,
-                         @Param("isFirst") int isFirst);
+    int toNotIsFirst(@Param("memberId") int memberId,
+                     @Param("teamId") int teamId,
+                     @Param("isFirst") int isFirst);
 
     /**
      * 更改球员为是首发状态
@@ -23,9 +23,9 @@ public interface MemberDao {
      * @param isFirst
      * @return
      */
-    boolean toIsFirst(@Param("memberId") int memberId,
-                      @Param("teamId") int teamId,
-                      @Param("isFirst") int isFirst);
+    int toIsFirst(@Param("memberId") int memberId,
+                  @Param("teamId") int teamId,
+                  @Param("isFirst") int isFirst);
 
     /**
      * 添加球员
@@ -34,10 +34,10 @@ public interface MemberDao {
      * @param firstStart
      * @return boolean
      */
-    boolean insertMember(@Param("memberId") int memberId,
-                         @Param("memberName") String memberName,
-                         @Param("firstStart") int firstStart,
-                         @Param("teamId")int teamId);
+    int insertMember(@Param("memberId") int memberId,
+                     @Param("memberName") String memberName,
+                     @Param("firstStart") int firstStart,
+                     @Param("teamId")int teamId);
 
     /**
      * 查询所有球员
@@ -62,12 +62,19 @@ public interface MemberDao {
                             @Param("teamId")int teamId);
 
     /**
+     * 通过球队ID查询该队的球员信息
+     *
+     * @return Member
+     */
+    List<Member> queryByTeamId(@Param("teamId") int teamId);
+
+    /**
      * 通过球员ID删除球员
      *
      * @param memberId
      * @return
      */
-    boolean delByMemberId(@Param("memberId") int memberId,
+    int delByMemberId(@Param("memberId") int memberId,
                           @Param("teamId") int teamId);
 
     /**
@@ -78,7 +85,7 @@ public interface MemberDao {
      * @param firstStart
      * @return
      */
-    boolean modifyByMemberId(@Param("memberId") int memberId,
+    int modifyByMemberId(@Param("memberId") int memberId,
                              @Param("memberName") String memberName,
                              @Param("firstStart") int firstStart);
 

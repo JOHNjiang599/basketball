@@ -3,6 +3,8 @@ package org.octopusbaby.basketball.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.octopusbaby.basketball.dto.FirstStarting;
+import org.octopusbaby.basketball.dto.SwapMember;
+import org.octopusbaby.basketball.entity.Match;
 import org.octopusbaby.basketball.entity.Member;
 import org.octopusbaby.basketball.entity.Team;
 import org.octopusbaby.basketball.service.MatchService;
@@ -10,6 +12,7 @@ import org.octopusbaby.basketball.service.MemberService;
 import org.octopusbaby.basketball.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,7 +25,7 @@ import java.util.Map;
  * 处理管理登录登录之后的请求
  */
 @Controller
-@RequestMapping("match")
+@RequestMapping("/match")
 public class MatchController {
 
     private final TeamService teamService;
@@ -47,7 +50,7 @@ public class MatchController {
      * @return
      */
     @ResponseBody
-    @RequestMapping("initOneMatch")
+    @RequestMapping(value = "/initonematch")
     public String initOneMatch() {
         //获取队伍列表（包括属于该队的所有球员）
         List<Team> teamList = teamService.teamWithMember();
@@ -60,8 +63,17 @@ public class MatchController {
 
     /*处理加分、犯规、换人请求*/
 
-    /*返回首发队伍队员编号*/
+    /*同时获取首发和替补的方法*/
+    @ResponseBody
+    @RequestMapping(value = "/getmembers")
+    public Map<String, Object> getFirstAndNotFirst(Integer teamId) {
+        Map<String, Object> modelMap = new HashMap<>();
+        List<Member> members = memberService.gainByTeamId(teamId);
+        modelMap.put("members", members);
+        return modelMap;
+    }
 
+    /*返回首发队伍队员编号*/
     /**
      * 请求带参，说明比赛队伍编号（1、2、3、4、....）
      *
@@ -70,7 +82,7 @@ public class MatchController {
      * @return
      */
     @ResponseBody
-    @RequestMapping("getFirst")
+    @RequestMapping(value = "/getfirst")
     public String getFirst(int firstTeam, int secondTeam) {
         //获取所有球员（不分队的）
         List<Member> memberList = memberService.gainAllMember();
@@ -107,7 +119,7 @@ public class MatchController {
      * @return
      */
     @ResponseBody
-    @RequestMapping("getFirstNoParm")
+    @RequestMapping(value = "/getfirstnoparm")
     public String getFirstNoParm() {
         List<Member> memberList = memberService.gainAllMember();
         List<FirstStarting> firstList = new ArrayList<>();
@@ -145,23 +157,23 @@ public class MatchController {
      * @return
      */
     @ResponseBody
-    @RequestMapping("getLeftAll")
-    public String getLeftAll(int teamId) {
-        //获取所有球员（不分队的）
+    @RequestMapping(value = "/getnotfirst")
+    public String getNotFirst(@RequestBody int teamId) {
+        //获取所有球员
         List<Member> memberList = memberService.gainAllMember();
-        List<FirstStarting> leftmemberList = new ArrayList<>();
+        List<FirstStarting> leftMemberList = new ArrayList<>();
         JSONObject jsonObj = new JSONObject();
         for (Member member : memberList) {
             FirstStarting noFirstStarting = new FirstStarting();
             if (teamId == member.getTeamId()) {//判断是否属于请求的球队
-                if (0 == member.getMemberFirstStart()) {//判断是否首发
+                if (0 == member.getMemberFirstStart()) {//判断是否不是首发
                     noFirstStarting.setMemberId(member.getMemberId());
-                    leftmemberList.add(noFirstStarting);
+                    leftMemberList.add(noFirstStarting);
                 }
             }
 
         }
-        jsonObj.put("noFirstStart", leftmemberList);
+        jsonObj.put("noFirstStart", leftMemberList);
         System.out.println("jsonObject:" + jsonObj);
         return JSON.toJSONString(jsonObj.toString());
     }
@@ -179,19 +191,38 @@ public class MatchController {
      */
 
     /**
+     * 添加一条比赛记录
+     * @param match
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/addmatch")
+    public Map<String, Object> addMatchRecord(@RequestBody Match match) {
+
+        Map<String, Object> modelMap = new HashMap<String, Object>();
+        //插入记录
+        boolean isSuccess = matchService.addOneMatch(match);
+        //设置返回状态
+        modelMap.put("success", isSuccess);
+
+        return modelMap;
+    }
+
+    /*
      * 点击球员编号的操作(加分，犯规)
-     *
+     * 此方法可能无法接受JSON数据
      * @param matchSection
      * @param matchTime
      * @param eventType
      * @param memberId
      * @param teamId
      * @return
-     */
+     *//*
     @ResponseBody
-    @RequestMapping("clickOperate")
-    public String clickOperate(int matchSection, String matchTime,
+    @RequestMapping(value = "/addmatch")
+    public String addMatchRecord(int matchSection, String matchTime,
                                int eventType, int memberId, int teamId) {
+        // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
         int status;
         String operateMsg;
         Map<String, Object> map = new HashMap<String, Object>();
@@ -216,7 +247,8 @@ public class MatchController {
         //map集合封装层JSON对象
         String mapString = JSON.toJSONString(map);
         return JSON.toJSONString(mapString);
-    }
+    }*/
+
 
     /*换人处理方式：
      * 前端发出换人请求
@@ -227,7 +259,7 @@ public class MatchController {
      * 返回操作状态
      */
 
-    /**
+    /*
      * 传入球员所在队伍编号、被换下场的球员编号、将上场的球员球员编号
      * 进行更改首发状态，达到换人目的
      *
@@ -236,14 +268,14 @@ public class MatchController {
      * @param secMemberId
      * @return
      */
-    @ResponseBody
-    @RequestMapping("exchangeMember")
+   /* @ResponseBody
+    @RequestMapping(value = "/exchangemember")
     public String exchangeMember(int teamId, int firstMemberId, int secMemberId) {
-
+        // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
         JSONObject jsonObject = new JSONObject();
-        /*更改根据被换下场的球员编号、球员所在队伍编号查询出的队员的上场状态*/
+        *//*更改根据被换下场的球员编号、球员所在队伍编号查询出的队员的上场状态*//*
         boolean firstStatus = memberService.toNotIsFirst(firstMemberId, teamId, 0);
-        /*更改将上场的球员球员编号、球员所在队伍编号查询出的队员的上场状态*/
+        *//*更改将上场的球员球员编号、球员所在队伍编号查询出的队员的上场状态*//*
         boolean secStatus = memberService.toIsFirst(secMemberId, teamId, 1);
         if (firstStatus && secStatus) {
             //设置状态并封装成JSON对象
@@ -255,6 +287,27 @@ public class MatchController {
         }
         //返回状态
         return JSON.toJSONString(jsonObject.toString());
+    }*/
+
+    @ResponseBody
+    @RequestMapping(value = "/exchangemember")
+    public Map<String, Object> exchangeMember(@RequestBody SwapMember swapMember) {
+
+        Map<String, Object> modelMap = new HashMap<>();
+
+        /*更改根据被换下场的球员编号、球员所在队伍编号查询出的队员的上场状态*/
+        boolean firstStatus = memberService.toNotIsFirst(
+                swapMember.getFirstMemberId(), swapMember.getTeamId(), 0);
+
+        /*更改将上场的球员球员编号、球员所在队伍编号查询出的队员的上场状态*/
+        boolean secStatus = memberService.toIsFirst(
+                swapMember.getSecMemberId(), swapMember.getTeamId(), 1);
+
+        if (firstStatus && secStatus) {
+            modelMap.put("success", true);
+        }
+
+        return modelMap;
     }
 
 }
