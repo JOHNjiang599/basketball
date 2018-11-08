@@ -14,9 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +23,7 @@ import java.util.Map;
  * 处理球队登录之后的请求
  */
 @Controller
-@RequestMapping("team")
+@RequestMapping("/team")
 public class TeamController {
 
     private final TeamService teamService;
@@ -67,7 +65,6 @@ public class TeamController {
     public ModelAndView addTeamAndMember(int teamId, String teamName,
                                          int memberId, String memberName,
                                          int isFirst) {
-        // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
         HttpSession session = null;
         ModelAndView mv = new ModelAndView();
         //添加队伍并返回状态
@@ -94,7 +91,7 @@ public class TeamController {
      * @return
      */
     @ResponseBody
-    @RequestMapping("getHistory")
+    @RequestMapping(value = "/gethistorybyid")
     public String getHistoryById(int firstTeamId, int secTeamId) {
         // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
         //通过球队ID获取比赛记录
@@ -142,7 +139,7 @@ public class TeamController {
      * @return
      */
     @ResponseBody
-    @RequestMapping("getHistory")
+    @RequestMapping(value = "/gethistorybyname")
     public String getHistoryByName(String firstTeamName, String secTeamName) {
         // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
         //通过球队名称获取球队信息

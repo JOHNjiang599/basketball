@@ -7,80 +7,73 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+/**
+ * 数据访问层测试
+ */
 public class UserDaoTest extends BaseTest {
 
     @Autowired
     private UserDao userDao;
 
     /**
-     * 数据访问层测试
      * 验证用户信息
      */
     @Test
-    public void testCheckUser() {
+    public void checkUser() {
         User userCheck = new User();
         userCheck.setUserName("");
         userCheck.setPassword("");
         userCheck.setUserType("");
         User user = userDao.checkUser(userCheck);
-        System.out.println(user);
     }
 
     /**
-     * 数据访问层测试
      * 插入一条用户信息
      */
     @Test
-    public void testInsertUser() {
+    public void insertUser() {
         String user = "";
         String password = "";
         String type = "";
-        boolean b = userDao.insertUser(user, password, type);
-        if (b) {
-            System.out.println("\n成功添加:" + user + " " + password);
-        }
+        int i = userDao.insertUser(user, password, type);
     }
 
     /**
-     * 数据访问层测试
      * 获取所有用户信息
      */
     @Test
-    public void testGetAllUser() {
-        List<User> allUser = userDao.getAllUser();
-        for (User user : allUser) {
+    public void getAllUser() {
+        List<User> users = userDao.getAllUser();
+        for (User user : users) {
             System.out.println("\n" + user);
         }
     }
 
     /**
-     * 数据访问层测试
      * 通过用户名称获取用户信息
      */
     @Test
-    public void testGetUserByName() {
+    public void getUserByName() {
         User user = userDao.getUserByName("admin");
-        System.out.println("\n" + user);
     }
 
     /**
-     * 数据访问层测试
      * 通过用户名称删除用户信息
      */
     @Test
-    public void testDelByName() {
+    public void delByName() {
         String userName = "";
-        boolean b = userDao.delByName(userName);
+        int i = userDao.delByName(userName);
     }
 
+
     /**
-     * 数据访问层测试
      * 通过用户名称修改用户密码
      */
     @Test
-    public void testModifyPwdByName() {
+    public void modifyPwdByName() {
         String user = "";
         String password = "";
-        boolean b = userDao.modifyPwdByName(user, password);
+        int i = userDao.modifyPwdByName(user, password);
     }
 }

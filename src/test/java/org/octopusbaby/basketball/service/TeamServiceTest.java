@@ -14,6 +14,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 业务层测试
+ */
 public class TeamServiceTest extends BaseTest {
 
     @Autowired
@@ -26,11 +29,10 @@ public class TeamServiceTest extends BaseTest {
     private MatchService matchService;
 
     /**
-     * 业务层测试
-     * 初始化一场比赛
+     * 获取某队信息和该队全员信息
      */
     @Test
-    public void initOneMatch() {
+    public void teamWithMember() {
         List<Team> teamList = teamService.teamWithMember();
         System.out.println("\n" + teamList);
         JSONObject jsonObject = new JSONObject();
@@ -41,7 +43,6 @@ public class TeamServiceTest extends BaseTest {
     }
 
     /**
-     * 业务层测试
      * 获取首发球员
      */
     @Test
@@ -76,11 +77,10 @@ public class TeamServiceTest extends BaseTest {
     }
 
     /**
-     * 业务层测试
      * 获取替补球员
      */
     @Test
-    public void getLeftAll() {
+    public void getNotFirst() {
         List<Member> memberList = memberService.gainAllMember();
         List<FirstStarting> leftMemberList = new ArrayList<>();
         JSONObject jsonObj = new JSONObject();
@@ -102,11 +102,10 @@ public class TeamServiceTest extends BaseTest {
     }
 
     /**
-     * 业务层测试
-     * 点击页面球员事件相关操作
+     * 加分，犯规
      */
     @Test
-    public void clickOperate() {
+    public void addMatchRecord() {
         int matchSection = 1;
         String matchTime = "12:40";
         int eventType = 3;
@@ -140,7 +139,6 @@ public class TeamServiceTest extends BaseTest {
     }
 
     /**
-     * 业务层测试
      * 换人操作
      */
     @Test
@@ -148,7 +146,6 @@ public class TeamServiceTest extends BaseTest {
         int teamId = 1;
         int firstMemberId = 23;
         int secMemberId = 22;
-
         JSONObject jsonObject = new JSONObject();
         /*更改根据被换下场的球员编号、球员所在队伍编号查询出的队员的上场状态*/
         boolean firstStatus = memberService.toNotIsFirst(firstMemberId, teamId, 0);
@@ -166,25 +163,20 @@ public class TeamServiceTest extends BaseTest {
     }
 
     /**
-     * 业务层测试
      * 添加球队
      */
     @Test
-    public void testAddTeam() {
+    public void addTeam() {
         int teamId = 1;
         String teamName = "baby";
         boolean b = teamService.addTeam(teamId, teamName);
-        if (b) {
-            System.out.println("\n" + "成功添加一条数据");
-        }
     }
 
     /**
-     * 业务层测试
      * 获取所有球队信息
      */
     @Test
-    public void testGainAllTeam() {
+    public void gainAllTeam() {
         List<Team> teams = teamService.gainAllTeam();
         for (Team team : teams) {
             System.out.println("\n" + team);
@@ -192,32 +184,35 @@ public class TeamServiceTest extends BaseTest {
     }
 
     /**
-     * 业务层测试
      * 通过球队ID获取球队信息
      */
     @Test
-    public void testGainByTeamId() {
+    public void gainByTeamId() {
         int teamId = 2;
         Team team = teamService.gainByTeamId(teamId);
         System.out.println("\n" + team);
     }
 
+    @Test
+    public void queryByTeamName() {
+        String teamName = "";
+        Team team = teamService.queryByTeamName(teamName);
+    }
+
     /**
-     * 业务层测试
      * 通过球队ID删除球队信息
      */
     @Test
-    public void testDeleteByTeamId() {
+    public void deleteByTeamId() {
         int teamId = 1;
         boolean b = teamService.deleteByTeamId(teamId);
     }
 
     /**
-     * 业务层测试
      * 通过球队ID修改球队信息
      */
     @Test
-    public void testModifyByTeamId() {
+    public void modifyByTeamId() {
         int teamId = 1;
         String teamName = "baby";
         boolean b = teamService.modifyByTeamId(teamId, teamName);

@@ -17,7 +17,7 @@ import java.util.Objects;
  * 处理用户登录注册
  */
 @Controller
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
@@ -30,7 +30,7 @@ public class UserController {
     /**
      * 验证登录
      */
-    @RequestMapping(value = "login")
+    @RequestMapping(value = "/login")
     public ModelAndView login(String userName, String password, String userType,
                                      HttpSession session) {
         System.out.println("\n用户名：" + userName +
@@ -48,7 +48,7 @@ public class UserController {
                     session.setAttribute("admin", JSON.toJSONString(jsonObj.toString()));//将管理员信息返回到session中*/
                     mv.addObject("admin", "admin-login-success");//设置状态信息
 
-                    mv.setViewName("admin");
+                    mv.setViewName("admin.jsp");
                     return mv;
                 }
             }
@@ -57,19 +57,19 @@ public class UserController {
                     /*jsonObj.put("user",user);//将用户信息封装成JSON对象
                     session.setAttribute("user", JSON.toJSONString(jsonObj.toString()));//将用户信息返回到session中*/
                     mv.addObject("user", "user-login-success");//设置状态信息
-                    mv.setViewName("user");
+                    mv.setViewName("user.jsp");
                     return mv;
                 }
             }
         }
-        mv.setViewName("index");
+        mv.setViewName("index.jsp");
         return mv;//验证失败，回到登录页面
     }
 
     /**
      * 用户注册
      */
-    @RequestMapping(value = "register")
+    @RequestMapping(value = "/register")
     public ModelAndView register(String userName, String password,
                                 String repassword, HttpSession session) {
         String userType = "team";//保证为球队可注册

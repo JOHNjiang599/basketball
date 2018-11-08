@@ -59,4 +59,5 @@
 
     <!--启用扫描方式管理service对象的实例-->
     <context:component-scan base-package="org.octopusbaby.basketball.service"/>
+
 </beans>

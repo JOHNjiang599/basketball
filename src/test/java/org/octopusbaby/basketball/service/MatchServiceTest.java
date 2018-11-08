@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+/**
+ * 业务层测试
+ */
 public class MatchServiceTest extends BaseTest {
 
     @Autowired
@@ -19,10 +22,7 @@ public class MatchServiceTest extends BaseTest {
     @Autowired
     private TeamService teamService;
 
-    // TODO: 2018/11/4 增加同时获取首发和替补的方法
-
     /**
-     * 业务层测试
      * 通过两队ID获取两队的对战历史记录
      */
     @Test
@@ -115,11 +115,21 @@ public class MatchServiceTest extends BaseTest {
     }
 
     /**
-     * 业务层测试
+     * 添加一条记录（单参）
+     */
+    @Test
+    public void addOneMatch() {
+        Match match = new Match();
+        match.setTeamId(1);
+        //...
+        matchService.addOneMatch(match);
+    }
+
+    /**
      * 获取所有比赛信息
      */
     @Test
-    public void testGainAllInfo() {
+    public void gainAllInfo() {
         List<Match> matches = matchService.gainAllInfo();
         for (Match match : matches) {
             System.out.println("\n" + match);
@@ -127,11 +137,10 @@ public class MatchServiceTest extends BaseTest {
     }
 
     /**
-     * 业务层测试
      * 通过球员ID和球队ID获取所有比赛信息
      */
     @Test
-    public void testGainByMIdAndTId() {
+    public void gainByMIdAndTId() {
         int memberId = 23;
         int teamId = 1;
         List<Match> matches = matchService.gainByMIdAndTId(memberId, teamId);
@@ -141,28 +150,32 @@ public class MatchServiceTest extends BaseTest {
     }
 
     /**
-     * 业务层测试
-     * 添加一条比赛记录
+     * 通过球队ID获取所有比赛信息
      */
     @Test
-    public void testAddMatch() {
+    public void gainByTeamId() {
+        int teamId = 1;
+        List<Match> matches = matchService.gainByTeamId(teamId);
+    }
+
+    /**
+     * 添加一条比赛记录（多参）
+     */
+    @Test
+    public void addMatch() {
         int matchSection = 1;
         String matchTime = "12:40";
         int eventType = 2;
         int memberId = 23;
         int teamId = 1;
         boolean b = matchService.addMatch(matchSection, matchTime, eventType, memberId, teamId);
-        if (b) {
-            System.out.println("\n\n" + "成功添加一条对站记录" + "\n");
-        }
     }
 
     /**
-     * 业务层测试
      * 删除一条比赛记录
      */
     @Test
-    public void testDeleteMatch() {
+    public void deleteMatch() {
         String matchTime = "12:40";
         int eventType = 2;
         int memberId = 23;
@@ -170,11 +183,10 @@ public class MatchServiceTest extends BaseTest {
     }
 
     /**
-     * 业务层测试
      * 修改一条比赛记录
      */
     @Test
-    public void testModifyOneMatch() {
+    public void modifyOneMatch() {
         String matchTime = "12:40";
         int eventType = 0;
         int memberId = 0;

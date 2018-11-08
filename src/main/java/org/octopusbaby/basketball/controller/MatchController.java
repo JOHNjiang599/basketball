@@ -41,8 +41,8 @@ public class MatchController {
         this.matchService = matchService;
     }
 
-
     /*初始化一场比赛，接受前端请求，查询球队填写的首发阵容并返回*/
+
 
     /**
      * 初始化一场比赛
@@ -60,10 +60,14 @@ public class MatchController {
         return JSON.toJSONString(jsonObject.toString());
     }
 
-
     /*处理加分、犯规、换人请求*/
 
-    /*同时获取首发和替补的方法*/
+    /**
+     * 同时获取某队所有首发和替补
+     *
+     * @param teamId
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/getmembers")
     public Map<String, Object> getFirstAndNotFirst(Integer teamId) {
@@ -112,7 +116,6 @@ public class MatchController {
         System.out.println("jsonObject:" + jsonObject);
         return JSON.toJSONString(jsonObject.toString());
     }
-
     /**
      * 写死方法，返回1队和2队
      *
@@ -149,7 +152,6 @@ public class MatchController {
     }
 
     /*返回某队替补队员编号*/
-
     /**
      * 根据球队编号返回该队的替补
      *
@@ -191,6 +193,7 @@ public class MatchController {
      */
 
     /**
+     * 加分，犯规的操作
      * 添加一条比赛记录
      * @param match
      * @return
@@ -210,7 +213,6 @@ public class MatchController {
 
     /*
      * 点击球员编号的操作(加分，犯规)
-     * 此方法可能无法接受JSON数据
      * @param matchSection
      * @param matchTime
      * @param eventType
@@ -222,7 +224,6 @@ public class MatchController {
     @RequestMapping(value = "/addmatch")
     public String addMatchRecord(int matchSection, String matchTime,
                                int eventType, int memberId, int teamId) {
-        // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
         int status;
         String operateMsg;
         Map<String, Object> map = new HashMap<String, Object>();
@@ -259,36 +260,12 @@ public class MatchController {
      * 返回操作状态
      */
 
-    /*
+    /**
      * 传入球员所在队伍编号、被换下场的球员编号、将上场的球员球员编号
      * 进行更改首发状态，达到换人目的
-     *
-     * @param teamId
-     * @param firstMemberId
-     * @param secMemberId
+     * @param swapMember
      * @return
      */
-   /* @ResponseBody
-    @RequestMapping(value = "/exchangemember")
-    public String exchangeMember(int teamId, int firstMemberId, int secMemberId) {
-        // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
-        JSONObject jsonObject = new JSONObject();
-        *//*更改根据被换下场的球员编号、球员所在队伍编号查询出的队员的上场状态*//*
-        boolean firstStatus = memberService.toNotIsFirst(firstMemberId, teamId, 0);
-        *//*更改将上场的球员球员编号、球员所在队伍编号查询出的队员的上场状态*//*
-        boolean secStatus = memberService.toIsFirst(secMemberId, teamId, 1);
-        if (firstStatus && secStatus) {
-            //设置状态并封装成JSON对象
-            jsonObject.put("status", "exchangeMemberSuccess");
-            System.out.println(jsonObject);
-        } else {
-            jsonObject.put("status", "exchangeMemberFail");
-            System.out.println(jsonObject);
-        }
-        //返回状态
-        return JSON.toJSONString(jsonObject.toString());
-    }*/
-
     @ResponseBody
     @RequestMapping(value = "/exchangemember")
     public Map<String, Object> exchangeMember(@RequestBody SwapMember swapMember) {
@@ -309,5 +286,32 @@ public class MatchController {
 
         return modelMap;
     }
+
+
+    /*
+     * @param teamId
+     * @param firstMemberId
+     * @param secMemberId
+     * @return
+     */
+   /* @ResponseBody
+    @RequestMapping(value = "/exchangemember")
+    public String exchangeMember(int teamId, int firstMemberId, int secMemberId) {
+        JSONObject jsonObject = new JSONObject();
+        *//*更改根据被换下场的球员编号、球员所在队伍编号查询出的队员的上场状态*//*
+        boolean firstStatus = memberService.toNotIsFirst(firstMemberId, teamId, 0);
+        *//*更改将上场的球员球员编号、球员所在队伍编号查询出的队员的上场状态*//*
+        boolean secStatus = memberService.toIsFirst(secMemberId, teamId, 1);
+        if (firstStatus && secStatus) {
+            //设置状态并封装成JSON对象
+            jsonObject.put("status", "exchangeMemberSuccess");
+            System.out.println(jsonObject);
+        } else {
+            jsonObject.put("status", "exchangeMemberFail");
+            System.out.println(jsonObject);
+        }
+        //返回状态
+        return JSON.toJSONString(jsonObject.toString());
+    }*/
 
 }
