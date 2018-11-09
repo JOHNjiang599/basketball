@@ -6,3 +6,21 @@ $(function () {
     $("#Name").append(Name);
 });
 /*******************************************************/
+
+//到球队信息页面的跳转
+function mes() {
+    var Url = window.location.href;
+    var Data = Url.split("=");
+    var Url = encodeURI("teaminfo.html?USERS=" + Data[1]);
+    window.location.href = Url;
+}
+
+/*******************************************************/
+
+//到历史对战页面的跳转
+function his() {
+    var Url = window.location.href;
+    var Data = Url.split("=");
+    var Url = encodeURI("history.html?USERS=" + Data[1]);
+    window.location.href = Url;
+}
