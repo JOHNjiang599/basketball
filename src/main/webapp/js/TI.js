@@ -72,7 +72,7 @@ function Change(ID) {
     b[2].innerHTML = "<input type='text' value='" + b[2].innerText + "'/>";
     var c = a.innerText;
     console.log(c);
-    a.innerHTML = "<input type='button' id='save' onclick='Save()' value='保存'>" +
+    a[0].innerHTML = "<input type='button' id='save' onclick='Save()' value='保存'>" +
         "<input type='button' id='cancel' onclick='Can()' value='取消'>";
 }
 
@@ -92,7 +92,6 @@ function Del(ID) {
             }
             else {
                 alert("删除失败，请重试");
-                ;
                 return false;
             }
         }
