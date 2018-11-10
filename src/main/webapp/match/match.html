@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/js/myscirpts.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/mystyle.css"/>
+</head>
+<body>
+<div><img src="/images/icons8-left_4.png" style="position:absolute;left:10px ;width:40px; height:40px">
+    <img src="/images/icons8-today_apps.png" style="position:absolute;left:95%">
+</div>
+<div>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="1" value="001"
+            style="position:absolute;left:235px;top:265px;color:white">01
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="2" value="002"
+            style="position:absolute;left:67%;top:265px;color:white">02
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="3" value="003"
+            style="position:absolute;left:12%;top:605px;color:white">03
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="4" value="004"
+            style="position:absolute;left:45%;top:609px;color:white">04
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="5" value="005"
+            style="position:absolute;left:77%;top:604px;color:white">05
+    </button>
+</div>
+<nav class="timenav" onclick="startTime()">
+    <nav>
+        <p>
+            <span id="grade_1">00</span>
+            <span id="grade_2">00</span>
+        </p>
+    </nav>
+    <nav>
+        <p>
+            <span id="minute">00</span>
+            <span id="charctor">:</span>
+            <span id="second">00</span>
+        </p>
+    </nav>
+</nav>
+<div>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="101" value="101"
+            style="position:absolute;left:12% ;top:1050px; color:white">01
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="102" value="102"
+            style="position:absolute;left:45%;top:1050px; color:white">02
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="103" value="103"
+            style="position:absolute;left:77% ;top:1050px; color:white">03
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="104" value="104"
+            style="position:absolute;left:235px ;top:1390px; color:white">04
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="105" value="105"
+            style="position:absolute;left:67%;top:1390px; color:white">05
+    </button>
+</div>
+<nav class="tablenav" id="tablenav">
+    <table class="table1">
+        <tr>
+            <td>
+                <button onClick="btn2() ;plus(this.value)" value="1">&nbsp;1分&nbsp;</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;plus(this.value)" value="2">&nbsp;2分&nbsp;</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;plus(this.value)" value="3">&nbsp;3分&nbsp;</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a onClick="btn2()">犯规</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a onClick="btn3()">换人</a>
+            </td>
+        </tr>
+    </table>
+</nav>
+<nav class='changenav' id="changenav">
+    <table class="table2">
+        <tr style="height:30px">
+            <td>
+                <p style="color:gray;font-size:25px;height:25px">请选择球员</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="201" id="201">33</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="202" id="202">15</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="203" id="203">09</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="204" id="204">07</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a onClick="btn2()">取消</a>
+            </td>
+        </tr>
+    </table>
+</nav>
+<nav class='changenav' id="changenav2">
+    <table class="table2">
+        <tr style="height:30px">
+            <td>
+                <p style="color:gray;font-size:25px;height:25px">请选择球员</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="301" id="301">31</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="302" id="302">12</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="303" id="303">12</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="304" id="304">07</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a onClick="btn2()">取消</a>
+            </td>
+        </tr>
+    </table>
+</nav>
+</body>
+</html>

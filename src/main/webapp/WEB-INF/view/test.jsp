@@ -1,18 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: weixingfu
-  Date: 2018/10/30
-  Time: 14:58
+  Date: 2018/11/10
+  Time: 13:14
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<p id="his"></p>
+<%--暂时用不到的页面--%>
 </body>
 </html>

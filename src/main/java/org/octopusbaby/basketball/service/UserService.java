@@ -33,7 +33,7 @@ public interface UserService {
      * 通过用户名称获取用户
      *
      * @param userName
-     * @return UserDTO
+     * @return UserLogin
      */
     User gainUserByName(String userName);
 

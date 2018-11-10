@@ -12,9 +12,7 @@ import org.octopusbaby.basketball.service.MemberService;
 import org.octopusbaby.basketball.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,7 +67,7 @@ public class MatchController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/getmembers")
+    @RequestMapping(value = "/getmembers", method = RequestMethod.POST)
     public Map<String, Object> getFirstAndNotFirst(Integer teamId) {
         Map<String, Object> modelMap = new HashMap<>();
         List<Member> members = memberService.gainByTeamId(teamId);
