@@ -33,7 +33,7 @@
     <!--添加球员-->
     <insert id="insertMember">
         insert into t_member (member_id, member_name, member_first_start,team_id)
-        values (#{memberId},#{memberName},#{memberFirstStart},#{teamId});
+        values (#{memberId},#{memberName},#{firstStart},#{teamId});
     </insert>
 
     <!--查询所有球员信息-->
@@ -65,7 +65,7 @@
     </select>
 
     <!--通过球员ID删除球员-->
-    <delete id="delByMemberId">
+    <delete id="delById">
         delete from t_member
         where member_id=#{memberId}
         and team_id=#{teamId};
@@ -74,7 +74,7 @@
     <!--通过球员ID更改球员信息-->
     <update id="modifyByMemberId">
         update t_member
-        set member_name = #{memberName} and member_first_start=#{memberFirstStart}
+        set member_name = #{memberName},member_first_start=#{firstStart}
         where member_id=#{memberId};
     </update>
 

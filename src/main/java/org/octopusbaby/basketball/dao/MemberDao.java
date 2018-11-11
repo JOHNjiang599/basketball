@@ -74,8 +74,8 @@ public interface MemberDao {
      * @param memberId
      * @return
      */
-    int delByMemberId(@Param("memberId") int memberId,
-                          @Param("teamId") int teamId);
+    int delById(@Param("memberId") int memberId,
+                @Param("teamId") int teamId);
 
     /**
      * 通过球员ID更改球员信息
@@ -86,7 +86,7 @@ public interface MemberDao {
      * @return
      */
     int modifyByMemberId(@Param("memberId") int memberId,
-                             @Param("memberName") String memberName,
-                             @Param("firstStart") int firstStart);
+                         @Param("memberName") String memberName,
+                         @Param("firstStart") int firstStart);
 
 }

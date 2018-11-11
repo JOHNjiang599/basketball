@@ -22,7 +22,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User validateUser(User user) {
+    public User getUser(String userName, String password) {
+        return userDao.getUser(userName, password);
+    }
+
+    @Override
+    public User checkUser(User user) {
         return userDao.checkUser(user);
     }
 

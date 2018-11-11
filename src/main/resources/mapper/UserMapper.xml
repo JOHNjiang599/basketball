@@ -12,7 +12,13 @@
         <result property="userType" column="user_type"/>
     </resultMap>
 
-    <!--检验用户-->
+    <select id="getUser" resultType="User">
+        select user_id,user_name,password,user_type
+        from t_account
+        where user_name=#{userName} and password=#{password};
+    </select>
+
+    <!--检验用户注册-->
     <select id="checkUser" parameterType="User" resultMap="UserResult">
         select user_id,user_name,password,user_type
         from t_account

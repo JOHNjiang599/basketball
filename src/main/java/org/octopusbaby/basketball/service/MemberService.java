@@ -69,7 +69,7 @@ public interface MemberService {
      * @param memberId
      * @return
      */
-    boolean deleteByMemberId(int memberId,int teamId);
+    boolean deleteById(int memberId, int teamId);
 
     /**
      * 通过球员ID更改球员信息

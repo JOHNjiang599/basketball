@@ -21,7 +21,7 @@ function login() {
 
     if (success === true) {
         $.ajax({
-            url: '/user/login',
+            url: "/user/login",
             type: "POST",
             data: {
                 "userName": userName,
@@ -31,17 +31,31 @@ function login() {
             dataType: "json",//预期服务器返回类型
             success: function (result) {
                 var rs = JSON.parse(result);
-                if (userType === "user") {
-                    window.location.href = "user/user.html?user=" + rs['msg']['username'];
-                }
-                if (userType === "referee") {
-                    window.location.href = "user/referee.html?user=" + rs['msg']['username'];
-                }
-            },
+                if (rs.msg.status === true) {
+                    if (rs.msg.userType === "user") {
+                        if (userType === "user") {
+                            var Url = encodeURI("start/user.html?user=" + rs.msg.username);
+                            window.location.href = Url;
+                        }
+                        else {
+                            alert("请选择相应账户进行登录")
+                        }
+                    }
+                    if (rs.msg.userType === "referee") {
+                        if (userType === "referee") {
+                            var Url = encodeURI("start/referee.html?user=" + rs.msg.username);
+                            window.location.href = Url;
+                        }
+                        else {
+                            alert("请选择相应账户进行登录")
+                        }
 
-            error: function (xhr, status, error) {
-                var err = eval("(" + xhr.responseText + "   " + status + "   " + error + ")");
-            }
+                    }
+                } else {
+                    alert("woshinibaba");
+                }
+
+            },
         });
     }
 }
@@ -81,7 +95,7 @@ function register() {
 
     if (isSuccess === true) {
         $.ajax({
-            url: '/user/register',
+            url: "/user/register",
             type: "POST",
             data: {
                 "userName": userName,
@@ -98,10 +112,6 @@ function register() {
                     alert("注册失败")
                 }
             },
-
-            error: function (xhr, status, error) {
-                var err = eval("(" + xhr.responseText + "   " + status + "   " + error + ")");
-            }
         });
     }
 }

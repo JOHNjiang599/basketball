@@ -1,7 +1,9 @@
 @charset "UTF-8";
 /* CSS Document */
+@charset "UTF-8";
+/* CSS Document */
 body {
-    background: url(../images/background.png) no-repeat;
+    background: url(images/background.png) no-repeat;
     background-position: center, 0;
     background-attachment: fixed;
     background-size: 100% 100%;
@@ -28,7 +30,7 @@ a {
 .tablenav {
     position: absolute;
     left: 25%;
-    background: url(../images/menu.png) no-repeat;
+    background: url(images/menu.png) no-repeat;
     background-size: 100% 100%;
     display: none;
     z-index: 100;
@@ -55,7 +57,7 @@ a {
 .changenav {
     position: absolute;
     left: 25%;
-    background: url(../images/menu.png) no-repeat;
+    background: url(images/menu.png) no-repeat;
     background-size: 100% 100%;
     display: none;
     z-index: 101;
@@ -75,10 +77,10 @@ button {
 @font-face {
     font-family: "dight-lcd";
     src: url(digit-lcd.eot);
-    src: url(../fonts/digit-lcd.svg) format('svg'),
-    url(../fonts/digit-lcd.ttf) format('truetype'),
-    url(../fonts/digit-lcd.woff) format('woff'),
-    url(../fonts/digit-lcd.woff2);
+    src: url(fonts/digit-lcd.svg) format('svg'),
+    url(fonts/digit-lcd.ttf) format('truetype'),
+    url(fonts/digit-lcd.woff) format('woff'),
+    url(fonts/digit-lcd.woff2);
     font-weight: 900;
     font-style: normal;
 }

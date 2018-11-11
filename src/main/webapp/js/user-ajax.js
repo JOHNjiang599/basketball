@@ -4,14 +4,16 @@ $(function () {
     var Data = Url.split("=");
     var Name = decodeURI(Data[1]);
     $("#Name").append(Name);
-});
+})
+
+
 /*******************************************************/
 
 //到球队信息页面的跳转
 function mes() {
     var Url = window.location.href;
     var Data = Url.split("=");
-    var Url = encodeURI("teaminfo.html?USERS=" + Data[1]);
+    var Url = encodeURI("teamInfo.html?USERS=" + Data[1]);
     window.location.href = Url;
 }
 

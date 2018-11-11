@@ -1,5 +1,7 @@
 package org.octopusbaby.basketball.service;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 import org.octopusbaby.basketball.BaseTest;
 import org.octopusbaby.basketball.entity.Member;
@@ -18,15 +20,39 @@ public class MemberServiceTest extends BaseTest {
     private MemberService memberService;
 
     /**
+     * 同时获取两队所有首发和替补
+     */
+    @Test
+    public void getTeamFirstAndNoFirst() {
+        Integer teamIdA = 1;
+        Integer teamIdB = 2;
+        Map<String, Object> modelMap = new HashMap<>();
+        List<Member> firstMembers = memberService.gainByTeamId(teamIdA);
+        List<Member> secMembers = memberService.gainByTeamId(teamIdB);
+        modelMap.put("firstTeam", firstMembers);
+        modelMap.put("secTeam", secMembers);
+        System.out.println("\n" + modelMap);
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("teams", modelMap);
+        System.out.println("\n" + jsonObject);
+
+        String jsonString = JSON.toJSONString(jsonObject.toString());
+        System.out.println("\n" + jsonString);
+    }
+
+    /**
      * 同时获取某队所有首发和替补
      */
     @Test
     public void getFirstAndNoFirst() {
         Integer teamId = 1;
-        Map<String, Object> modelMap = new HashMap<>();
         List<Member> members = memberService.gainByTeamId(teamId);
-        modelMap.put("members", members);
-        System.out.println(modelMap);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("members", members);
+        System.out.println(jsonObject);
+        String jsonString = JSON.toJSONString(jsonObject.toString());
+        System.out.println(jsonString);
     }
 
     /**
@@ -90,10 +116,12 @@ public class MemberServiceTest extends BaseTest {
     @Test
     public void gainByTeamId() {
         int teamId = 1;
-        List<Member> memberList = memberService.gainByTeamId(teamId);
-        for (Member member : memberList) {
-            System.out.println("\n" + member);
-        }
+        List<Member> members = memberService.gainByTeamId(teamId);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("members", members);
+        System.out.println(jsonObject);
+        String jsonString = JSON.toJSONString(jsonObject.toString());
+        System.out.println(jsonString);
     }
 
     /**
@@ -113,7 +141,7 @@ public class MemberServiceTest extends BaseTest {
     public void deleteByMemberId() {
         int memberId = 23;
         int teamId = 1;
-        boolean b = memberService.deleteByMemberId(memberId, teamId);
+        boolean b = memberService.deleteById(memberId, teamId);
     }
 
     /**

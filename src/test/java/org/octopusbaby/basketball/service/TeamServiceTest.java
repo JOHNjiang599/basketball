@@ -28,6 +28,60 @@ public class TeamServiceTest extends BaseTest {
     @Autowired
     private MatchService matchService;
 
+    @Test
+    public void addMember() {
+        Member member = new Member();
+        member.setMemberId(23);
+        member.setMemberName("乔丹");
+        member.setMemberFirstStart(1);
+        member.setTeamId(1);
+
+        boolean status = memberService.addMember(member.getMemberId(), member.getMemberName(),
+                member.getMemberFirstStart(), member.getTeamId());
+        JSONObject jsonObject = new JSONObject();
+        if (status) {
+            jsonObject.put("status", true);
+        } else {
+            jsonObject.put("status", false);
+        }
+        String jsonString = JSON.toJSONString(jsonObject.toString());
+        System.out.println(jsonString);
+    }
+
+    @Test
+    public void deleteMember() {
+        Integer teamId = 1;
+        Integer memberId = 23;
+        boolean status = memberService.deleteById(memberId, teamId);
+        JSONObject jsonObject = new JSONObject();
+        if (status) {
+            jsonObject.put("status", true);
+        } else {
+            jsonObject.put("status", false);
+        }
+        String jsonString = JSON.toJSONString(jsonObject.toString());
+        System.out.println(jsonString);
+    }
+
+    @Test
+    public void gainMembers() {
+        String name = "asd";
+        Team team = teamService.queryByTeamName(name);
+        List<Member> memberList = memberService.gainByTeamId(team.getTeamId());
+        Map<String, Object> modelMap = new HashMap<>();
+        modelMap.put("team", team);
+        modelMap.put("memberList", memberList);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("teamInfo", modelMap);
+
+        System.out.println("\n" + jsonObject);
+
+        String jsonString = JSON.toJSONString(jsonObject.toString());
+
+        System.out.println("\n" + jsonString);
+    }
+
+
     /**
      * 获取某队信息和该队全员信息
      */
@@ -178,9 +232,11 @@ public class TeamServiceTest extends BaseTest {
     @Test
     public void gainAllTeam() {
         List<Team> teams = teamService.gainAllTeam();
-        for (Team team : teams) {
-            System.out.println("\n" + team);
-        }
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("teamList", teams);
+        System.out.println(jsonObject);
+        String jsonString = JSON.toJSONString(jsonObject.toString());
+        System.out.println(jsonString);
     }
 
     /**

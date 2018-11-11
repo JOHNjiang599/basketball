@@ -5,14 +5,15 @@ import com.alibaba.fastjson.JSONObject;
 import org.octopusbaby.basketball.dto.HistoryResult;
 import org.octopusbaby.basketball.dto.TeamAndMember;
 import org.octopusbaby.basketball.entity.Match;
+import org.octopusbaby.basketball.entity.Member;
 import org.octopusbaby.basketball.entity.Team;
 import org.octopusbaby.basketball.service.MatchService;
 import org.octopusbaby.basketball.service.MemberService;
 import org.octopusbaby.basketball.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -39,6 +40,81 @@ public class TeamController {
         this.matchService = matchService;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/addmember", method = RequestMethod.POST,
+            produces = "application/json; charset=utf-8")
+    public String addMember(Member member) {
+        boolean status = memberService.addMember(member.getMemberId(), member.getMemberName(),
+                member.getMemberFirstStart(), member.getTeamId());
+        JSONObject jsonObject = new JSONObject();
+        if (status) {
+            jsonObject.put("status", true);
+        } else {
+            jsonObject.put("status", false);
+        }
+        System.out.println(jsonObject);
+        return JSON.toJSONString(jsonObject.toString());
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/modifymember", method = RequestMethod.POST,
+            produces = "application/json; charset=utf-8")
+    public String modifyMember(Member member) {
+        boolean status = memberService.modifyByMemberId(member.getMemberId(),
+                member.getMemberName(), member.getMemberFirstStart());
+        JSONObject jsonObject = new JSONObject();
+        if (status) {
+            jsonObject.put("status", true);
+        } else {
+            jsonObject.put("status", false);
+        }
+        System.out.println(jsonObject);
+        return JSON.toJSONString(jsonObject.toString());
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/deletemember", method = RequestMethod.POST,
+            produces = "application/json; charset=utf-8")
+    public String deleteMember(Integer teamId, Integer memberId) {
+        boolean status = memberService.deleteById(memberId, teamId);
+        JSONObject jsonObject = new JSONObject();
+        if (status) {
+            jsonObject.put("status", true);
+        } else {
+            jsonObject.put("status", false);
+        }
+        return JSON.toJSONString(jsonObject.toString());
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/gainmembers", method = RequestMethod.POST,
+            produces = "application/json; charset=utf-8")
+    public String gainMembers(String name) {
+        Team team = teamService.queryByTeamName(name);
+        List<Member> memberList = memberService.gainByTeamId(team.getTeamId());
+        Map<String, Object> modelMap = new HashMap<>();
+        modelMap.put("team", team);
+        modelMap.put("memberList", memberList);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("teamInfo", modelMap);
+        return JSON.toJSONString(jsonObject.toString());
+    }
+
+    /**
+     * 获取所有球队信息
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getteams", method = RequestMethod.GET,
+            produces = "application/json; charset=utf-8")
+    public String gainAllTeam() {
+        List<Team> teams = teamService.gainAllTeam();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("teamList", teams);
+        System.out.println("\n" + jsonObject);
+        return JSON.toJSONString(jsonObject.toString());
+    }
+
     /**
      * 添加球队队伍
      * @param teamAndMember
@@ -46,8 +122,7 @@ public class TeamController {
      */
     @ResponseBody
     @RequestMapping(value = "/addateam")
-    public Map<String, Object> addTeamAndMember(@RequestBody TeamAndMember teamAndMember) {
-
+    public String addTeamAndMember(TeamAndMember teamAndMember) {
         Map<String, Object> modelMap = new HashMap<>();
         //添加队伍
         boolean addTeamStatus = teamService.addTeam(
@@ -57,32 +132,14 @@ public class TeamController {
                 teamAndMember.getIsFirst(), teamAndMember.getTeamId());
         //设置返回状态
         if (addTeamStatus && addMemberStatus) {
-            modelMap.put("success", true);
-        }
-        return modelMap;
-    }
-    /*@RequestMapping("addOneTeam")
-    public ModelAndView addTeamAndMember(int teamId, String teamName,
-                                         int memberId, String memberName,
-                                         int isFirst) {
-        HttpSession session = null;
-        ModelAndView mv = new ModelAndView();
-        //添加队伍并返回状态
-        boolean addTeamStatus = teamService.addTeam(teamId, teamName);
-        boolean addMemberStatus = memberService.addMember(memberId, memberName, isFirst, teamId);
-        if (addTeamStatus && addMemberStatus) {
-            //将状态返回到session中
-            session.setAttribute("status", "add success");
-            mv.setViewName("");
+            modelMap.put("status", true);
         } else {
-            session.setAttribute("status", "input error");
-            mv.setViewName("");
+            modelMap.put("status", false);
         }
-        return mv;
-    }*/
-
-
-
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("msg", modelMap);
+        return JSON.toJSONString(jsonObject.toString());
+    }
     /**
      * 通过两个队的ID来获取两队之间的比赛记录
      *
@@ -93,7 +150,6 @@ public class TeamController {
     @ResponseBody
     @RequestMapping(value = "/gethistorybyid")
     public String getHistoryById(int firstTeamId, int secTeamId) {
-        // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
         //通过球队ID获取比赛记录
         List<Match> firstMatches = matchService.gainByTeamId(firstTeamId);
         List<Match> secMatches = matchService.gainByTeamId(secTeamId);
@@ -141,7 +197,6 @@ public class TeamController {
     @ResponseBody
     @RequestMapping(value = "/gethistorybyname")
     public String getHistoryByName(String firstTeamName, String secTeamName) {
-        // TODO: 2018/11/4 如果返回的是JSON数据 根据前端的参数在dto新建一个接收数据的实体
         //通过球队名称获取球队信息
         Team firstTeam = teamService.queryByTeamName(firstTeamName);
         Team secTeam = teamService.queryByTeamName(secTeamName);

@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.octopusbaby.basketball.dto.UserLogin;
 import org.octopusbaby.basketball.dto.UserRegister;
 import org.octopusbaby.basketball.entity.User;
+import org.octopusbaby.basketball.service.TeamService;
 import org.octopusbaby.basketball.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,62 +23,45 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
 
+    private final TeamService teamService;
+
     private final UserService userService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, TeamService teamService) {
         this.userService = userService;
+        this.teamService = teamService;
     }
 
     /**
      * 验证登录
      */
     @ResponseBody
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST,
+            produces = "application/json;charset=utf-8")
     public String login(UserLogin userLogin) {
 
         System.out.println("\n用户名：" + userLogin.getUserName() +
                 " 密码：" + userLogin.getPassword() + " 用户类型："
                 + userLogin.getUserType() + "\n");
-        //获取所有用户
-        List<User> users = userService.gainAllUser();
-        Map<String, Object> map = new HashMap<>();
-        for (User user : users) {
-            //判断是否是管理员
-            if (userLogin.getUserType().equals("referee")) {
-                System.out.println("\n是管理员");
-                //判断用户名和密码是否相等
-                boolean isSuccess = (user.getUserName()).equals(userLogin.getUserName()) &&
-                        (user.getPassword()).equals(userLogin.getPassword());
-                if (isSuccess) {
-                    System.out.println("\n用户名,密码存在");
-                    map.put("username", user.getUserName());
-                    System.out.println("\nreferee  成功添加到map");
-                    break;
-                }
-            }
-            if (userLogin.getUserType().equals("user")) {
-                System.out.println("\n是球队");
-                boolean isSuccess = (user.getUserName()).equals(userLogin.getUserName()) &&
-                        (user.getPassword()).equals(userLogin.getPassword());
-                if (isSuccess) {
-                    System.out.println("\n用户名,密码存在");
-                    map.put("username", user.getUserName());
-                    System.out.println("\nuser 成功添加到map");
-                    break;
-                }
-            }
-        }
-        System.out.println("\n返回map");
-        System.out.println("\nmap   " + map);
 
+        Map<String, Object> map = new HashMap<>();
+
+        User user = userService.getUser(userLogin.getUserName(), userLogin.getPassword());
+        System.out.println("\n" + user);
+
+        if (user != null) {
+            map.put("status", true);
+            map.put("username", user.getUserName());
+            map.put("userType", user.getUserType());
+        } else {
+            map.put("status", false);
+        }
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("msg", map);
         System.out.println("\njsonObject   " + jsonObject);
-
         String jsonString = JSON.toJSONString(jsonObject.toString());
         System.out.println("\njsonString   " + jsonString);
-
         return jsonString;
     }
 
@@ -86,7 +69,8 @@ public class UserController {
      * 用户注册
      */
     @ResponseBody
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST,
+            produces = "application/json;charset=utf-8")
     public String register(UserRegister userRegister) {
 
         String userType = "user";//保证为球队可注册
@@ -105,7 +89,8 @@ public class UserController {
             userCheck.setPassword(userRegister.getPassword());
             userCheck.setUserType(userType);
 
-            User valUser = userService.validateUser(userCheck);//验证注册信息是否已存在
+            User valUser = userService.checkUser(userCheck);//验证注册信息是否已存在
+
             if (valUser == null) {//未存在则添加
                 boolean isSuccess = userService.addUser(userRegister.getUserName(),
                         userRegister.getPassword(), userType);

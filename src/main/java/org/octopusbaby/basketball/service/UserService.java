@@ -5,6 +5,10 @@ import org.octopusbaby.basketball.entity.User;
 import java.util.List;
 
 public interface UserService {
+    /**
+     * 验证
+     */
+    User getUser(String userName, String password);
 
     /**
      * 验证用户
@@ -12,7 +16,7 @@ public interface UserService {
      * @param user
      * @return
      */
-    User validateUser(User user);
+    User checkUser(User user);
 
     /**
      * 用户注册

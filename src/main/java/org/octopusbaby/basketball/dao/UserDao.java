@@ -8,7 +8,12 @@ import java.util.List;
 public interface UserDao {
 
     /**
-     * 添加用户
+     * 验证
+     */
+    User getUser(@Param("userName") String userName, @Param("password") String password);
+
+    /**
+     * 验证
      *
      * @param user
      * @return

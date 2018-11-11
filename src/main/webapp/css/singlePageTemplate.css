@@ -10,7 +10,6 @@ body {
     font-style: normal;
     font-weight: 200;
 }
-
 /* Container */
 .container {
     width: 90%;
@@ -19,7 +18,6 @@ body {
     height: 1000px;
     background-color: #FFFFFF;
 }
-
 /* Navigation */
 header {
     width: 100%;
@@ -27,7 +25,6 @@ header {
     background-color: #52bad5;
     border-bottom: 1px solid #2C9AB7;
 }
-
 .logo {
     color: #fff;
     font-weight: bold;
@@ -38,19 +35,16 @@ header {
     margin-left: 25px;
     letter-spacing: 4px;
 }
-
 nav {
     float: right;
     width: 50%;
     text-align: right;
     margin-right: 25px;
 }
-
 header nav ul {
     list-style: none;
     float: right;
 }
-
 nav ul li {
     float: left;
     color: #FFFFFF;
@@ -61,16 +55,13 @@ nav ul li {
     font-weight: bold;
     transition: all 0.3s linear;
 }
-
 ul li a {
     color: #FFFFFF;
     text-decoration: none;
 }
-
 ul li:hover a {
     color: #2C9AB7;
 }
-
 .hero_header {
     color: #FFFFFF;
     text-align: center;
@@ -80,19 +71,16 @@ ul li:hover a {
     margin-left: 0px;
     letter-spacing: 4px;
 }
-
 /* Hero Section */
 .hero {
     background-color: #B3B3B3;
     padding-top: 150px;
     padding-bottom: 150px;
 }
-
 .light {
     font-weight: bold;
     color: #717070;
 }
-
 .tagline {
     text-align: center;
     color: #FFFFFF;
@@ -101,7 +89,6 @@ ul li:hover a {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
 /* About Section */
 .text_column {
     width: 29%;
@@ -113,7 +100,6 @@ ul li:hover a {
     padding-right: 20px;
     color: #A3A3A3;
 }
-
 .about {
     padding-left: 25px;
     padding-right: 25px;
@@ -122,13 +108,11 @@ ul li:hover a {
     background-color: #FFFFFF;
     margin-top: 0px;
 }
-
 /* Stats Gallery */
 .stats {
     color: #717070;
     margin-bottom: 5px;
 }
-
 .gallery {
     clear: both;
     display: inline-block;
@@ -141,14 +125,12 @@ ul li:hover a {
     margin-top: -5px;
     margin-bottom: 0px;
 }
-
 .thumbnail {
     width: 25%;
     text-align: center;
     float: left;
     margin-top: 35px;
 }
-
 .gallery .thumbnail h4 {
     margin-top: 5px;
     margin-right: 5px;
@@ -156,7 +138,6 @@ ul li:hover a {
     margin-left: 5px;
     color: #52BAD5;
 }
-
 .gallery .thumbnail p {
     margin-top: 0px;
     margin-right: 0px;
@@ -164,7 +145,6 @@ ul li:hover a {
     margin-left: 0px;
     color: #A3A3A3;
 }
-
 /* Parallax Section */
 .banner {
     background-color: #2D9AB7;
@@ -174,7 +154,6 @@ ul li:hover a {
     background-size: cover;
     background-repeat: no-repeat;
 }
-
 .parallax {
     color: #FFFFFF;
     text-align: right;
@@ -183,7 +162,6 @@ ul li:hover a {
     letter-spacing: 2px;
     margin-top: 0px;
 }
-
 .parallax_description {
     color: #FFFFFF;
     text-align: right;
@@ -197,37 +175,31 @@ ul li:hover a {
     margin-bottom: 0px;
     margin-left: 0px;
 }
-
 /* More info */
 footer {
     background-color: #FFFFFF;
     padding-bottom: 35px;
 }
-
 .footer_column {
     width: 50%;
     text-align: center;
     padding-top: 30px;
     float: left;
 }
-
 footer .footer_column h3 {
     color: #B3B3B3;
     text-align: center;
 }
-
 footer .footer_column p {
     color: #717070;
     background-color: #FFFFFF;
 }
-
 .cards {
     width: 100%;
     height: auto;
     max-width: 400px;
     max-height: 200px;
 }
-
 footer .footer_column p {
     padding-left: 30px;
     padding-right: 30px;
@@ -237,7 +209,6 @@ footer .footer_column p {
     margin-left: 20px;
     margin-right: 20px;
 }
-
 .button {
     width: 200px;
     margin-top: 40px;
@@ -258,13 +229,11 @@ footer .footer_column p {
     color: #FFFFFF;
     transition: all 0.3s linear;
 }
-
 .button:hover {
     background-color: #FEFEFE;
     color: #C4C4C4;
     cursor: pointer;
 }
-
 .copyright {
     text-align: center;
     padding-top: 20px;
@@ -276,7 +245,6 @@ footer .footer_column p {
     letter-spacing: 2px;
     border-top-width: 2px;
 }
-
 .footer_banner {
     background-color: #B3B3B3;
     padding-top: 60px;
@@ -285,11 +253,9 @@ footer .footer_column p {
     background-image: url(../images/pattern.png);
     background-repeat: repeat;
 }
-
 footer {
     display: inline-block;
 }
-
 .hidden {
     display: none;
 }

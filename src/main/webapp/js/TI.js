@@ -1,18 +1,30 @@
+var Url = window.location.href;
+var Data = Url.split("=");
+var Name = decodeURI(Data[1]);
+
+var TEAMID;
+
+
 //从后台获取信息，把球队的信息填写到框框里面
-$(function TeamI() {
+$(function () {
     $.ajax({
         //与后台进行连接，接收json
-        type: "get",
-        url: "nonono",
+        type: "post",
+        url: '/team/gainmembers',
         async: true,
+        data: {
+            "name": Name
+        },
+        dataType: "json",
         success: function (result) {
             var m = "";//用于后续的append
             var mm = "";
             result = JSON.parse(result);
-            $.each(result.teams, function (i, n) {   //这里开始进行加
+            $.each(result, function (i, n) {   //这里开始进行加
                 /* console.log(n);//令控制台显示json，用来测试*/
                 // m="<li>"+"姓名："+n["username"]+"密码："+n["password"]+"</li>";
-                m = "<span>" + n["teamName"] + "<img src='' id='pls'>" + "</span>";
+                m = "<span>" + n.team.teamName + "<img src='' id='pls'>" + "</span>";
+                TEAMID = n.team.teamId;
                 $("#TeamName").append(m);
                 $.each(n.memberList, function (index, comment) {
                     $("#TeamNumber tr").remove();
@@ -67,47 +79,126 @@ $(function TeamI() {
 function Change(ID) {
     var a = $("#" + ID).parent();
     var b = a.siblings();
-    b[0].innerHTML = "<input type='text' value='" + b[0].innerText + "'/>";
-    b[1].innerHTML = "<input type='text' value='" + b[1].innerText + "'/>";
-    b[2].innerHTML = "<input type='text' value='" + b[2].innerText + "'/>";
+    b[0].innerHTML = "<input type='text' id='MF' value='" + b[0].innerText + "'/>";
+    b[1].innerHTML = "<input type='text' id='MI' value='" + b[1].innerText + "'/>";
+    b[2].innerHTML = "<input type='text' id='MN' value='" + b[2].innerText + "'/>";
     var c = a.innerText;
     console.log(c);
-    a.innerHTML = "<input type='button' id='save' onclick='Save()' value='保存'>" +
+    a[0].innerHTML = "<input type='button' id='save' onclick='Save()' value='保存'>" +
         "<input type='button' id='cancel' onclick='Can()' value='取消'>";
 }
 
 function Del(ID) {
     var a = $("#" + ID).parent();
     var b = a.siblings();
-    var member = {memberId: b[1].innerText};
     $.ajax({
         type: "POST",
-        data: $.param(member),
-        url: "",
+        data: {
+            "teamId": TEAMID,
+            "memberId": b[1].innerText
+        },
+        url: "/team/deletemember",
         dataType: "json",
         success: function (result) {
-            if (result.status === "1") {
+            result = JSON.parse(result);
+            if (result.status === true) {
                 alert("删除成功");
                 window.location.reload();
             }
             else {
                 alert("删除失败，请重试");
-                ;
                 return false;
             }
+        },
+        error: function () {
+            alert("服务器出错，请稍后再试");
+            return false;
         }
     })
 }
 
 
 function Add() {
-
+//    先进行表格的增加，然后把按钮变成保存和取消，之后进行input，之后在进行保存和取消的逻辑。但是取消用CAN()函数。是remove
+    var newmember = "<tr><td><input type='text' id='MF'/></td>" +
+        "<td><input type='text' id='MI'/></td>" +
+        "<td><input type='text' id='MN'/></td>" +
+        "<td><input type='button' id='save' onclick='SaveNew()' value='保存'>" +
+        "<input type='button' id='cancel' onclick='Can()' value='取消'></td></tr>";
+    $("#TeamNumber").append(newmember);
+    /*    $.ajax({
+            type:"POST",
+            url:"",
+            dataType:"json",
+            data:{
+                "memberFirstStart" : $("#MF").val(),
+                "memberId":$("#MI").val(),
+                "memberName":$("#MN").val(),
+                "teamId":Name
+            },
+            success:function (result) {
+                if (result.status === "1"){
+                    window.location.reload();
+                }
+            },
+            error:function () {
+                alert("保存失败，请重试");
+                return false;
+            }
+        })*/
 }
 
 function Save() {
-
+    $.ajax({
+        type: "POST",
+        url: "/team/modifymember",
+        data: {
+            "memberFirstStart": $("#MF").val(),
+            "memberId": $("#MI").val(),
+            "memberName": $("#MN").val(),
+            "teamId": TEAMID
+        },
+        dataType: "json",
+        success: function (result) {
+            result = JSON.parse(result);
+            if (result.status === true) {
+                alert("保存成功");
+                window.location.reload();
+            }
+        },
+        error: function () {
+            alert("更改失败，请重试");
+            return false;
+        }
+    })
 }
 
-function Can() {
 
+function Can() {
+    window.location.reload();
+}
+
+function SaveNew() {
+    $.ajax({
+        type: "POST",
+        url: "/team/addmember",
+        data: {
+            "memberFirstStart": $("#MF").val(),
+            "memberId": $("#MI").val(),
+            "memberName": $("#MN").val(),
+            "teamId": TEAMID
+        },
+        dataType: "json",
+        success: function (result) {
+            result = JSON.parse(result);
+            if (result.status === true) {
+                alert("添加成功");
+                window.location.reload();
+            }
+        },
+        error: function () {
+            alert("更改失败，请重试");
+            return false;
+        }
+    })
 }

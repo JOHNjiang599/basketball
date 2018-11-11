@@ -117,10 +117,10 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public boolean deleteByMemberId(int memberId, int teamId) {
+    public boolean deleteById(int memberId, int teamId) {
         if (memberId > 0) {
             if (teamId > 0) {
-                int delCount = memberDao.delByMemberId(memberId, teamId);
+                int delCount = memberDao.delById(memberId, teamId);
                 if (delCount > 0) {
                     return true;
                 } else {
@@ -136,19 +136,11 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public boolean modifyByMemberId(int memberId, String memberName, int firstStart) {
-        if (memberId > 0) {
-            if (memberName != null && !"".equals(memberName)) {
-                int modCount = memberDao.modifyByMemberId(memberId, memberName, firstStart);
-                if (modCount > 0) {
-                    return true;
-                } else {
-                    throw new RuntimeException("修改失败");
-                }
-            } else {
-                throw new RuntimeException("球员名不能为空");
-            }
+        int modCount = memberDao.modifyByMemberId(memberId, memberName, firstStart);
+        if (modCount > 0) {
+            return true;
         } else {
-            throw new RuntimeException("球衣号大于0");
+            throw new RuntimeException("修改失败");
         }
     }
 }

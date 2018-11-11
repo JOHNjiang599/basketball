@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script src="/js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="/js/myscirpts.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/mystyle.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/mystyle.css"/>
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../js/myscirpts.js"></script>
+
 </head>
 <body>
-<div><img src="/images/icons8-left_4.png" style="position:absolute;left:10px ;width:40px; height:40px">
-    <img src="/images/icons8-today_apps.png" style="position:absolute;left:95%">
+<!-- 标题-->
+<div>
+    <img src="/images/icons8-left_4.png" style="position:absolute;left:10px ;width:150px; height:150px"
+         onclick="GoBack()">
+    <img src="/images/icons8-today_apps.png" style="position:absolute;left:87%;width:110px; height:110px">
 </div>
+<!-- a队首发 -->
 <div>
     <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="1" value="001"
             style="position:absolute;left:235px;top:265px;color:white">01
@@ -28,6 +33,7 @@
             style="position:absolute;left:77%;top:604px;color:white">05
     </button>
 </div>
+<!-- 时间加比分-->
 <nav class="timenav" onclick="startTime()">
     <nav>
         <p>
@@ -43,6 +49,7 @@
         </p>
     </nav>
 </nav>
+<!--	b队首发-->
 <div>
     <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="101" value="101"
             style="position:absolute;left:12% ;top:1050px; color:white">01
@@ -60,6 +67,7 @@
             style="position:absolute;left:67%;top:1390px; color:white">05
     </button>
 </div>
+<!--	操作菜单-->
 <nav class="tablenav" id="tablenav">
     <table class="table1">
         <tr>
@@ -89,6 +97,7 @@
         </tr>
     </table>
 </nav>
+<!--	a队替补名单-->
 <nav class='changenav' id="changenav">
     <table class="table2">
         <tr style="height:30px">
@@ -123,6 +132,7 @@
         </tr>
     </table>
 </nav>
+<!--	b队替补名单-->
 <nav class='changenav' id="changenav2">
     <table class="table2">
         <tr style="height:30px">

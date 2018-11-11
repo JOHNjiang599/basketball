@@ -43,10 +43,11 @@ public class MemberDaoTest extends BaseTest {
     @Test
     public void insertMember() {
         int memberId = 23;
-        String memberName = "john";
+        String memberName = "乔丹";
         int firstStart = 1;
         int teamId = 1;
         int i = memberDao.insertMember(memberId, memberName, firstStart, teamId);
+        System.out.println("\n" + i);
     }
 
     /**
@@ -99,7 +100,7 @@ public class MemberDaoTest extends BaseTest {
     public void delByMemberId() {
         int memberId = 1;
         int teamId = 1;
-        int i = memberDao.delByMemberId(memberId, teamId);
+        int i = memberDao.delById(memberId, teamId);
     }
 
     /**
@@ -107,9 +108,10 @@ public class MemberDaoTest extends BaseTest {
      */
     @Test
     public void modifyByMemberId() {
-        int memberId = 1;
-        String memberName = "john";
+        int memberId = 13;
+        String memberName = "gouzi";
         int firstStart = 1;
         int i = memberDao.modifyByMemberId(memberId, memberName, firstStart);
+        System.out.println(i);
     }
 }

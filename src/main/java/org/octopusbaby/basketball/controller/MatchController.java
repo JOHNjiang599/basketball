@@ -12,7 +12,9 @@ import org.octopusbaby.basketball.service.MemberService;
 import org.octopusbaby.basketball.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,25 +42,41 @@ public class MatchController {
     }
 
     /*初始化一场比赛，接受前端请求，查询球队填写的首发阵容并返回*/
-
-
     /**
      * 初始化一场比赛
      *
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/initonematch")
-    public String initOneMatch() {
+    @RequestMapping(value = "/getall", method = RequestMethod.GET,
+            produces = "application/json;charset=utf-8")
+    public String getTeamWithMember() {
         //获取队伍列表（包括属于该队的所有球员）
         List<Team> teamList = teamService.teamWithMember();
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("teamsWithMember", teamList);//封装成JSON对象
+        jsonObject.put("teams", teamList);//封装成JSON对象
         System.out.println(JSON.toJSONString(jsonObject.toString()));
         return JSON.toJSONString(jsonObject.toString());
     }
 
     /*处理加分、犯规、换人请求*/
+
+    /**
+     * 同时获取两队的所有首发和替补
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getteamfirst", method = RequestMethod.POST,
+            produces = "application/json;charset=utf-8")
+    public String getTeamFirstAndNoFirst(Integer teamIdA, Integer teamIdB) {
+        Map<String, Object> modelMap = new HashMap<>();
+        List<Member> firstMembers = memberService.gainByTeamId(teamIdA);
+        List<Member> secMembers = memberService.gainByTeamId(teamIdB);
+        modelMap.put("firstTeam", firstMembers);
+        modelMap.put("secTeam", secMembers);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("teams", modelMap);
+        return JSON.toJSONString(jsonObject.toString());
+    }
 
     /**
      * 同时获取某队所有首发和替补
@@ -67,12 +85,16 @@ public class MatchController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/getmembers", method = RequestMethod.POST)
-    public Map<String, Object> getFirstAndNotFirst(Integer teamId) {
-        Map<String, Object> modelMap = new HashMap<>();
+    @RequestMapping(value = "/getmembers", method = RequestMethod.POST,
+            produces = "application/json;charset=utf-8")
+    public String getFirstAndNotFirst(Integer teamId) {
+        /*response.setHeader("Content-Type"," application/json;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");*/
         List<Member> members = memberService.gainByTeamId(teamId);
-        modelMap.put("members", members);
-        return modelMap;
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("members", members);
+        System.out.println("\n" + jsonObject);
+        return JSON.toJSONString(jsonObject.toString());
     }
 
     /*返回首发队伍队员编号*/
@@ -84,7 +106,8 @@ public class MatchController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/getfirst")
+    @RequestMapping(value = "/getfirst", method = RequestMethod.POST,
+            produces = "application/json;charset=utf-8")
     public String getFirst(int firstTeam, int secondTeam) {
         //获取所有球员（不分队的）
         List<Member> memberList = memberService.gainAllMember();
@@ -106,7 +129,6 @@ public class MatchController {
                     secondList.add(second);
                 }
             }
-
         }
         //封装成JSON对象
         jsonObject.put("first", firstList);
@@ -120,7 +142,8 @@ public class MatchController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/getfirstnoparm")
+    @RequestMapping(value = "/getfirstnoparm", method = RequestMethod.GET,
+            produces = "application/json;charset=utf-8")
     public String getFirstNoParm() {
         List<Member> memberList = memberService.gainAllMember();
         List<FirstStarting> firstList = new ArrayList<>();
@@ -141,7 +164,6 @@ public class MatchController {
                     secondList.add(second);
                 }
             }
-
         }
         jsonObject.put("first", firstList);
         jsonObject.put("second", secondList);
@@ -157,8 +179,9 @@ public class MatchController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/getnotfirst")
-    public String getNotFirst(@RequestBody int teamId) {
+    @RequestMapping(value = "/getnotfirst", method = RequestMethod.POST,
+            produces = "application/json;charset=utf-8")
+    public String getNotFirst(int teamId) {
         //获取所有球员
         List<Member> memberList = memberService.gainAllMember();
         List<FirstStarting> leftMemberList = new ArrayList<>();
@@ -171,7 +194,6 @@ public class MatchController {
                     leftMemberList.add(noFirstStarting);
                 }
             }
-
         }
         jsonObj.put("noFirstStart", leftMemberList);
         System.out.println("jsonObject:" + jsonObj);
@@ -197,16 +219,17 @@ public class MatchController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/addmatch")
-    public Map<String, Object> addMatchRecord(@RequestBody Match match) {
-
+    @RequestMapping(value = "/addmatch", method = RequestMethod.POST,
+            produces = "application/json;charset=utf-8")
+    public String addMatchRecord(Match match) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         //插入记录
         boolean isSuccess = matchService.addOneMatch(match);
         //设置返回状态
-        modelMap.put("success", isSuccess);
-
-        return modelMap;
+        modelMap.put("status", isSuccess);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("msg", modelMap);
+        return JSON.toJSONString(jsonObject.toString());
     }
 
     /*
@@ -265,24 +288,24 @@ public class MatchController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/exchangemember")
-    public Map<String, Object> exchangeMember(@RequestBody SwapMember swapMember) {
-
+    @RequestMapping(value = "/exchangemember", method = RequestMethod.POST,
+            produces = "application/json;charset=utf-8")
+    public String exchangeMember(SwapMember swapMember) {
         Map<String, Object> modelMap = new HashMap<>();
-
         /*更改根据被换下场的球员编号、球员所在队伍编号查询出的队员的上场状态*/
         boolean firstStatus = memberService.toNotIsFirst(
                 swapMember.getFirstMemberId(), swapMember.getTeamId(), 0);
-
         /*更改将上场的球员球员编号、球员所在队伍编号查询出的队员的上场状态*/
         boolean secStatus = memberService.toIsFirst(
                 swapMember.getSecMemberId(), swapMember.getTeamId(), 1);
-
         if (firstStatus && secStatus) {
-            modelMap.put("success", true);
+            modelMap.put("status", true);
+        } else {
+            modelMap.put("status", false);
         }
-
-        return modelMap;
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("msg", modelMap);
+        return JSON.toJSONString(jsonObject.toString());
     }
 
 
