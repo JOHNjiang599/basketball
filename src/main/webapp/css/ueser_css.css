@@ -1,0 +1,78 @@
+button {
+    background: linear-gradient(to right, rgba(23, 234, 217, 1), rgba(96, 120, 234, 1));
+    color: white;
+    border-radius: 2px;
+    border: 0px;
+    font-size: 14px;
+
+}
+
+body {
+    margin: auto;
+    text-align: center;
+    /*width: 200px;*/
+}
+
+#Name {
+    position: absolute;
+    background: linear-gradient(to right, rgba(23, 234, 217, 1), rgba(96, 120, 234, 1));
+    left: 30%;
+    top: 8%;
+    color: white;
+    height: 40px;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.userdiv2 {
+    box-shadow: 0px 23px 70px rgba(0, 0, 0, 0.1);
+    width: 325px;
+    height: 313.24px;
+    margin: 0 auto;
+    text-align: left;
+    padding-left: 39.54px;
+    padding-top: 20px;
+    position: relative;
+
+}
+
+#TI-U {
+    position: absolute;
+    left: 40%;
+    top: 50%;
+    width: 80px;
+    height: 40px;
+}
+
+#his-U {
+    position: absolute;
+    left: 40%;
+    top: 64%;
+    width: 80px;
+    height: 40px;
+}
+
+.his {
+    position: absolute;
+    left: 40%;
+    top: 55%;
+    width: 80px;
+    height: 37px;
+}
+
+.vs {
+    position: absolute;;
+    top: 70%;
+    left: 40%;
+    width: 80px;
+    height: 37px;
+}
+
+.refereenav {
+    position: absolute;
+    left: 40%;
+    top: 8%;
+    font-size: 26px;
+    color: grey;
+
+}

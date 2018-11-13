@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/mystyle.css"/>
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../js/myscirpts.js"></script>
+
+</head>
+<body>
+<!-- 标题-->
+<div>
+    <img src="/images/icons8-left_4.png" style="position:absolute;left:10px ;width:150px; height:150px"
+         onclick="GoBack()">
+    <img src="/images/icons8-today_apps.png" style="position:absolute;left:87%;width:110px; height:110px">
+</div>
+<!-- a队首发 -->
+<div style="width: 100%;height: 50%;">
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="1" value="001"
+            style="position:absolute;left:23.5%;top:15%;color:white">01
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="2" value="002"
+            style="position:absolute;left:66%;top:15%;color:white">02
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="3" value="003"
+            style="position:absolute;left:11%;top:34.5%;color:white">03
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="4" value="004"
+            style="position:absolute;left:44%;top:34.5%;color:white">04
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="5" value="005"
+            style="position:absolute;left:76%;top:34.5%;color:white">05
+    </button>
+</div>
+<!-- 时间加比分-->
+<nav class="timenav" onclick="startTime()">
+    <nav>
+        <p>
+            <span id="grade_1">00</span>
+            <span id="grade_2">00</span>
+        </p>
+    </nav>
+    <nav>
+        <p>
+            <span id="minute">00</span>
+            <span id="charctor">:</span>
+            <span id="second">00</span>
+        </p>
+    </nav>
+</nav>
+<!--	b队首发-->
+<div style="width: 100%;height: 50%;">
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="101" value="101"
+            style="position:absolute;left:12% ;top:59.5%; color:white">01
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="102" value="102"
+            style="position:absolute;left:44.5%;top:59.5%; color:white">02
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="103" value="103"
+            style="position:absolute;left:76.4% ;top:59.5%; color:white">03
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="104" value="104"
+            style="position:absolute;left:22.5% ;top:79%; color:white">04
+    </button>
+    <button href="javascirpt:void(0)" onClick="btn1(this.value)" id="105" value="105"
+            style="position:absolute;left:66%;top:79%; color:white">05
+    </button>
+</div>
+<!--	操作菜单-->
+<nav class="tablenav" id="tablenav">
+    <table class="table1">
+        <tr>
+            <td>
+                <button onClick="btn2() ;plus(this.value)" value="1">&nbsp;1分&nbsp;</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;plus(this.value)" value="2">&nbsp;2分&nbsp;</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;plus(this.value)" value="3">&nbsp;3分&nbsp;</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;plus(this.value)" value="0">犯规</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a onClick="btn3()">换人</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a onClick="btn2()">取消</a>
+            </td>
+        </tr>
+    </table>
+</nav>
+<!--	a队替补名单-->
+<nav class='changenav' id="changenav">
+    <table class="table2">
+        <tr style="height:30px">
+            <td>
+                <p style="color:gray;font-size:25px;height:25px">请选择球员</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="201" id="201">33</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="202" id="202">15</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="203" id="203">09</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="204" id="204">07</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a onClick="btn2()">取消</a>
+            </td>
+        </tr>
+    </table>
+</nav>
+<!--	b队替补名单-->
+<nav class='changenav' id="changenav2">
+    <table class="table2">
+        <tr style="height:30px">
+            <td>
+                <p style="color:gray;font-size:25px;height:25px">请选择球员</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="301" id="301">31</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="302" id="302">12</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="303" id="303">12</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onClick="btn2() ;change(this.value)" value="304" id="304">07</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a onClick="btn2()">取消</a>
+            </td>
+        </tr>
+    </table>
+</nav>
+</body>
+</html>

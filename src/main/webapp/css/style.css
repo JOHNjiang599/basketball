@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/* CSS Document */
+@charset "UTF-8";
+/* CSS Document */
+body {
+    background: url(images/background.png) no-repeat;
+    background-position: center, 0;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+a {
+    text-decoration: none;
+    color: grey;
+    font-weight: 700;
+    font-size: 65px;
+}
+
+.timenav {
+    border: 4px solid rgba(239, 245, 242, 1.00);
+    background-color: rgba(242, 89, 27, 1.00);
+    width: 500px;
+    height: 250px;
+    position: absolute;
+    left: 25%;
+    top: 740px;
+
+}
+
+.tablenav {
+    position: absolute;
+    left: 25%;
+    background: url(images/menu.png) no-repeat;
+    background-size: 100% 100%;
+    display: none;
+    z-index: 100;
+    height: 660px;
+    width: 510px;
+    top: 540px;
+}
+
+.table1 {
+    align-content: center;
+    margin: auto;
+    margin-top: 70px;
+
+}
+
+.table1 td {
+    text-align: center;
+}
+
+.table1 tr {
+    height: 35px;
+}
+
+.changenav {
+    position: absolute;
+    left: 25%;
+    background: url(images/menu.png) no-repeat;
+    background-size: 100% 100%;
+    display: none;
+    z-index: 101;
+    height: 660px;
+    width: 510px;
+    top: 540px;
+}
+
+button {
+    background: transparent;
+    border: 0px;
+    font-size: 70px;
+    color: grey;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "dight-lcd";
+    src: url(digit-lcd.eot);
+    src: url(fonts/digit-lcd.svg) format('svg'),
+    url(fonts/digit-lcd.ttf) format('truetype'),
+    url(fonts/digit-lcd.woff) format('woff'),
+    url(fonts/digit-lcd.woff2);
+    font-weight: 900;
+    font-style: normal;
+}
+
+p {
+    text-align: center;
+}
+
+#grade_1 {
+    font-size: 90px;
+    font-family: 'dight-lcd';
+    color: white;
+}
+
+#grade_2 {
+    font-size: 90px;
+    font-family: 'dight-lcd';
+    color: white;
+}
+
+#minute {
+    font-size: 130px;
+    font-family: 'dight-lcd';
+    color: white;
+}
+
+#second {
+    font-size: 130px;
+    font-family: 'dight-lcd';
+    color: white;
+}
+
+#charctor {
+    font-size: 130px;
+    font-family: 'dight-lcd';
+    color: white;
+}
+
+#1 {
+    position: absolute;
+    left: 42%;
+    top: 94px;
+}
+
+#101 {
+    position: absolute;
+    left: 42%;
+    top: 494px;
+}
+
+.table2 {
+    align-content: center;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.table2 td {
+    text-align: center;
+}
+
+.table2 tr {
+    height: 12px;
+}

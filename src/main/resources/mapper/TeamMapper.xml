@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--配置命名空间-->
+<mapper namespace="org.octopusbaby.basketball.dao.TeamDao">
+    <!--对应数据库字段-->
+    <resultMap id="TeamResult" type="Team">
+        <id column="team_id" jdbcType="INTEGER" property="teamId"/>
+        <result column="team_name" property="teamName"/>
+    </resultMap>
+
+    <!--查询球队关联球员-->
+    <resultMap id="teamWithMemberResult" type="Team">
+        <id column="team_id" jdbcType="INTEGER" property="teamId"/>
+        <result column="team_name" property="teamName"/>
+        <collection property="memberList" ofType="Member">
+            <id column="member_id" property="memberId" jdbcType="INTEGER"/>
+            <result column="member_name" property="memberName"/>
+            <result column="member_first_start" property="memberFirstStart"/>
+            <result column="team_id" property="teamId"/>
+        </collection>
+    </resultMap>
+    <select id="teamWithMember" resultMap="teamWithMemberResult">
+        select t_team.team_id,team_name,member_id,member_name,member_first_start,t_member.team_id
+        from t_member
+        left join t_team ON t_member.team_id=t_team.team_id;
+    </select>
+
+    <!--添加球队-->
+    <insert id="insertTeam">
+        insert into t_team (team_id, team_name)
+        values (#{teamId},#{teamName});
+    </insert>
+
+    <!--查询所有球队信息-->
+    <select id="queryAllTeam" resultType="Team">
+        select team_id,team_name
+        from t_team;
+    </select>
+
+    <!--通过球队ID查询指定球队-->
+    <select id="queryByTeamId" resultType="Team">
+        select team_id,team_name
+        from t_team
+        where team_id=#{teamId};
+    </select>
+
+    <!--通过球队名字查询指定球队-->
+    <select id="queryByTeamName" resultType="Team">
+        select team_id,team_name
+        from t_team
+        where team_name=#{teamName};
+    </select>
+
+    <!--通过球队ID删除一个球队信息-->
+    <delete id="delByTeamId">
+        delete from t_team
+        where team_id=#{teamId};
+    </delete>
+
+    <!--通过球队ID修改球队名-->
+    <update id="modifyByTeamId">
+        update t_team
+        set team_name = #{teamName}
+        where team_id=#{teamId};
+    </update>
+</mapper>

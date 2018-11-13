@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--配置命名空间-->
+<mapper namespace="org.octopusbaby.basketball.dao.MatchDao">
+    <!--对应数据库字段-->
+    <resultMap type="Match" id="MatchResult">
+        <result property="matchSection" column="match_section"/>
+        <result property="matchTime" column="match_time"/>
+        <result property="eventType" column="password"/>
+        <result property="memberId" column="user_type"/>
+        <result property="teamId" column="user_type"/>
+    </resultMap>
+
+    <!--插入记录-->
+    <insert id="insert" parameterType="Match">
+        insert into t_match (match_section,match_time, event_type, member_id, team_id)
+        values (#{matchSection},#{matchTime},#{eventType},#{memberId},#{teamId});
+    </insert>
+
+    <!--获取所有对战信息-->
+    <select id="getAllInfo" resultType="Match">
+        select match_id,match_section,match_time,event_type,member_id,team_id
+        from t_match;
+    </select>
+
+    <!--通过球员ID和球队ID查询某条记录-->
+    <select id="getByMIdAndTId" resultType="Match">
+        select match_id,match_section,match_time,event_type,member_id,team_id
+        from t_match
+        where member_id=#{memberId} and team_id=#{teamId};
+    </select>
+
+    <!--通过球员ID和球队ID查询某条记录-->
+    <select id="getByTeamId" resultType="Match">
+        select match_id,match_section,match_time,event_type,member_id,team_id
+        from t_match
+        where team_id=#{teamId};
+    </select>
+
+    <!--添加一条对战记录-->
+    <insert id="insertMatch">
+        insert into t_match (match_section,match_time, event_type, member_id, team_id)
+        values (#{matchSection},#{matchTime},#{eventType},#{memberId},#{teamId});
+    </insert>
+
+    <!--通过时刻、事件类型和球员ID删除一条记录-->
+    <delete id="delMatch">
+        delete from t_match
+        where match_time=#{matchTime}
+        and event_type=#{eventType}
+        and member_id=#{memberId};
+    </delete>
+
+    <!--通过球员ID修改他的一条记录-->
+    <update id="modifyOneMatch">
+        update t_match
+        set match_time=#{matchTime}
+        and event_type=#{eventType}
+        where member_id=#{memberId};
+    </update>
+</mapper>
