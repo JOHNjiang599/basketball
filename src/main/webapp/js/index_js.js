@@ -8,6 +8,7 @@ function goBackLogin() {
     document.getElementById("logup").style.display = "none";
 
     document.getElementById("login").style.display = "block";
+    console.log("qwe")
 
 }
 
@@ -15,6 +16,7 @@ function toRegister() {
     document.getElementById("logup").style.display = "block";
 
     document.getElementById("login").style.display = "none";
+    console.log("asd")
 }
 
 //登陆的验证逻辑

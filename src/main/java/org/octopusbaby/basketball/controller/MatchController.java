@@ -222,13 +222,14 @@ public class MatchController {
     @RequestMapping(value = "/addmatch", method = RequestMethod.POST,
             produces = "application/json;charset=utf-8")
     public String addMatchRecord(Match match) {
-        Map<String, Object> modelMap = new HashMap<String, Object>();
         //插入记录
-        boolean isSuccess = matchService.addOneMatch(match);
-        //设置返回状态
-        modelMap.put("status", isSuccess);
+        boolean status = matchService.addOneMatch(match);
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("msg", modelMap);
+        if (status) {
+            jsonObject.put("status", true);
+        } else {
+            jsonObject.put("status", false);
+        }
         return JSON.toJSONString(jsonObject.toString());
     }
 

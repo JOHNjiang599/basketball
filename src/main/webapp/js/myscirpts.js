@@ -1,11 +1,11 @@
 var intervalId;
-var i = 2;
-var ttime = 2 * 60;//总时间
+var ttime = 15 * 60;//总时间
 var count = ttime;//当前时间
 var total = 4;//总节数
 var ttotal = 1;//当前节数
 var s = 0;//qiudui
 var x = 0;//球衣
+var m_id;
 var y;//操作
 var z = 0;//换人操作
 var grade_1 = 0, grade_2 = 0;//fenshu;
@@ -14,6 +14,10 @@ var b1 = new Array(5);
 var a2 = new Array(5);
 var b2 = new Array(5);
 var team = new Array(2);
+var minute;
+var second;
+var buttonEle;
+var chose = 2;
 
 //获取双方队伍id
 var Url = window.location.href;
@@ -34,7 +38,7 @@ $.ajax({
     success: function (result) {
         var rs = JSON.parse(result);
         console.log(rs);
-        $.each(rs, function (i, data) {
+        $.each(rs, function (idx, data) {
             console.log(data.firstTeam);
             n1 = 0;
             n2 = 0;
@@ -67,7 +71,7 @@ $.ajax({
 
         });
 
-        for (i = 1; i < 6; i++) {
+        for (i = 1; i < 5; i++) {
             document.getElementById(i).innerHTML = a1[i - 1];
             document.getElementById(i + 100).innerHTML = b1[i - 1];
             document.getElementById(i + 200).innerHTML = a2[i - 1];
@@ -78,27 +82,37 @@ $.ajax({
 
 
 function ajaxList() {
+    matchminute = parseInt(count / 60);
+    matchsecond = parseInt(count % 60);
+    moment = matchminute.toString() + ":" + matchsecond.toString();
+
+    if (s === 0)
+        s = teamA;
+    else
+        s = teamB;
+
     $.ajax({
         type: "post",
-        url: "",
+        url: "/match/addmatch",
         async: true,
         data: {
-            "section": total,
-            "count": count,
-            "team": s,
-            "number": x,
-            "operate": y,
-            "change": z
+            "matchSection": ttotal,
+            "matchTime": moment,
+            "eventType": y,
+            "memberId": m_id,
+            "teamId": s,
         },
-        success: function (res) {
-            alert(res);
+        dataType: "json",
+        success: function (result) {
+            var rs = JSON.parse(result);
+            alert(rs);
         }
     });
 }
 
 function btn1(val) {
-    y = val;
     val = parseInt(val);
+    m_id = parseInt(x = document.getElementById(val).innerHTML);
     s = 0;
     if (val > 100) {
         s = 1;
@@ -116,7 +130,7 @@ function btn2() {
 }
 
 function btn3() {
-    if (s == 0)
+    if (s === 0)
         document.getElementById('changenav').style.display = 'block';
     else
         document.getElementById('changenav2').style.display = 'block';
@@ -125,6 +139,7 @@ function btn3() {
 /*加分*/
 function plus(val) {
     val = parseInt(val);
+    y = val;
     if (s === 0) {
         grade_1 += val;
         if (grade_1 < 10)
@@ -141,6 +156,7 @@ function plus(val) {
             document.getElementById("grade_2").innerHTML = grade_2;
 
     }
+    ajaxList();
 
 }
 
@@ -152,7 +168,6 @@ function change(val) {
     val = parseInt(val);
     p1 = document.getElementById(node);
     p2 = document.getElementById(val);
-    z = p2;
     s1 = p1.innerHTML;
     s2 = p2.innerHTML;
     p1.innerHTML = s2;
@@ -161,35 +176,42 @@ function change(val) {
 
 /*倒计时*/
 function startTime() {
-    var minute = document.getElementById("minute");
-    var second = document.getElementById("second");
-    var buttonEle = document.getElementById("start");
-    switch (i) {
+    minute = document.getElementById("minute");
+    second = document.getElementById("second");
+    buttonEle = document.getElementById("start");
+    console.log("456");
+    switch (chose) {
         case 0:
             intervalId = setInterval("counttime()", 1000);
-            i = 1;
+            console.log("sdf");
+            chose = 1;
             break;
         case 1:
             clearInterval(intervalId);
-            i = 0;
+            console.log("123");
+            chose = 0;
             break;
         case 2:
+            console.log("mmp");
             count = ttime;
-            i = 0;
+            console.log("caonima");
+            chose = 0;
     }
 }
 
+var theminute;
+var thesecond;
 /*倒计时*/
 function counttime() {
-    var theminute = parseInt(count / 60);
-    var thesecond = parseInt(count % 60);
+    theminute = parseInt(count / 60);
+    thesecond = parseInt(count % 60);
     if (count > 0) {
         count -= 1;
 
     }
     else {
         ttotal++;
-        i = 2;
+        chose = 2;
         clearInterval(intervalId);
     }
     if (theminute >= 10)

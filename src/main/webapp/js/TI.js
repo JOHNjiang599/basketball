@@ -12,10 +12,10 @@ $(function () {
         type: "post",
         url: '/team/gainmembers',
         async: true,
+        dataType: "json",
         data: {
             "name": Name
         },
-        dataType: "json",
         success: function (result) {
             var m = "";//用于后续的append
             var mm = "";
@@ -93,12 +93,13 @@ function Del(ID) {
     var b = a.siblings();
     $.ajax({
         type: "POST",
+        async: true,
+        url: "/team/deletemember",
+        dataType: "json",
         data: {
             "teamId": TEAMID,
             "memberId": b[1].innerText
         },
-        url: "/team/deletemember",
-        dataType: "json",
         success: function (result) {
             result = JSON.parse(result);
             if (result.status === true) {
@@ -130,6 +131,7 @@ function Add() {
             type:"POST",
             url:"",
             dataType:"json",
+            async: true,
             data:{
                 "memberFirstStart" : $("#MF").val(),
                 "memberId":$("#MI").val(),
@@ -152,13 +154,14 @@ function Save() {
     $.ajax({
         type: "POST",
         url: "/team/modifymember",
+        async: true,
+        dataType: "json",
         data: {
             "memberFirstStart": $("#MF").val(),
             "memberId": $("#MI").val(),
             "memberName": $("#MN").val(),
             "teamId": TEAMID
         },
-        dataType: "json",
         success: function (result) {
             result = JSON.parse(result);
             if (result.status === true) {
@@ -182,13 +185,14 @@ function SaveNew() {
     $.ajax({
         type: "POST",
         url: "/team/addmember",
+        async: true,
+        dataType: "json",
         data: {
             "memberFirstStart": $("#MF").val(),
             "memberId": $("#MI").val(),
             "memberName": $("#MN").val(),
             "teamId": TEAMID
         },
-        dataType: "json",
         success: function (result) {
             result = JSON.parse(result);
             if (result.status === true) {

@@ -12,3 +12,36 @@ body {
     text-align: center;
     font-size: 1rem;
 }
+
+.indexdiv2 {
+    box-shadow: 0px 23px 70px rgba(0, 0, 0, 0.1);
+    width: 325px;
+    height: 313.24px;
+    margin: 0 auto;
+    text-align: left;
+    padding-left: 39.54px;
+    padding-top: 20px;
+
+}
+
+.login {
+    font-size: 24px;
+    text-align: left;
+}
+
+input {
+    border: none;
+}
+
+.indexdiv1 {
+    height: 205px;
+}
+
+.regist {
+    background: linear-gradient(to right, rgba(23, 234, 217, 1), rgba(96, 120, 234, 1));
+    color: white;
+    border-radius: 2px;
+    border: 0px;
+    font-size: 14px;
+
+}
