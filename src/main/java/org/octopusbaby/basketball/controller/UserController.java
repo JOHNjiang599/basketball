@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 处理用户登录注册
- */
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -33,9 +31,6 @@ public class UserController {
         this.teamService = teamService;
     }
 
-    /**
-     * 验证登录
-     */
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST,
             produces = "application/json;charset=utf-8")
@@ -44,12 +39,9 @@ public class UserController {
         System.out.println("\n用户名：" + userLogin.getUserName() +
                 " 密码：" + userLogin.getPassword() + " 用户类型："
                 + userLogin.getUserType() + "\n");
-
         Map<String, Object> map = new HashMap<>();
-
         User user = userService.getUser(userLogin.getUserName(), userLogin.getPassword());
         System.out.println("\n" + user);
-
         if (user != null) {
             map.put("status", true);
             map.put("username", user.getUserName());
@@ -65,32 +57,22 @@ public class UserController {
         return jsonString;
     }
 
-    /**
-     * 用户注册
-     */
     @ResponseBody
     @RequestMapping(value = "/register", method = RequestMethod.POST,
             produces = "application/json;charset=utf-8")
     public String register(UserRegister userRegister) {
-
-        String userType = "user";//保证为球队可注册
-
+        String userType = "user";//保证为球队注册
         System.out.println("\n用户名：" + userRegister.getUserName()
                 + " 密码：" + userRegister.getPassword()
                 + "重复密码：" + userRegister.getRepassword()
                 + " 用户类型：" + userType + "\n");
-
         Map<String, Object> map = new HashMap<>();
-
         if (userRegister.getPassword().equals(userRegister.getRepassword())) {
-
             User userCheck = new User();
             userCheck.setUserName(userRegister.getUserName());
             userCheck.setPassword(userRegister.getPassword());
             userCheck.setUserType(userType);
-
             User valUser = userService.checkUser(userCheck);//验证注册信息是否已存在
-
             if (valUser == null) {//未存在则添加
                 boolean isSuccess = userService.addUser(userRegister.getUserName(),
                         userRegister.getPassword(), userType);

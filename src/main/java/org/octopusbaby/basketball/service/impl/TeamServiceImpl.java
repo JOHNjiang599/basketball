@@ -61,21 +61,16 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public boolean deleteByTeamId(int teamId) {
-        if (teamId > 0) {
-            try {
-                int delCount = teamDao.delByTeamId(teamId);
-                if (delCount > 0) {
-                    return true;
-                } else {
-                    throw new RuntimeException("删除失败!");
-                }
-            } catch (Exception e) {
-                throw new RuntimeException("删除失败" + e.getMessage());
+        try {
+            int delCount = teamDao.delByTeamId(teamId);
+            if (delCount > 0) {
+                return true;
+            } else {
+                throw new RuntimeException("删除失败!");
             }
-        } else {
-            throw new RuntimeException("球队编号要大于0");
+        } catch (Exception e) {
+            throw new RuntimeException("删除失败" + e.getMessage());
         }
-
     }
 
     @Override

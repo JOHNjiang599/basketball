@@ -20,9 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 处理球队登录之后的请求
- */
+
 @Controller
 @RequestMapping("/team")
 public class TeamController {
