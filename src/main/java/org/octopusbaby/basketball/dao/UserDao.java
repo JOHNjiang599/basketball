@@ -22,13 +22,10 @@ public interface UserDao {
 
     /**
      * 添加用户
-     * @param userName
-     * @param password
+     * @param user
      * @return
      */
-    int insertUser(@Param("userName") String userName,
-                   @Param("password") String password,
-                   @Param("userType") String userType);
+    int insertUser(User user);
 
     /**
      * 获取所有用户信息

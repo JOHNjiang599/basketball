@@ -32,11 +32,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean addUser(String userName, String password, String userType) {
-        if (userName != null && !"".equals(userName)) {
-            if (password != null && !"".equals(password)) {
+    public boolean addUser(User user) {
+        if (user.getUserName() != null && !"".equals(user.getUserName())) {
+            if (user.getPassword() != null && !"".equals(user.getPassword())) {
                 try {
-                    int addCount = userDao.insertUser(userName, password, userType);
+                    int addCount = userDao.insertUser(user);
                     if (addCount > 0) {
                         return true;//添加成功
                     } else {

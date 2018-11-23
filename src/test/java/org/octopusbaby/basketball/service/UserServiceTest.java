@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 import org.octopusbaby.basketball.BaseTest;
+import org.octopusbaby.basketball.dto.UserRegister;
 import org.octopusbaby.basketball.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,6 +19,9 @@ public class UserServiceTest extends BaseTest {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TeamService teamService;
 
     @Test
     public void login() {
@@ -50,15 +54,46 @@ public class UserServiceTest extends BaseTest {
         User user = userService.checkUser(userCheck);
     }
 
+    @Test
+    public void register() {
+        String userType = "user";//保证为球队注册
+        UserRegister userRegister = new UserRegister();
+        userRegister.setUserName("test");
+        userRegister.setPassword("lll");
+        userRegister.setRepassword("lll");
+
+        Map<String, Object> map = new HashMap<>();
+        if (userRegister.getPassword().equals(userRegister.getRepassword())) {
+            User userCheck = new User();
+            userCheck.setUserName(userRegister.getUserName());
+            userCheck.setPassword(userRegister.getPassword());
+            userCheck.setUserType(userType);
+            User valUser = userService.checkUser(userCheck);//验证注册信息是否已存在
+            if (valUser == null) {//未存在则添加
+                //插入到账户表
+                boolean isSuccess = userService.addUser(userCheck);
+                //测试返回的自增主键
+                System.out.println(userCheck.getUserId());
+                //插入到球队表
+                boolean addTeam = teamService.addTeam(userCheck.getUserId(), userCheck.getUserName());
+
+                map.put("status", isSuccess);//返回状态
+            } else {
+                map.put("status", false);
+            }
+        }
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("msg", map);
+        System.out.println(jsonObject);
+    }
+
     /**
      * 添加一条用户信息
      */
     @Test
     public void addUser() {
-        String user = "";
-        String password = "";
-        String type = "";
-        boolean b = userService.addUser(user, password, type);
+        User user = new User();
+        boolean b = userService.addUser(user);
     }
 
     /**

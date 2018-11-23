@@ -31,6 +31,12 @@ public class UserController {
         this.teamService = teamService;
     }
 
+    /**
+     * 登录
+     *
+     * @param userLogin
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST,
             produces = "application/json;charset=utf-8")
@@ -57,26 +63,37 @@ public class UserController {
         return jsonString;
     }
 
+    /**
+     * 注册
+     * @param userRegister
+     * @return
+     */
     @ResponseBody
-    @RequestMapping(value = "/register", method = RequestMethod.POST,
-            produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/register", method = RequestMethod.POST, produces = "application/json;charset=utf-8")
     public String register(UserRegister userRegister) {
-        String userType = "user";//保证为球队注册
-        System.out.println("\n用户名：" + userRegister.getUserName()
-                + " 密码：" + userRegister.getPassword()
-                + "重复密码：" + userRegister.getRepassword()
-                + " 用户类型：" + userType + "\n");
+        //保证为球队注册
+        String userType = "user";
+        System.out.println("\n用户名：" + userRegister.getUserName() + " 密码：" + userRegister.getPassword()
+                + "重复密码：" + userRegister.getRepassword() + " 用户类型：" + userType + "\n");
+
         Map<String, Object> map = new HashMap<>();
         if (userRegister.getPassword().equals(userRegister.getRepassword())) {
             User userCheck = new User();
             userCheck.setUserName(userRegister.getUserName());
             userCheck.setPassword(userRegister.getPassword());
             userCheck.setUserType(userType);
-            User valUser = userService.checkUser(userCheck);//验证注册信息是否已存在
-            if (valUser == null) {//未存在则添加
-                boolean isSuccess = userService.addUser(userRegister.getUserName(),
-                        userRegister.getPassword(), userType);
-                map.put("status", isSuccess);//返回状态
+            //验证注册信息是否已存在
+            User valUser = userService.checkUser(userCheck);
+            //未存在则添加
+            if (valUser == null) {
+                //插入到用户表
+                boolean isSuccess = userService.addUser(userCheck);
+                //返回的自增主键
+                System.out.println(userCheck.getUserId());
+                //插入到球队表
+                boolean addTeam = teamService.addTeam(userCheck.getUserId(), userCheck.getUserName());
+                //返回状态
+                map.put("status", isSuccess && addTeam);
             } else {
                 map.put("status", false);
             }

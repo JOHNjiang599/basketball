@@ -4,6 +4,7 @@
 
 <!--配置命名空间-->
 <mapper namespace="org.octopusbaby.basketball.dao.UserDao">
+
     <!--对应数据库字段-->
     <resultMap type="User" id="UserResult">
         <result property="userId" column="user_id"/>
@@ -28,7 +29,8 @@
     </select>
 
     <!--添加用户-->
-    <insert id="insertUser">
+    <!--设置返回自增主键-->
+    <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
         insert into t_account (user_name, password,user_type)
         values (#{userName},#{password},#{userType});
     </insert>

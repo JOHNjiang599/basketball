@@ -20,12 +20,9 @@ public interface UserService {
 
     /**
      * 用户注册
-     * @param userName
-     * @param password
-     * @param userType
      * @return
      */
-    boolean addUser(String userName, String password, String userType);
+    boolean addUser(User user);
 
     /**
      * 获取所有用户

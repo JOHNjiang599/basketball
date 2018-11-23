@@ -32,10 +32,12 @@ public class UserDaoTest extends BaseTest {
      */
     @Test
     public void insertUser() {
-        String user = "";
-        String password = "";
-        String type = "";
-        int i = userDao.insertUser(user, password, type);
+        User user = new User();
+        user.setUserName("tut");
+        user.setPassword("tut");
+        user.setUserType("tut");
+        int insertUser = userDao.insertUser(user);
+        System.out.println("插入后主键为：" + user.getUserId());
     }
 
     /**
