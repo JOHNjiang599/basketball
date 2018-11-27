@@ -77,7 +77,7 @@ button {
 
 @font-face {
     font-family: "dight-lcd";
-    src: url(digit-lcd.eot);
+    src: url(../fonts/digit-lcd.eot);
     src: url(../fonts/digit-lcd.svg) format('svg'),
     url(../fonts/digit-lcd.ttf) format('truetype'),
     url(../fonts/digit-lcd.woff) format('woff'),

@@ -50,7 +50,7 @@ public class TeamController {
         } else {
             jsonObject.put("status", false);
         }
-        System.out.println(jsonObject);
+        /*System.out.println(jsonObject);*/
         return JSON.toJSONString(jsonObject.toString());
     }
 
@@ -66,7 +66,7 @@ public class TeamController {
         } else {
             jsonObject.put("status", false);
         }
-        System.out.println(jsonObject);
+        /*System.out.println(jsonObject);*/
         return JSON.toJSONString(jsonObject.toString());
     }
 
@@ -89,6 +89,7 @@ public class TeamController {
     @RequestMapping(value = "/gainmembers", method = RequestMethod.POST,
             produces = "application/json; charset=utf-8")
     public String gainMembers(String name) {
+        /*System.out.println("teamName:"+name);*/
         Team team = teamService.queryByTeamName(name);
         List<Member> memberList = memberService.gainByTeamId(team.getTeamId());
         Map<String, Object> modelMap = new HashMap<>();
@@ -109,7 +110,7 @@ public class TeamController {
         List<Team> teams = teamService.gainAllTeam();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("teamList", teams);
-        System.out.println("\n" + jsonObject);
+        /*System.out.println("\n" + jsonObject);*/
         return JSON.toJSONString(jsonObject.toString());
     }
 
@@ -178,7 +179,7 @@ public class TeamController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("firstTeamScore", firstHistoryResult);
         jsonObject.put("secTeamScore", secHistoryResult);
-        System.out.println("\n jsonObject:" + jsonObject);
+        /*System.out.println("\n jsonObject:" + jsonObject);*/
         //返回球队ID，球队名字，球队总得分JSON字符串
         return JSON.toJSONString(jsonObject.toString());
     }
@@ -225,7 +226,7 @@ public class TeamController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("firstTeamScore", firstHistoryResult);
         jsonObject.put("secTeamScore", secHistoryResult);
-        System.out.println("\n jsonObject:" + jsonObject);
+        /*System.out.println("\n jsonObject:" + jsonObject);*/
         //返回球队ID，球队名字，球队总得分JSON字符串
         return JSON.toJSONString(jsonObject.toString());
     }

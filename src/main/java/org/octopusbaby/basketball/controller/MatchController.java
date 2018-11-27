@@ -71,7 +71,7 @@ public class MatchController {
         List<Member> members = memberService.gainByTeamId(teamId);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("members", members);
-        System.out.println("\n" + jsonObject);
+        /* System.out.println("\n" + jsonObject);*/
         return JSON.toJSONString(jsonObject.toString());
     }
 
@@ -153,7 +153,7 @@ public class MatchController {
         List<Team> teamList = teamService.teamWithMember();
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("teams", teamList);//封装成JSON对象
-        System.out.println(JSON.toJSONString(jsonObject.toString()));
+        /*System.out.println(JSON.toJSONString(jsonObject.toString()));*/
         return JSON.toJSONString(jsonObject.toString());
     }
 
@@ -193,7 +193,7 @@ public class MatchController {
         //封装成JSON对象
         jsonObject.put("first", firstList);
         jsonObject.put("second", secondList);
-        System.out.println("jsonObject:" + jsonObject);
+        /*System.out.println("jsonObject:" + jsonObject);*/
         return JSON.toJSONString(jsonObject.toString());
     }
 
@@ -223,7 +223,7 @@ public class MatchController {
             }
         }
         jsonObj.put("noFirstStart", leftMemberList);
-        System.out.println("jsonObject:" + jsonObj);
+        /*System.out.println("jsonObject:" + jsonObj);*/
         return JSON.toJSONString(jsonObj.toString());
     }
 }

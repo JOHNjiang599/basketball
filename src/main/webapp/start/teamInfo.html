@@ -7,25 +7,47 @@
                                      user-scalable=no">
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="../js/TI.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="../css/ueser_css.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-<div id="tit"><span>队伍信息</span></div>
-
-
-<div id="TeamName">队伍名称</div>
-
-<div>队伍成员
-    <table id="TeamNumber" border="1">
+<div style="height:80px;position:relative;background-color:rgba(23, 234, 217, 1);
+box-shadow: 0px 23px 70px rgba(0, 0, 0, 0.1);width:95%;margin:10px;border-radius: 10px">
+    <p style="font-size:28px;position:absolute;left: 5%;top:27%;color:white;font-weight:600;">队伍信息</p>
+    <img src="../images/logo.png" style="position:absolute;left:80%;top:-30%" onclick="GoBack()">
+</div>
+<div class="userdiv3">
+    <div id="tit"><span class="span1">队伍信息:</span></div>
+    <div id="TeamName"><span class="span1">球队名称:</span></div>
+    <div>
+        <span class="span1">队伍成员:</span>
+        <br>
+        <br>
+        <button class="btn1" onclick="Add()">+</button>
+        <br>
+        <table id="TeamNumber" class="table " style="width:280px">
+            <thead>
+            <tr>
+                <td>
+                    <b>首发</b>
+                </td>
+                <td>
+                    <b>球衣号</b>
+                </td>
+                <td>
+                    <b>球员姓名</b>
+                </td>
+                <td>
+                    <b>操作</b>
+                </td>
+            </tr>
+            </thead>
 
     </table>
 </div>
-
-<div id="plus">
-    <button onclick="Add()"><img src=" " id="pic">增加成员</button>
+    <p id="demo"/>
 </div>
-<p id="demo"/>
-
-
+<img src="../images/4a53d.png" style="width:50px;position:fixed;left:87%;bottom:0;">
+<img src="../images/illustration1.png" style="position:fixed;bottom:0;left:20px;">
 </body>
 </html>

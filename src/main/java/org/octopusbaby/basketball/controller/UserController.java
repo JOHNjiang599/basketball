@@ -42,12 +42,11 @@ public class UserController {
             produces = "application/json;charset=utf-8")
     public String login(UserLogin userLogin) {
 
-        System.out.println("\n用户名：" + userLogin.getUserName() +
-                " 密码：" + userLogin.getPassword() + " 用户类型："
-                + userLogin.getUserType() + "\n");
+        /*System.out.println("\n用户名：" + userLogin.getUserName() +
+                " 密码：" + userLogin.getPassword() + " 用户类型："+ userLogin.getUserType() + "\n");*/
         Map<String, Object> map = new HashMap<>();
         User user = userService.getUser(userLogin.getUserName(), userLogin.getPassword());
-        System.out.println("\n" + user);
+        /*System.out.println("\n" + user);*/
         if (user != null) {
             map.put("status", true);
             map.put("username", user.getUserName());
@@ -57,9 +56,9 @@ public class UserController {
         }
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("msg", map);
-        System.out.println("\njsonObject   " + jsonObject);
+        /*System.out.println("\njsonObject   " + jsonObject);*/
         String jsonString = JSON.toJSONString(jsonObject.toString());
-        System.out.println("\njsonString   " + jsonString);
+        /*System.out.println("\njsonString   " + jsonString);*/
         return jsonString;
     }
 
@@ -73,8 +72,8 @@ public class UserController {
     public String register(UserRegister userRegister) {
         //保证为球队注册
         String userType = "user";
-        System.out.println("\n用户名：" + userRegister.getUserName() + " 密码：" + userRegister.getPassword()
-                + "重复密码：" + userRegister.getRepassword() + " 用户类型：" + userType + "\n");
+        /*System.out.println("\n用户名：" + userRegister.getUserName() + " 密码：" + userRegister.getPassword()
+                + "重复密码：" + userRegister.getRepassword() + " 用户类型：" + userType + "\n");*/
 
         Map<String, Object> map = new HashMap<>();
         if (userRegister.getPassword().equals(userRegister.getRepassword())) {
@@ -89,7 +88,7 @@ public class UserController {
                 //插入到用户表
                 boolean isSuccess = userService.addUser(userCheck);
                 //返回的自增主键
-                System.out.println(userCheck.getUserId());
+                /*System.out.println(userCheck.getUserId());*/
                 //插入到球队表
                 boolean addTeam = teamService.addTeam(userCheck.getUserId(), userCheck.getUserName());
                 //返回状态

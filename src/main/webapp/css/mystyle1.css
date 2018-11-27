@@ -8,8 +8,12 @@ select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    padding-left: 20px;
+    padding-left: 10px;
     border-radius: 3px;
+    background-color: white;
+    border: 1px solid grey;
+    font-size: 20px;
+
 }
 
 option {
@@ -19,17 +23,17 @@ option {
 .message {
     width: 322px;
     height: 137px;
-    border: 1px solid black;
+
     margin-top: 43px;
-    margin-left: 44px;
+    margin-left: 10px;
     font-size: 16px;
     color: grey;
     position: relative;
-    box-shadow: 2px 4px 4px #000;
+
 }
 
 .team {
-    margin-left: 43px;
+    margin-left: 10px;
     margin-top: 36px;
     width: 163px;
     height: 46px;
@@ -60,4 +64,14 @@ option {
     height: 65px;
     width: 100%;
     box-shadow: 2px 4px 5px #000;
+}
+
+.select {
+    box-shadow: 0px 23px 70px rgba(0, 0, 0, 0.1);
+    width: 325px;
+    height: 313.24px;
+    margin: 0 auto;
+    padding-left: 0px;
+    padding-top: 10px;
+    margin-bottom: 30px;
 }

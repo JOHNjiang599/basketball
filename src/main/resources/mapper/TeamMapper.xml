@@ -47,7 +47,7 @@
     </select>
 
     <!--通过球队名字查询指定球队-->
-    <select id="queryByTeamName" resultType="Team">
+    <select id="queryByTeamName" parameterType="java.lang.String" resultType="Team">
         select team_id,team_name
         from t_team
         where team_name=#{teamName};

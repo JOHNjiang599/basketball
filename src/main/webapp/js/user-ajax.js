@@ -6,10 +6,7 @@ $(function () {
     $("#Name").append(Name);
 })
 
-
-/*******************************************************/
-
-//到球队信息页面的跳转
+/*到球队信息页面的跳转*/
 function mes() {
     var Url = window.location.href;
     var Data = Url.split("=");
@@ -17,9 +14,7 @@ function mes() {
     window.location.href = Url;
 }
 
-/*******************************************************/
-
-//到历史对战页面的跳转
+/*到历史对战页面的跳转*/
 function his() {
     var Url = window.location.href;
     var Data = Url.split("=");

@@ -1,4 +1,3 @@
-// JavaScript Document
 /*进入缓存select信息*/
 $.ajax({
     type: "GET",
@@ -10,9 +9,6 @@ $.ajax({
     success: function (result) {
         var rs = JSON.parse(result);
         $.each(rs['teamList'], function (index, node) {
-            /*console.log(node);
-            console.log(node['teamId']);
-            console.log(node['teamName']);*/
             document.getElementById("ResourceType1").options.add(new Option(node['teamName'], node['teamId']));
             document.getElementById("ResourceType2").options.add(new Option(node['teamName'], node['teamId']));
         })
@@ -26,4 +22,8 @@ function GoHome() {
     var Url = "game.html?TeamA=" + teamA + "&TeamB=" + teamB;
     Url = encodeURI(Url);
     window.location.href = Url;
+}
+
+function GoBack() {
+    window.location.href = "../start/referee.html";
 }

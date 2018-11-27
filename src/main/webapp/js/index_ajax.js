@@ -13,17 +13,16 @@ function checkLogin(userName, password) {
 
 function login() {
 
-    var userName = $("#username").val();//获取用户名
-    var password = $("#password").val();//获取用户密码
-    var userType = $("input[type='radio']:checked").val();//获取单选框的值
+    var userName = $("#username").val();
+    var password = $("#password").val();
+    var userType = $("input[type='radio']:checked").val();
 
     var success = checkLogin(userName, password);
-    console.log(success);
     if (success === true) {
         $.ajax({
             url: "/user/login",
             type: "POST",
-            dataType: "json",//预期服务器返回类型
+            dataType: "json",
             async: true,
             data: {
                 "userName": userName,
@@ -32,13 +31,11 @@ function login() {
             },
             success: function (result) {
                 var rs = JSON.parse(result);
-                console.log(rs);
                 if (rs['msg']['status'] === true) {
                     if (rs['msg']['userType'] === "user") {
                         if (userType === "user") {
                             var Url = encodeURI("/start/user.html?user=" + rs['msg']['username']);
                             window.location.href = Url;
-                            console.log(Url);
                         }
                         else {
                             alert("请选择相应账户进行登录")
@@ -48,7 +45,6 @@ function login() {
                         if (userType === "referee") {
                             var Url = encodeURI("/start/referee.html?user=" + rs['msg']['username']);
                             window.location.href = Url;
-                            console.log(Url);
                         }
                         else {
                             alert("请选择相应账户进行登录")
@@ -91,9 +87,9 @@ function checkReg(userName, password, repassword) {
 
 function register() {
 
-    var userName = $("#username-s").val();//获取用户名
-    var password = $("#password-s").val();//获取用户密码
-    var repassword = $("#repassword").val();//获取再输密码
+    var userName = $("#username-s").val();
+    var password = $("#password-s").val();
+    var repassword = $("#repassword").val();
 
     var isSuccess = checkReg(userName, password, repassword);
 
@@ -102,7 +98,7 @@ function register() {
             url: "/user/register",
             type: "POST",
             async: true,
-            dataType: "json",//预期服务器返回类型
+            dataType: "json",
             data: {
                 "userName": userName,
                 "password": password,

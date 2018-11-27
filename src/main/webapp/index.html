@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--此页面通向user.html 和 referee.html-->
     <meta charset="UTF-8">
     <title>阿布斯特朗回旋加速阿姆斯特朗篮球对战平台</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
-                                     user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
     <script src="js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="js/index_js.js"></script>
     <script type="text/javascript" src="js/index_ajax.js"></script>
     <link rel="stylesheet" type="text/css" href="css/index_css.css">
-
 </head>
 <body onload="show()">
-
-<!--登陆页面，登陆和注册时在一起的，登陆时隐藏注册，注册时隐藏登陆 -->
-<!--全部改变，不再用form进行提交，而改用ajax进行交互 action="/user/login"-->
 <div class="indexdiv1">
-    <img style="position:absolute;left:47px;top: -20px;" src="images/Group 3.png">
+    <img style="position:absolute;left:47px;top: -20px;" src="images/Group3.png">
     <img src="images/logocopy.png" style="position:absolute;top:130px;left:30px;">
     <img src="images/logo.png" style="position:absolute;top:50px;left:280px;">
     <img src="images/illustration1.png" style="position:absolute;top:580px;left:20px;">
     <p style="position:absolute;left:80px;top:120px;font-size:20px">Basketball</p>
-
-
 </div>
-
-
 <div id="login" class="indexdiv2" style="background-color:white;position:relative">
     <p class="login">Login</p>
     <div class="login" method="post">
@@ -35,7 +25,6 @@
             <br>
             <br>
             <input type="radio" name="userType" value="referee">裁判
-
         </nav>
         <p style="font-size:11.23px;color:#3E4A59">Usename:</p>
         <label style="cursor:pointer;border-bottom: 1px solid blue;line-height:20px">
@@ -46,7 +35,6 @@
             <input id="password" type="password" name="password" placeholder="PASSWORD">
         </label>
         <br>
-
         <input type="submit" value="登陆" onclick="login()" style="position:absolute;left:280px;top:83%;background: linear-gradient(to right, rgba(23,234,217,1), rgba(96,120,234,1));
     color:white;
     border-radius: 2px;
@@ -55,33 +43,29 @@
         <br>
         <button class="regist" onclick="toRegister()">注册账户</button>
     </div>
-
     <br>
-
 </div>
-<!--注册框，添加一个框框的颜色，margin和padding-->
-<div class="register" id="logup">
+<div class="indexdiv2" id="logup" style="postion:relative">
     <div>
-        用户名：<br>
-        <label>
+        <p class="login">Register</p>
+        <p style="font-size:16px;color:#3E4A59;font-weight: 200;">username：</p>
+        <label style="cursor:pointer;border-bottom: 1px solid blue;line-height:10px;position:absolute;left:35%;top:42%;">
             <input id="username-s" type="text" name="userName">
         </label>
-        <br>
-        密码：<br>
-        <label>
+        <p style="font-size:16px;color:#3E4A59;font-weight: 200;">password：</p>
+        <label style="cursor:pointer;border-bottom: 1px solid blue;line-height:10px;position:absolute;left:35%;top:47%;">
             <input id="password-s" type="password" name="password">
         </label>
-        <br>
-        重复输入密码：<br>
-        <label>
+        <p style="font-size:16px;color:#3E4A59;font-weight: 200;">password：</p>
+        <label style="cursor:pointer;border-bottom: 1px solid blue;line-height:10px;position:absolute;left:35%;top:52%;">
             <input id="repassword" type="password" name="repassword">
         </label>
         <br>
-        <!--<input type="submit" value="注册账号">-->
-        <button type="submit" onclick="register()">注册账号</button>
+        <button class="regist" type="submit" onclick="register() " style="position:absolute;left:50%;top:65%">注册账号
+        </button>
     </div>
     <br>
-    <button id="log" onclick="goBackLogin()">返回登陆</button>
+    <button id="log" class="regist" onclick="goBackLogin()" style="position:absolute;left:70%;top:65%">返回登陆</button>
 </div>
 </body>
 </html>

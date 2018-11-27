@@ -1,5 +1,5 @@
 var intervalId;
-var ttime = 15 * 60;//总时间
+var ttime = 12 * 60;//总时间
 var count = ttime;//当前时间
 var total = 4;//总节数
 var ttotal = 1;//当前节数
@@ -18,7 +18,10 @@ var minute;
 var second;
 var buttonEle;
 var chose = 2;
-
+var break1 = 0;//a队犯规
+var break2 = 0;//b队犯规
+var breaka = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+var breakb = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 //获取双方队伍id
 var Url = window.location.href;
 var Data = Url.split("=");
@@ -37,13 +40,10 @@ $.ajax({
     dataType: 'json',
     success: function (result) {
         var rs = JSON.parse(result);
-        console.log(rs);
         $.each(rs, function (idx, data) {
-            console.log(data.firstTeam);
             n1 = 0;
             n2 = 0;
             $.each(data.firstTeam, function (index, node) {
-                console.log(data);
                 if (node.memberFirstStart === 1) {
                     a1[n1] = node.memberId;
                     n1 += 1;
@@ -55,9 +55,7 @@ $.ajax({
             });
             n1 = 0;
             n2 = 0;
-            console.log(data.secTeam);
             $.each(data.secTeam, function (index, node) {
-                console.log(node);
                 if (node.memberFirstStart === 1) {
                     b1[n1] = node.memberId;
                     n1 += 1;
@@ -71,7 +69,7 @@ $.ajax({
 
         });
 
-        for (i = 1; i < 5; i++) {
+        for (i = 1; i < 6; i++) {
             document.getElementById(i).innerHTML = a1[i - 1];
             document.getElementById(i + 100).innerHTML = b1[i - 1];
             document.getElementById(i + 200).innerHTML = a2[i - 1];
@@ -105,7 +103,7 @@ function ajaxList() {
         dataType: "json",
         success: function (result) {
             var rs = JSON.parse(result);
-            alert(rs);
+            //TODO:判别犯规次数；
         }
     });
 }
@@ -146,7 +144,7 @@ function plus(val) {
             document.getElementById("grade_1").innerHTML = '0' + grade_1;
         else
         // document.getElementById("grade_1").innerHTML=grade_1;
-            $("grade_1").append(grade_1);
+            document.getElementById("grade_1").innerHTML = grade_1;
     }
     if (s === 1) {
         grade_2 += val;
@@ -154,6 +152,36 @@ function plus(val) {
             document.getElementById("grade_2").innerHTML = '0' + grade_2;
         else
             document.getElementById("grade_2").innerHTML = grade_2;
+
+    }
+    if (val === 0) {
+        if (s === 0) {
+            break1 += 1;
+            breaka[x] += 1;
+
+            if ((breaka[x] % 4) == 0)
+                alert("该球员四犯");
+            if ((breaka[x] % 5) == 0)
+                alert("该球员五犯");
+            if ((break1 % 7) == 0)
+                alert("a队7犯")
+            if ((break1 % 8) == 0)
+                alert("a队罚球");
+
+        }
+        if (s === 1) {
+            break2 += 1;
+            breakb[x] += 1;
+            if ((breakb[x] % 4) == 0)
+                alert("该球员四犯");
+            if ((breakb[x] % 5) == 0)
+                alert("该球员五犯");
+            if ((break2 % 7) == 0)
+                alert("b队7犯")
+            if ((break2 % 8) == 0)
+                alert("b队罚球")
+        }
+
 
     }
     ajaxList();
@@ -164,8 +192,22 @@ function plus(val) {
 function change(val) {
     var s1, s2;
     var p1, p2;
+    var x2;
+    var temp;
     node = s * 100 + x;
     val = parseInt(val);
+    x2 = val % 100;
+    if (s === 0) {
+        temp = breaka[x];
+        breaka[x] = breaka[x2];
+        breaka[x2] = temp
+    }
+    if (s === 1) {
+        temp = breakb[x];
+        breakb[x] = breakb[x2];
+        breakb[x2] = temp;
+
+    }
     p1 = document.getElementById(node);
     p2 = document.getElementById(val);
     s1 = p1.innerHTML;
@@ -179,22 +221,17 @@ function startTime() {
     minute = document.getElementById("minute");
     second = document.getElementById("second");
     buttonEle = document.getElementById("start");
-    console.log("456");
     switch (chose) {
         case 0:
             intervalId = setInterval("counttime()", 1000);
-            console.log("sdf");
             chose = 1;
             break;
         case 1:
             clearInterval(intervalId);
-            console.log("123");
             chose = 0;
             break;
         case 2:
-            console.log("mmp");
             count = ttime;
-            console.log("caonima");
             chose = 0;
     }
 }
